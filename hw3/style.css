@@ -1,0 +1,54 @@
+﻿body {
+    background-color: blue;
+}
+.content{
+    background-color: cyan;
+}
+.header {
+    margin: auto;
+    width: 400px;
+}
+h1 {
+    background-image: url("header.png");
+    font-size: 30px;
+    color: red;
+    padding: 10px 10px 10px 10px;
+    margin: 0 0 0 0;
+}
+.menu {
+    background-image: url("bar.png");
+}
+h2 {
+    display: inline-block;
+    color: red;
+}
+h3{
+    color: red;
+}
+p{
+
+}
+
+a:link {
+    color: green;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+}
