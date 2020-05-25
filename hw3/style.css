@@ -34,14 +34,23 @@ h1 { /* OK */
     background-repeat: no-repeat;
     height: 57px;
     width: 680px;
+
     margin: 0 auto;
 }
 h2 {
     display: inline-block;
+    font-family: Arial;
     font-size: 20px;
-    color: red;
-    margin-left: 20px;
+    
+    font-weight: normal;
+    margin: 15px 30px;
 }
+
+a {
+    text-decoration: none;
+    color: #272F33;
+}
+
 .text {
 
 }
@@ -51,10 +60,6 @@ h3 {
 }
 p {
 
-}
-a {
-    text-decoration: none;
-    color: red;
 }
 
 /*
