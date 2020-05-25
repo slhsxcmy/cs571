@@ -11,35 +11,34 @@ body {
     background-color: cyan;
     /*margin-left: 100px;*/
 }
-.header{
+.header{ /* OK */
     /*margin: 0 auto;  for center */
     /*width: 900px; /* OK s */
-    background-image: url("header.png");
     /*background-size: contain;*/
+    background-image: url("header.png");
     background-repeat: no-repeat;
     height: 99px;
     width: 680px;
     margin: 0 auto;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
-h1 {
-
+h1 { /* OK */
     font-size: 35px;
-    color: red;
-
+    letter-spacing: 1.5px;
+    color: #272F33;
     padding-top: 25px;
-    padding-left: 25px
-
-
+    padding-left: 25px; /* margin-left? */
 }
 .menu {
     background-image: url("bar.png");
+    background-repeat: no-repeat;
     height: 57px;
     width: 680px;
     margin: 0 auto;
 }
 h2 {
     display: inline-block;
+    font-size: 20px;
     color: red;
     margin-left: 20px;
 }
