@@ -1,0 +1,79 @@
+*, html {
+    margin:0;
+    padding:0;  
+}
+body {
+    background-color: blue;
+    margin-top: 0;
+    /*padding: 0;*/
+}
+.content{
+    background-color: cyan;
+    margin: 0 auto;
+    width: 720px;
+    /*margin-left: 100px;*/
+}
+.header{ /* OK */
+    /*margin: 0 auto;  for center */
+    /*width: 900px; /* OK s */
+    /*background-size: contain;*/
+    background-image: url("header.png");
+    background-repeat: no-repeat;
+    height: 99px;
+    width: 680px;
+    margin: 0 auto;
+}
+h1 { /* OK */
+    font-size: 35px;
+    letter-spacing: 1.5px;
+    color: #272F33;
+    padding-top: 25px;
+    padding-left: 25px; /* margin-left? */
+    font-weight: 900;
+}
+.menu {
+    background-image: url("bar.png");
+    background-repeat: no-repeat;
+    height: 57px;
+    width: 680px;
+
+    margin: 0 auto;
+}
+h2 {
+    display: inline-block;
+    font-family: Arial;
+    font-size: 20px;
+    
+    font-weight: 500;
+    margin: 15px 30px;
+}
+
+a {
+    text-decoration: none;
+    color: #272F33;
+}
+
+.textbox {
+    width: 680px;
+    height: 500px;
+    
+    margin: 0 auto;
+
+    
+}
+
+h3 {
+    color: #314867;
+    font-family: Arial;
+    font-size: 25px;
+    letter-spacing: 1.5px;
+
+    padding-left: 20px;
+    padding-top: 15px;
+}
+p {
+    font-family: Arial;
+    font-size: 13px;
+    padding-left: 20px;
+    padding-top: 15px;
+}
