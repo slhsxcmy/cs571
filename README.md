@@ -1,8 +1,3 @@
-open in new tab
-anchor to 2nd page (#info)
-
-2nd page:
-Info
-xxx
-xxx
-xxx
+12646IAfF  
+TableOfContents.html = 0rw9cgTXdw.html  
+hw3/ = hfro2nVP6b/  
