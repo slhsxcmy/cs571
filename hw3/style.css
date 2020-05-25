@@ -9,6 +9,8 @@ body {
 }
 .content{
     background-color: cyan;
+    margin: 0 auto;
+    width: 720px;
     /*margin-left: 100px;*/
 }
 .header{ /* OK */
@@ -20,7 +22,6 @@ body {
     height: 99px;
     width: 680px;
     margin: 0 auto;
-    /*overflow: hidden;*/
 }
 h1 { /* OK */
     font-size: 35px;
