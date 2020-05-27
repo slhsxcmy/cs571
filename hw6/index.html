@@ -8,24 +8,33 @@
     </head>
     <body> 
         <!-- https://www.w3schools.com/js/js_validation.asp -->
-        <div class="header">
-        	<img src="eBayLogo.png">
-        	<h1>Shopping</h1>
+        <!-- http://jkorpela.fi/forms/tables.html -->
+        <div id="wrapper">
+            <div id="header">
+                <img src="eBayLogo.png">
+                <h1>Shopping</h1>
+            </div>
+            <form method="get">
+                <table>
+                    <tr><td>
+                        <label><b>Key Words<span style="color:red">*</span>:</b>
+                            <input type="text" id="keyword" name="keyword">
+                        </label>
+                    </td></tr>
+                    <tr><td>
+                        <label><b>Price Range:</b>
+                            From
+                            <input type="number" id="from" name="from">
+                            to
+                            <input type="number" id="to" name="to">
+                        </label>
+                    </td></tr>
+                </table>
+
+                
+                
+                
+            </form> 
         </div>
-		<form method="get">
-		    <label><b>Key Words<span style="color:red">*</span>:</b> 
-		    	<input type="text" id="keyword" name="keyword">
-		    </label><br>
-		    
-		    <label><b>Price Range:</b>
-		    	From
-		    	<input type="number" id="from" name="from">
-		    	to
-		    	<input type="number" id="to" name="to">
-
-		    </label>
-		    
-		</form> 
-
     <noscript></body>
 </html>

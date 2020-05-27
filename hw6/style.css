@@ -1,9 +1,27 @@
-*, html {
-    margin:0;
-    padding:0;  
+/**, html {
+    margin: auto;
+    padding: 0;  
+}*/
+
+#wrapper {
+	/*margin: auto;*/
+	/*position:relative;*/
+}
+
+#header {
+    width: 700px;
+    margin: auto;
 }
 
 h1 {
 	font-size: 60px;
 	display: inline-block;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
 }
