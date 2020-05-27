@@ -6,16 +6,23 @@
 #wrapper {
 	/*margin: auto;*/
 	/*position:relative;*/
+	text-align: center;
 }
 
 #header {
     width: 700px;
-    margin: auto;
+    /*margin: auto;*/
+    display: inline-block;
 }
 
 h1 {
 	font-size: 60px;
 	display: inline-block;
+}
+
+form {
+	display: inline-block;
+
 }
 
 table {
