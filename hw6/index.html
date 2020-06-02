@@ -5,6 +5,34 @@
         <title>Homework 6</title>
         <link rel="stylesheet" href="style.css">
         <!-- <base target="_blank"> -->
+        <script type="text/javascript">
+            function Validate() {
+                var xhttp = new XMLHttpRequest();
+                
+                xhttp.onreadystatechange = function(){
+                    // document.getElementById("usernameMessage").innerHTML = thisvb.responseText;   
+                }
+            
+                // if(myform)
+                if(from.value > to.value) {
+                    alert("NO!");
+                 
+                }
+
+                var url = "";
+
+                // xhttp.open("GET", "URL" 
+                //     + "?keyword=" + document.myform.keyword.value
+                //     + "from"
+
+
+                //     , true); 
+ 
+            // xhttp.send();
+            // return true;
+        
+            }
+        </script>
     </head>
     <body> 
         <!-- https://www.w3schools.com/js/js_validation.asp -->
@@ -17,11 +45,11 @@
 
             <br>
 
-            <form method="get">
+            <form action="" method="GET" onsubmit="return Validate();" name="myform">
                 <table>
                     <tr><td>
                         <label><b>Key Words<span style="color:red">*</span>:</b>
-                            <input type="text" id="keyword" name="keyword">
+                            <input type="text" id="keyword" name="keyword" required>
                         </label>
                     </td></tr>
                     <tr><td>
@@ -82,7 +110,7 @@
                     <tr><td>
                         <!-- use reset to avoid JS function to clear -->
                         <input type="reset" value="Clear"> 
-                        <input type="button" value="Submit" onclick="TODO">
+                        <input type="submit" value="Submit">
                     </td></tr>
 
                 </table>

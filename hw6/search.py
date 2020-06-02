@@ -1,9 +1,11 @@
+# https://console.cloud.google.com/
+
 import requests
 
 def getURL():
-    YourAppID = "TODO ebay key"
+    YourAppID = "MingyuCu-CS571-PRD-12eae7200-3078afa9"
     keywords = "TODO iphone"
-    entriesPerPage = '20'
+    entriesPerPage = '100'
     sortOrder = 'TODO BestMatch'
 
     minPriceDict = {
@@ -45,12 +47,12 @@ def getURL():
         'SECURITY-APPNAME': YourAppID,
         'RESPONSE-DATA-FORMAT': 'JSON',
         'REST-PAYLOAD': 'true',
-        'keywords': keywords,
-        'paginationInput.entriesPerPage': entriesPerPage,
-        'sortOrder': sortOrder,
+        # 'keywords': keywords,
+        # 'paginationInput.entriesPerPage': entriesPerPage,
+        # 'sortOrder': sortOrder,
     }
 
-
+# https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=MingyuCu-CS571-PRD-12eae7200-3078afa9&RESPONSE-DATA-FORMAT=JSON&keywords=harry%20potter&sortOrder=PricePlusShippingLowest&itemFilter(0).name=ReturnsAcceptedOnly&itemFilter(0).value=true&itemFilter(1).name=MinPrice&itemFilter(1).value=1&itemFilter(2).name=MaxPrice&itemFilter(2).value=100
 
 
     r = requests.get('https://svcs.ebay.com/services/search/FindingService/v1', params=payload)

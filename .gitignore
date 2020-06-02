@@ -1,1 +1,4 @@
 .DS_Store
+python-docs-samples
+venv
+__pycache__
