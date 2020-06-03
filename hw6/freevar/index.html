@@ -7,17 +7,17 @@
         <!-- <base target="_blank"> -->
         <script type="text/javascript">
             function Validate() {
-                var xhttp = new XMLHttpRequest();
+                // var xhttp = new XMLHttpRequest();
                 
-                xhttp.onreadystatechange = function(){
-                    // document.getElementById("usernameMessage").innerHTML = thisvb.responseText;   
-                }
+                // xhttp.onreadystatechange = function(){
+                //     // document.getElementById("usernameMessage").innerHTML = thisvb.responseText;   
+                // }
             
                 var filter_index = 0;
                 var query_string = "";
 
                 // get keyword. Validation is done by required attribute
-                query_string += "Keywords=" + myform.keyword.value;
+                query_string += "keywords=" + myform.keyword.value;
 
                 // handle sortOrder
                 query_string += "&sortOrder=" + myform.sort.value;
@@ -83,20 +83,28 @@
                     ++filter_index;
                 }
 
-                URL = "a.com/query?" + query_string; //.substring(1);
-                alert(URL);
+                URL = "http://127.0.0.1:8080/query?" + query_string; //.substring(1);
+                // alert(URL);
+                console.log(URL);
 
 
+                fetch(URL/*, {mode: 'no-cors'}*/)
+                .then(response => response.json())
+                .then(json => console.log(json))
+                // .catch(error => console.log('Authorization failed : ' + error.message));
+                    // .then(function (response) {
+                    //     return response.json(); // But parse it as JSON this time
+                    // })
+                    // .then(function (json) {
+                    //     console.log('GET response as JSON:');
+                    //     console.log(json); // Here’s our JSON object
+                    // })
 
-                // xhttp.open("GET", "URL" 
-                //     + "?keyword=" + document.myform.keyword.value
-                //     + "from"
+                // xhttp.open("GET", URL, true); 
+                // xhttp.send();
 
+                
 
-                //     , true); 
- 
-            // xhttp.send();
-            // return true;
                 return false;
             }
         </script>

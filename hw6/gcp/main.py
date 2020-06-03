@@ -26,6 +26,8 @@ def query():
     # Call eBay API
     response = requests.get('https://svcs.ebay.com/services/search/FindingService/v1', params=payload)
     
+    print(type(response.headers))#.add('Access-Control-Allow-Origin', '*')
+    response.headers['Access-Control-Allow-Origin'] = '*'
     # return eBay JSON
     # print(response)
     # print(response.json())
