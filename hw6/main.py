@@ -1,10 +1,16 @@
-from flask import Flask, request, jsonify
+from flask import * #Flask, request, jsonify, send_from_directory
 import requests
 import json
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 size = 100
+
+@app.route('/')
+def entry():
+    # print(app.root_path)
+    return send_from_directory(app.root_path, 'index.html')
+
 @app.route('/query')
 def query():
     # keyword = request.args.get('keyword')
@@ -27,19 +33,14 @@ def query():
     # Call eBay API
     response = requests.get('https://svcs.ebay.com/services/search/FindingService/v1', params=payload)
     
-
-    # TODO: Add Access-Control-Allow-Origin' in header?
-    # print(type(response.headers))#.add('Access-Control-Allow-Origin', '*')
-    # response.headers['Access-Control-Allow-Origin'] = '*'
-    
     # check JSON from eBay
-
     return_json = parse(response)
     # print(response)
     # print(response.json())
 
     return return_json
 
+# helper function
 def parse(response):
 
     response_json = response.json()
