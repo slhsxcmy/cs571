@@ -8,7 +8,7 @@
     <!-- <base target="_blank"> -->
     
   </head>
-  <body> 
+  <body onload="genResultsDiv();"> 
     <!-- https://www.w3schools.com/js/js_validation.asp -->
     <!-- http://jkorpela.fi/forms/tables.html -->
     <div id="wrapper">
@@ -93,17 +93,39 @@
       <br>
       <div id="results">
         <h2 id="total"></h2>
-        <div id="item0" class="items"><br></div>
-        <div id="item1" class="items"><br></div>
-        <div id="item2" class="items"><br></div>
-        <div id="item3" class="items"><br></div>
-        <div id="item4" class="items"><br></div>
-        <div id="item5" class="items"><br></div>
-        <div id="item6" class="items"><br></div>
-        <div id="item7" class="items"><br></div>
-        <div id="item8" class="items"><br></div>
-        <div id="item9" class="items"><br></div>
-        <button id="show_more" class="shadow_button" onclick="showMore();">Show More</button><br>
+        <!-- <div id="item0" class="items" onclick="expand(this);">
+          <table>
+            <tr>
+              <td rowspan="4" class="item_picture"><img></img>
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr>
+              <td>Category:
+              </td>
+            </tr>
+            <tr>
+              <td>Condition: 
+              </td>
+            </tr>
+            <tr>
+              <td><b>Price: $
+              </b></td>
+            </tr>
+          </table>
+        </div>
+        <div id="item1" class="items">
+        </div>
+        <div id="item2" class="items"></div>
+        <div id="item3" class="items"></div>
+        <div id="item4" class="items"></div>
+        <div id="item5" class="items"></div>
+        <div id="item6" class="items"></div>
+        <div id="item7" class="items"></div>
+        <div id="item8" class="items"></div>
+        <div id="item9" class="items"></div> -->
+        <button id="show_more" class="shadow_button" onclick="showMore();">Show More</button>
         <button id="show_less" class="shadow_button" onclick="showLess();">Show Less</button>
       </div>
     </div>

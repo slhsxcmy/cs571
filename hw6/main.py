@@ -67,8 +67,11 @@ def parse(response):
             item_dict["viewItemURL"] = response_json["findItemsAdvancedResponse"][0]["searchResult"][0]["item"][i]["viewItemURL"][0]
             item_dict["condition"] = response_json["findItemsAdvancedResponse"][0]["searchResult"][0]["item"][i]["condition"][0]["conditionDisplayName"][0]
             item_dict["topRatedListing"] = response_json["findItemsAdvancedResponse"][0]["searchResult"][0]["item"][i]["topRatedListing"][0]
+            item_dict["returnsAccepted"] = response_json["findItemsAdvancedResponse"][0]["searchResult"][0]["item"][i]["returnsAccepted"][0]
             item_dict["price"] = response_json["findItemsAdvancedResponse"][0]["searchResult"][0]["item"][i]["sellingStatus"][0]["convertedCurrentPrice"][0]["__value__"]
-            item_dict["shipping"] = response_json["findItemsAdvancedResponse"][0]["searchResult"][0]["item"][i]["shippingInfo"][0]["shippingServiceCost"][0]["__value__"]
+            item_dict["shippingServiceCost"] = response_json["findItemsAdvancedResponse"][0]["searchResult"][0]["item"][i]["shippingInfo"][0]["shippingServiceCost"][0]["__value__"]
+            item_dict["expeditedShipping"] = response_json["findItemsAdvancedResponse"][0]["searchResult"][0]["item"][i]["shippingInfo"][0]["expeditedShipping"][0]
+            item_dict["location"] = response_json["findItemsAdvancedResponse"][0]["searchResult"][0]["item"][i]["location"][0]
             return_dict['searchResult'].append(item_dict)
             i += 1
             count += 1
