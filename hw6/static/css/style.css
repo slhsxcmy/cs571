@@ -36,8 +36,8 @@ form table, form td {
 .items {
   margin: auto;
   border: solid 1px;
-  width: 300px;
-  height: 100px;
+  width: 500px;
+  height: 192px;
   background-color: #f4f3f4;
   display: none;
 }
@@ -51,6 +51,23 @@ div.items table {
   width: 100%;
   height: : 100%;
   border: none;
+  table-layout: fixed;
+}
+
+div.items tr {
+  /*height: 25%;*/
+}
+
+div.items td {
+
+  overflow: hidden;
+  height: 48px;
+}
+
+
+div.items td img {
+  max-height: 100%;
+  /*display: block;*/
 }
 
 /*td.item_picture {

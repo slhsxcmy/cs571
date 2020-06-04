@@ -41,6 +41,24 @@ def query():
 
     return return_json
 
+'''
+returnedResults: 10
+searchResult: Array(10)
+0:
+category: "Single Use Batteries"
+condition: "New"
+expeditedShipping: "false"
+galleryURL: "https://thumbs4.ebaystatic.com/m/mb4mCl0Ma9MyIeZONOX-B_Q/140.jpg"
+location: "Granada Hills,CA,USA"
+price: "21.99"
+returnsAccepted: "true"
+shippingServiceCost: "0.0"
+title: "Energizer Alkaline AA & AAA Max Batteries(24+24-Pack) New Exp.12/2029"
+topRatedListing: "true"
+viewItemURL: "https://www.ebay.com/itm/Energizer-Alkaline-AA-AAA-
+...
+totalResults: 3278910
+'''
 # helper function
 def parse(response):
 

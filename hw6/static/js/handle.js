@@ -35,30 +35,13 @@ function genResultsDiv(){
         r2.appendChild(c_cat);
         r3.appendChild(c_cond);
         r4.appendChild(c_price);
+
+        // var image = document.createElement('img');
+        // image.id = "item" + i + "img";
+        // c_pic.appendChild(image);
+
     }
     
-    // <div id="item0" class="items" onclick="expand(this);">
-    //       <table>
-    //         <tr>
-    //           <td rowspan="4" class="item_picture"><img></img>
-    //           </td>
-    //           <td>
-    //           </td>
-    //         </tr>
-    //         <tr>
-    //           <td>Category:
-    //           </td>
-    //         </tr>
-    //         <tr>
-    //           <td>Condition: 
-    //           </td>
-    //         </tr>
-    //         <tr>
-    //           <td><b>Price: $
-    //           </b></td>
-    //         </tr>
-    //       </table>
-    //     </div>
 }
 
 function validate() {
@@ -163,13 +146,23 @@ function validate() {
             document.getElementById('show_more').style.display = 'block';
         }
 
-        // for (var i = 0; i < returnedResults; i++) {
-        //     var item = json['searchResult'][i];
-        //     var division = document.getElementById('item' + i);
-        //     var table = division.getElementsByTagName('table');
-        //     console.log(table[0].innerHTML);
-        //     // tds.childNodes[0].getElementsByTagName('img').src = item['viewItemURL'];
-        // }
+        for (var i = 0; i < returnedResults; i++) {
+            var item = json['searchResult'][i];
+            // document.getElementById("item" + i + "img").src = item['viewItemURL']
+            document.getElementById("item" + i + "pic").innerHTML = '<img src="' + item['galleryURL'] + '"></img>';
+            document.getElementById("item" + i + "name").innerHTML = '<a href="' + item['viewItemURL'] + '">' + item['title'] + '</a>';
+            document.getElementById("item" + i + "cat").innerHTML = "Category: " + item['category'] + '<a href="' + item['viewItemURL'] + '">' + '<img src="/static/images/redirect.png"></img>' + '</a>';
+            document.getElementById("item" + i + "cond").innerHTML = "Condition: " + item['condition'];
+            document.getElementById("item" + i + "price").innerHTML = "<b>Price: $" + item['price'] + "</b>";
+
+            if(item['topRatedListing'] == 'true') {
+                document.getElementById("item" + i + "cond").innerHTML += '<img src="/static/images/topRatedImage.png"></img>';
+            }
+            // var division = document.getElementById('item' + i);
+            // var table = division.getElementsByTagName('table');
+            // console.log(table[0].innerHTML);
+            // tds.childNodes[0].getElementsByTagName('img').src = item['viewItemURL'];
+        }
         
     })
 
