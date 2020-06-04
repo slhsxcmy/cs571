@@ -9,7 +9,8 @@ size = 100
 @app.route('/')
 def entry():
     # print(app.root_path)
-    return send_from_directory(app.root_path, 'index.html')
+    return app.send_static_file('index.html')
+
 
 @app.route('/query')
 def query():
@@ -45,8 +46,12 @@ def parse(response):
 
     response_json = response.json()
     return_dict = {}
-
-    totalResults = int(response_json["findItemsAdvancedResponse"][0]["paginationOutput"][0]["totalEntries"][0])
+    # print(response_json["findItemsAdvancedResponse"][0])
+    totalResults = 0
+    try:
+        totalResults = int(response_json["findItemsAdvancedResponse"][0]["paginationOutput"][0]["totalEntries"][0])
+    except Exception as e:
+        print(e)
     return_dict['totalResults'] = totalResults
     return_dict['searchResult'] = []  # list
     count = 0
@@ -68,9 +73,12 @@ def parse(response):
             i += 1
             count += 1
 
-        except KeyError as e:
+        except KeyError:
             i += 1
+        except Exception as e:
+            print(e)
         
+    return_dict['returnedResults'] = count  # Should be usually 10
     return jsonify(return_dict)
     # print(type(response))
     # print(type(json))
@@ -78,7 +86,9 @@ def parse(response):
     # print(json["findItemsAdvancedResponse"]["ack"])
     # return json
 
-# https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=MingyuCu-CS571-PRD-12eae7200-3078afa9&RESPONSE-DATA-FORMAT=JSON&keywords=harry%20potter&sortOrder=PricePlusShippingLowest&itemFilter(0).name=ReturnsAcceptedOnly&itemFilter(0).value=true&itemFilter(1).name=MinPrice&itemFilter(1).value=1&itemFilter(2).name=MaxPrice&itemFilter(2).value=100&itemFilter(3).name=Condition&itemFilter(3).value(0)=New&itemFilter(3).value(1)=3000
+# https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=MingyuCu-CS571-PRD-12eae7200-3078afa9&RESPONSE-DATA-FORMAT=JSON&keywords=a%20potter&sortOrder=PricePlusShippingLowest&itemFilter(0).name=ReturnsAcceptedOnly&itemFilter(0).value=true&itemFilter(1).name=MinPrice&itemFilter(1).value=1&itemFilter(2).name=MaxPrice&itemFilter(2).value=100&itemFilter(3).name=Condition&itemFilter(3).value(0)=New&itemFilter(3).value(1)=3000
+
+# https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=MingyuCu-CS571-PRD-12eae7200-3078afa9&RESPONSE-DATA-FORMAT=JSON&keywords=a
 
 # http://127.0.0.1:8080/query?keywords=harry%20potter&sortOrder=PricePlusShippingLowest&itemFilter(0).name=ReturnsAcceptedOnly&itemFilter(0).value=true&itemFilter(1).name=MinPrice&itemFilter(1).value=1&itemFilter(2).name=MaxPrice&itemFilter(2).value=100
 if __name__ == '__main__':

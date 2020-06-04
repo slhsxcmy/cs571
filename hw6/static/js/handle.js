@@ -1,4 +1,5 @@
 function Validate() {
+    // document.getElementById("total").innerHTML = "Text";
     // var xhttp = new XMLHttpRequest();
     
     // xhttp.onreadystatechange = function(){
@@ -81,8 +82,18 @@ function Validate() {
 
 
     fetch(URL/*, {mode: 'no-cors'}*/)
-    .then(response => response.json())
-    .then(json => console.log(json))
+    .then((response) => response.json())
+    .then((json) => {
+        console.log(json);
+        // alert(json['totalResults']);
+        var totalResults = json['totalResults'];
+        if(totalResults == 0){
+            document.getElementById('total').innerHTML = 'No Results found';
+        } else {
+            document.getElementById('total').innerHTML = totalResults + ' Results found';
+        }
+        
+    })
     // .catch(error => console.log('Authorization failed : ' + error.message));
         // .then(function (response) {
         //     return response.json(); // But parse it as JSON this time
