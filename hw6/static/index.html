@@ -1,99 +1,111 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Homework 6</title>
-        <link rel="stylesheet" href="/static/css/style.css">
-        <script src="/static/js/handle.js" type="text/javascript"></script>
-        <!-- <base target="_blank"> -->
-        
-    </head>
-    <body> 
-        <!-- https://www.w3schools.com/js/js_validation.asp -->
-        <!-- http://jkorpela.fi/forms/tables.html -->
-        <div id="wrapper">
-            <div id="header">
-                <img src="/static/images/eBayLogo.png">
-                <h1>Shopping</h1>
-            </div>
+  <head>
+    <meta charset="utf-8" />
+    <title>Homework 6</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/handle.js" type="text/javascript"></script>
+    <!-- <base target="_blank"> -->
+    
+  </head>
+  <body> 
+    <!-- https://www.w3schools.com/js/js_validation.asp -->
+    <!-- http://jkorpela.fi/forms/tables.html -->
+    <div id="wrapper">
+      <div id="header">
+        <img src="/static/images/eBayLogo.png">
+        <h1>Shopping</h1>
+      </div>
 
-            <br>
-            <div id="form_div">
-                <form action="" method="GET" onsubmit="return Validate();" name="myform">
-                    <table>
-                        <tr><td>
-                            <label><b>Key Words<span style="color:red">*</span>:</b>
-                                <input type="text" id="keyword" name="keyword" required autocomplete="on">
-                            </label>
-                        </td></tr>
-                        <tr><td>
-                            <label><b>Price Range:</b>
-                                From
-                                <input type="number" id="from" name="from">
-                                to
-                                <input type="number" id="to" name="to">
-                            </label>
-                        </td></tr>
-                    
-                        <tr><td>
-                            <label><b>Condition:</b>     
-                                <label>
-                                    <input type="checkbox" name="conditions" value="1000">New
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="conditions" value="3000">Used
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="conditions" value="4000">Very Good
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="conditions" value="5000">Good
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="conditions" value="6000">Acceptable
-                                </label>
-                            </label>
-                        </td></tr>
-                        <tr><td>
-                            <label><b>Seller:</b>
-                                <label>
-                                    <input type="checkbox" name="returns" value="true">Return Accepted
-                                </label>
-                            </label>
-                        </td></tr>
-                        <tr><td>
-                            <label><b>Shipping:</b>     
-                                <label>
-                                    <input type="checkbox" name="freeshipping" value="true">Free
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="expshipping" value="Expedited">Expedited
-                                </label>
-                            </label>
-                        </td></tr>
-                        <tr><td>
-                            <label><b>Sort by:</b>     
-                                <select name="sort" id="sort">
-                                    <option value="BestMatch" selected>Best Match</option>
-                                    <option value="CurrentPriceHighest">Price: highest first</option>
-                                    <option value="PricePlusShippingHighest">Price + Shipping: highest first</option>
-                                    <option value="PricePlusShippingLowest">Price + Shipping: lowest first</option>
-                                </select> 
-                            </label>
-                        </td></tr>
-                        <tr><td>
-                            <!-- use reset to avoid JS function to clear -->
-                            <input type="reset" value="Clear"> 
-                            <input type="submit" value="Submit">
-                        </td></tr>
+      <br>
+      <div id="form_div">
+        <form action="" method="GET" onsubmit="return validate();" name="myform">
+          <table>
+            <tr><td>
+              <label><b>Key Words<span style="color:red">*</span>:</b>
+                <input type="text" id="keyword" name="keyword" required autocomplete="on">
+              </label>
+            </td></tr>
+            <tr><td>
+              <label><b>Price Range:</b>
+                From
+                <input type="number" id="from" name="from">
+                to
+                <input type="number" id="to" name="to">
+              </label>
+            </td></tr>
+          
+            <tr><td>
+              <label><b>Condition:</b>     
+                <label>
+                  <input type="checkbox" name="conditions" value="1000">New
+                </label>
+                <label>
+                  <input type="checkbox" name="conditions" value="3000">Used
+                </label>
+                <label>
+                  <input type="checkbox" name="conditions" value="4000">Very Good
+                </label>
+                <label>
+                  <input type="checkbox" name="conditions" value="5000">Good
+                </label>
+                <label>
+                  <input type="checkbox" name="conditions" value="6000">Acceptable
+                </label>
+              </label>
+            </td></tr>
+            <tr><td>
+              <label><b>Seller:</b>
+                <label>
+                  <input type="checkbox" name="returns" value="true">Return Accepted
+                </label>
+              </label>
+            </td></tr>
+            <tr><td>
+              <label><b>Shipping:</b>     
+                <label>
+                  <input type="checkbox" name="freeshipping" value="true">Free
+                </label>
+                <label>
+                  <input type="checkbox" name="expshipping" value="Expedited">Expedited
+                </label>
+              </label>
+            </td></tr>
+            <tr><td>
+              <label><b>Sort by:</b>     
+                <select name="sort" id="sort">
+                  <option value="BestMatch" selected>Best Match</option>
+                  <option value="CurrentPriceHighest">Price: highest first</option>
+                  <option value="PricePlusShippingHighest">Price + Shipping: highest first</option>
+                  <option value="PricePlusShippingLowest">Price + Shipping: lowest first</option>
+                </select> 
+              </label>
+            </td></tr>
+            <tr><td>
+              <!-- use reset to avoid JS function to clear -->
+              <input type="reset" value="Clear" class="shadow_button"> 
+              <input type="submit" value="Submit" class="shadow_button">
+            </td></tr>
 
-                    </table>
-                </form> 
-            </div>
-            <br>
-            <div id="results">
-                <h2 id="total"></h2>
-            </div>
-        </div>
-    <noscript></body>
+          </table>
+        </form> 
+      </div>
+      <br>
+      <div id="results">
+        <h2 id="total"></h2>
+        <div id="item0" class="items"><br></div>
+        <div id="item1" class="items"><br></div>
+        <div id="item2" class="items"><br></div>
+        <div id="item3" class="items"><br></div>
+        <div id="item4" class="items"><br></div>
+        <div id="item5" class="items"><br></div>
+        <div id="item6" class="items"><br></div>
+        <div id="item7" class="items"><br></div>
+        <div id="item8" class="items"><br></div>
+        <div id="item9" class="items"><br></div>
+        <button id="show_more" class="shadow_button" onclick="showMore();">Show More</button><br>
+        <button id="show_less" class="shadow_button" onclick="showLess();">Show Less</button>
+      </div>
+    </div>
+  <noscript></body>
 </html>

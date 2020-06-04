@@ -1,4 +1,4 @@
-function Validate() {
+function validate() {
     // document.getElementById("total").innerHTML = "Text";
     // var xhttp = new XMLHttpRequest();
     
@@ -86,27 +86,38 @@ function Validate() {
     .then((json) => {
         console.log(json);
         // alert(json['totalResults']);
-        var totalResults = json['totalResults'];
+        totalResults = json['totalResults'];
+        returnedResults = json['returnedResults'];
         if(totalResults == 0){
             document.getElementById('total').innerHTML = 'No Results found';
         } else {
             document.getElementById('total').innerHTML = totalResults + ' Results found';
         }
+        for (var i = 0; i < 3; i++) {
+            document.getElementById('item' + i).style.display = 'block';
+        }
+        if(returnedResults > 3) {
+            document.getElementById('show_more').style.display = 'block';
+        }
         
     })
-    // .catch(error => console.log('Authorization failed : ' + error.message));
-        // .then(function (response) {
-        //     return response.json(); // But parse it as JSON this time
-        // })
-        // .then(function (json) {
-        //     console.log('GET response as JSON:');
-        //     console.log(json); // Here’s our JSON object
-        // })
-
-    // xhttp.open("GET", URL, true); 
-    // xhttp.send();
-
-    
 
     return false;
+}
+
+function showMore() {
+    for (var i = 3; i < returnedResults; i++) {
+        document.getElementById('item' + i).style.display = 'block';
+    }
+    document.getElementById('show_more').style.display = 'none';
+    document.getElementById('show_less').style.display = 'block';
+    window.scrollTo(0,document.body.scrollHeight);
+}
+function showLess() {
+    for (var i = 3; i < returnedResults; i++) {
+        document.getElementById('item' + i).style.display = 'none';
+    }
+    document.getElementById('show_more').style.display = 'block';
+    document.getElementById('show_less').style.display = 'none';
+    window.scrollTo(0, 0);
 }

@@ -32,3 +32,17 @@ table {
 table, th, td {
   border: 1px solid black;
 }
+
+.items {
+  margin: auto;
+  border: solid 1px;
+  width: 300px;
+  height: 100px;
+  background-color: #f4f3f4;
+  display: none;
+}
+
+#show_more, #show_less {
+  margin: auto;
+  display: none;
+}
