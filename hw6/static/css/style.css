@@ -35,9 +35,9 @@ form table, form td {
 
 .items {
   margin: auto;
-  border: solid 1px;
-  width: 500px;
-  height: 192px;
+  /*border: solid 1px;*/
+  /*width: 500px;*/
+  /*height: 200px;*/
   background-color: #f4f3f4;
   display: none;
 }
@@ -48,10 +48,12 @@ form table, form td {
 }
 
 div.items table {
-  width: 100%;
-  height: : 100%;
-  border: none;
+  /*width: 100%;
+  height: : 100%;*/
+  border: solid 1px;
+  /*border: none;*/
   table-layout: fixed;
+  margin: auto;
 }
 
 div.items tr {
@@ -60,16 +62,33 @@ div.items tr {
 
 div.items td {
 
+  height: 45px;
+  
   overflow: hidden;
-  height: 48px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.photo {
+  height: 12px;
+}
+.redirect {
+  height: 12px;
+}
+.topRated {
+  height: 12px;
+  /*max-height: 100%;*/
+  /*display: block;*/
 }
 
 
-div.items td img {
-  max-height: 100%;
-  /*display: block;*/
+.shadow_button:hover {
+  background-color: #4da75e;
+  color: white;
 }
 
 /*td.item_picture {
   width: 30%;
 }*/
+
+/* TODO: center options in sort by */;

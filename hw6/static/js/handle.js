@@ -14,27 +14,37 @@ function genResultsDiv(){
         var r2 = document.createElement('tr');
         var r3 = document.createElement('tr');
         var r4 = document.createElement('tr');
+        var r5 = document.createElement('tr');
+        var r6 = document.createElement('tr');
         newtable.appendChild(r1);
         newtable.appendChild(r2);
         newtable.appendChild(r3);
         newtable.appendChild(r4);
+        newtable.appendChild(r5);
+        newtable.appendChild(r6);
 
-        var c_pic = document.createElement('td');
-        var c_name = document.createElement('td');
-        var c_cat = document.createElement('td');
-        var c_cond = document.createElement('td');
+        var c_pic = document.createElement('td');  
+        var c_name = document.createElement('td'); 
+        var c_cat = document.createElement('td');  
+        var c_cond = document.createElement('td'); 
+        var c_ret = document.createElement('td');  
+        var c_ship = document.createElement('td'); 
         var c_price = document.createElement('td');
-        c_pic.rowSpan = 4;
+        c_pic.rowSpan = 6;
         c_pic.id = "item" + i + "pic";
         c_name.id = "item" + i + "name";
         c_cat.id = "item" + i + "cat";
         c_cond.id = "item" + i + "cond";
+        c_ret.id = "item" + i + "ret";
+        c_ship.id = "item" + i + "ship";
         c_price.id = "item" + i + "price";
         r1.appendChild(c_pic);
         r1.appendChild(c_name);
         r2.appendChild(c_cat);
         r3.appendChild(c_cond);
-        r4.appendChild(c_price);
+        r4.appendChild(c_ret);
+        r5.appendChild(c_ship);
+        r6.appendChild(c_price);
 
         // var image = document.createElement('img');
         // image.id = "item" + i + "img";
@@ -149,15 +159,122 @@ function validate() {
         for (var i = 0; i < returnedResults; i++) {
             var item = json['searchResult'][i];
             // document.getElementById("item" + i + "img").src = item['viewItemURL']
-            document.getElementById("item" + i + "pic").innerHTML = '<img src="' + item['galleryURL'] + '"></img>';
-            document.getElementById("item" + i + "name").innerHTML = '<a href="' + item['viewItemURL'] + '">' + item['title'] + '</a>';
-            document.getElementById("item" + i + "cat").innerHTML = "Category: " + item['category'] + '<a href="' + item['viewItemURL'] + '">' + '<img src="/static/images/redirect.png"></img>' + '</a>';
-            document.getElementById("item" + i + "cond").innerHTML = "Condition: " + item['condition'];
-            document.getElementById("item" + i + "price").innerHTML = "<b>Price: $" + item['price'] + "</b>";
+            var c_pic = document.getElementById("item" + i + "pic");
+            var c_name = document.getElementById("item" + i + "name");
+            var c_cat = document.getElementById("item" + i + "cat");
+            var c_ret = document.getElementById("item" + i + "ret");
+            var c_ship = document.getElementById("item" + i + "ship");
+            var c_cond = document.getElementById("item" + i + "cond");
+            var c_price = document.getElementById("item" + i + "price");
 
+            c_pic.textContent = '';
+            c_name.textContent = '';
+            c_cat.textContent = '';
+            c_cond.textContent = '';
+            c_ret.textContent = '';
+            c_ship.textContent = '';
+            c_price.textContent = '';
+
+            var image = document.createElement('img');
+            // image.id = "item" + i + "img";
+            c_pic.appendChild(image);
+            image.src = item['galleryURL'];
+            image.className = 'photo';
+
+            var name_link = document.createElement('a');
+            c_name.appendChild(name_link);
+            name_link.href = item['viewItemURL'];
+            var name = document.createTextNode(item['title']);
+            name_link.appendChild(name);
+
+            var cat = document.createTextNode("Category: " + item['category']);
+            c_cat.appendChild(cat);
+            var link = document.createElement('a');
+            c_cat.appendChild(link);
+            link.href = item['viewItemURL'];
+            var redir = document.createElement('img');
+            link.appendChild(redir);
+            redir.src = "/static/images/redirect.png";
+            redir.className = "redirect";
+
+            var cond = document.createTextNode("Condition: " + item['condition']);
+            c_cond.appendChild(cond);
             if(item['topRatedListing'] == 'true') {
-                document.getElementById("item" + i + "cond").innerHTML += '<img src="/static/images/topRatedImage.png"></img>';
+                var top = document.createElement('img');
+                c_cond.appendChild(top);
+                top.className = "topRated";
+                top.src = "/static/images/topRatedImage.png";
             }
+
+
+
+
+            var seller = document.createTextNode('Seller ');
+            c_ret.appendChild(seller);
+            var bold = document.createElement('b');
+            c_ret.appendChild(bold);
+
+            if(item['returnsAccepted'] == 'true'){
+                var bold_words = document.createTextNode('accepts');
+            } else {
+                var bold_words = document.createTextNode('does not accept returns');
+            }
+            bold.appendChild(bold_words);
+
+            
+            if(item['returnsAccepted'] == 'true'){
+                var returns = document.createTextNode(' returns');
+            } else {
+                var returns = document.createTextNode('');
+            }
+            c_ret.appendChild(returns);
+
+
+
+
+            if(item['shippingServiceCost'] > 0) {
+                var freeshipping = document.createTextNode('No Free Shipping');
+            } else {
+                var freeshipping = document.createTextNode('Free Shipping');           
+            }
+            c_ship.appendChild(freeshipping);
+
+            if(item['expeditedShipping' == 'true']) {
+                var expedit = document.createTextNode(' -- Expedited Shipping available');
+            } else {
+                var expedit = document.createTextNode('');
+            }
+            c_ship.appendChild(expedit);
+
+
+
+            // Price: $20 (+ $3 for shipping)
+            var boldprice = document.createElement('b');
+            c_price.appendChild(boldprice);
+
+            var rawprice = document.createTextNode('Price: $' + item['price']);
+            boldprice.appendChild(rawprice);
+            if(item['shippingServiceCost'] > 0) {
+                var shipprice = document.createTextNode(' (+ $' + item['shippingServiceCost'] + ' for shipping)');
+            } else {
+                var shipprice = document.createTextNode('');
+            }
+            c_price.appendChild(shipprice);
+
+            var loc = document.createTextNode(' From ' + item['location']);
+            loc.id = 'item' + i + 'loc';
+            c_price.appendChild(loc);
+            
+
+            // document.getElementById("item" + i + "pic").innerHTML = '';
+
+            // // <img class="photo" src="' + item['galleryURL'] + '"></img>';
+            // document.getElementById("item" + i + "name").innerHTML = '<a href="' + item['viewItemURL'] + '">' + item['title'] + '</a>';
+            // document.getElementById("item" + i + "cat").innerHTML = "Category: " + item['category'] + '<a href="' + item['viewItemURL'] + '">' + '<img class="redirect" src="/static/images/redirect.png"></img>' + '</a>';
+            // document.getElementById("item" + i + "cond").innerHTML = "Condition: " + item['condition'];
+            // document.getElementById("item" + i + "price").innerHTML = "<b>Price: $" + item['price'] + "</b>";
+
+            
             // var division = document.getElementById('item' + i);
             // var table = division.getElementsByTagName('table');
             // console.log(table[0].innerHTML);
