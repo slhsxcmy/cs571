@@ -261,10 +261,24 @@ function validate() {
             }
             c_price.appendChild(shipprice);
 
+            var loc_span = document.createElement('span');
+            c_price.appendChild(loc_span);
+            loc_span.id = 'item' + i + 'loc_span';
             var loc = document.createTextNode(' From ' + item['location']);
-            loc.id = 'item' + i + 'loc';
-            c_price.appendChild(loc);
+            // 
+            loc_span.appendChild(loc);
             
+
+            c_ret.style.display = 'none';
+            c_ship.style.display = 'none';
+            loc_span.style.display = 'none';
+
+
+
+
+            // document.getElementById(loc.id).style.display = 'none';
+            // alert(loc.id);
+            // loc.display = 'none';
 
             // document.getElementById("item" + i + "pic").innerHTML = '';
 
@@ -304,14 +318,24 @@ function showLess() {
 }
 
 function expand(div) {
+    id = div.id; 
+    var c_ret = document.getElementById(id + "ret");
+    var c_ship = document.getElementById(id + "ship");
+    var loc_span = document.getElementById(id + "loc_span");
+            
 
-    // alert("HAAA");
+    c_ret.style.display = 'table-cell';
+    c_ship.style.display = 'table-cell';
+    loc_span.style.display = 'inline';
+    // alert("HAAA");loc_span.id = 'item' + i + 'loc_span';
 
     // use this
   // statements
-  var id = div.id; // or however you want to use the id
-  console.log(id);
+  // var id = div.id; // or however you want to use the id
+  // console.log(id);
   // alert(id);// statements
+
+
 }
 function collapse(div) {
     // use this
