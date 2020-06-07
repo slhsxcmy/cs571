@@ -10,6 +10,19 @@ function genResultsDiv(){
         var newtable = document.createElement('table');
         newdiv.appendChild(newtable);
         
+        
+        // close button x
+        var but = document.createElement('button');
+        newtable.appendChild(but);
+        but.appendChild(document.createTextNode('❌'));
+        but.className = 'close';
+        but.onclick = function() {event.stopPropagation(); collapse(this.parentNode.parentNode);}
+        but.style.display = 'none';
+        but.id = 'item' + i + 'close';
+        // <button aria-label="Close">×</button>
+
+
+
         var r1 = document.createElement('tr');
         var r2 = document.createElement('tr');
         var r3 = document.createElement('tr');
@@ -59,13 +72,6 @@ function genResultsDiv(){
         // var image = document.createElement('img');
         // image.id = "item" + i + "img";
         // c_pic.appendChild(image);
-
-        // close button x
-        // var but = document.createElement('button');
-        // table.appendChild(but);
-        // but.appendChild(document.createTextNode('×'));
-
-        // <button aria-label="Close">×</button>
 
     }
     
@@ -335,15 +341,25 @@ function showLess() {
 }
 
 function expand(div) {
+    console.log("expand");
     id = div.id; 
     var c_ret = document.getElementById(id + "ret");
     var c_ship = document.getElementById(id + "ship");
     var loc_span = document.getElementById(id + "loc_span");
-            
+    var but = document.getElementById(id + "close");
 
     c_ret.style.display = 'block';
     c_ship.style.display = 'block';
     loc_span.style.display = 'inline';
+    but.style.display = 'block';
+
+    // console.log(div.onclick);
+    // if(div.onclick == function() {}){
+    //     div.onclick = function() { expand(this); }
+    // } else {
+        div.onclick = function() {}
+    // }
+    
     // alert("HAAA");loc_span.id = 'item' + i + 'loc_span';
 
     // use this
@@ -355,13 +371,20 @@ function expand(div) {
 
 }
 function collapse(div) {
+    console.log("collapse");
     id = div.id; 
+    // console.log(div);
     var c_ret = document.getElementById(id + "ret");
     var c_ship = document.getElementById(id + "ship");
     var loc_span = document.getElementById(id + "loc_span");
-            
-
+    var but = document.getElementById(id + "close");
+         
     c_ret.style.display = 'none';
     c_ship.style.display = 'none';
     loc_span.style.display = 'none';
+    but.style.display = 'none';
+
+    div.onclick = function() { expand(this); }
+        
+
 }
