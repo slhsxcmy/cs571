@@ -38,6 +38,16 @@ function genResultsDiv(){
         c_ret.id = "item" + i + "ret";
         c_ship.id = "item" + i + "ship";
         c_price.id = "item" + i + "price";
+
+        c_pic.className = 'narrow_cell';
+        c_name.className = 'wide_cell top_cell';
+        c_cat.className = 'wide_cell';
+        c_cond.className = 'wide_cell';
+        c_ret.className = 'wide_cell';
+        c_ship.className = 'wide_cell';
+        c_price.className = 'wide_cell';
+        
+
         r1.appendChild(c_pic);
         r1.appendChild(c_name);
         r2.appendChild(c_cat);
@@ -49,6 +59,13 @@ function genResultsDiv(){
         // var image = document.createElement('img');
         // image.id = "item" + i + "img";
         // c_pic.appendChild(image);
+
+        // close button x
+        // var but = document.createElement('button');
+        // table.appendChild(but);
+        // but.appendChild(document.createTextNode('×'));
+
+        // <button aria-label="Close">×</button>
 
     }
     
@@ -324,8 +341,8 @@ function expand(div) {
     var loc_span = document.getElementById(id + "loc_span");
             
 
-    c_ret.style.display = 'table-cell';
-    c_ship.style.display = 'table-cell';
+    c_ret.style.display = 'block';
+    c_ship.style.display = 'block';
     loc_span.style.display = 'inline';
     // alert("HAAA");loc_span.id = 'item' + i + 'loc_span';
 
@@ -338,8 +355,13 @@ function expand(div) {
 
 }
 function collapse(div) {
-    // use this
-  // statements
-  var id = div.id; // or however you want to use the id
-  // statements
+    id = div.id; 
+    var c_ret = document.getElementById(id + "ret");
+    var c_ship = document.getElementById(id + "ship");
+    var loc_span = document.getElementById(id + "loc_span");
+            
+
+    c_ret.style.display = 'none';
+    c_ship.style.display = 'none';
+    loc_span.style.display = 'none';
 }

@@ -38,7 +38,7 @@ form table, form td {
   /*border: solid 1px;*/
   /*width: 500px;*/
   /*height: 200px;*/
-  background-color: #f4f3f4;
+  /*background-color: #f4f3f4;*/ /* gray */
   display: none;
 }
 
@@ -54,6 +54,12 @@ div.items table {
   /*border: none;*/
   table-layout: fixed;
   margin: auto;
+
+  background-color: #f4f3f4; /* gray */
+
+
+  /*table-layout:fixed; /* for ellipsis */*/
+
 }
 
 div.items tr {
@@ -62,21 +68,49 @@ div.items tr {
 
 div.items td {
 
-  height: 45px;
+/*  height: 45px;
   
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;*/
+}
+
+.wide_cell {
+  display: block; /* for ellipsis */
+
+  
+  width: 450px;
+  text-align: left;
+
+  height: 45px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.photo {
-  height: 12px;
+.narrow_cell {
+  width: 300px;
+
+  /*padding-top: 10px;*/
+
 }
+
+.top_cell {
+  margin-top: 30px;
+}
+.photo {
+/*  max-height: 75%;
+  max-width: 75%;*/
+}
+
+
 .redirect {
   height: 12px;
 }
+
 .topRated {
-  height: 12px;
+  height: 20px;
+  vertical-align: top;
   /*max-height: 100%;*/
   /*display: block;*/
 }
@@ -86,6 +120,7 @@ div.items td {
   background-color: #4da75e;
   color: white;
 }
+
 
 /*td.item_picture {
   width: 30%;
