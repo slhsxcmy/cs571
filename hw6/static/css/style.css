@@ -15,9 +15,15 @@
     display: inline-block;
 }
 
+#logo {
+  height: 70px;
+  vertical-align: middle;
+  margin-bottom: 20px; 
+}
 h1 {
-	font-size: 60px;
+	font-size: 30px;
 	display: inline-block;
+  margin: 0;
 }
 
 form {
@@ -31,6 +37,13 @@ form table {
 
 form table, form td {
   border: 1px solid black;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+#from, #to{
+  width: 50px;
 }
 
 .items {
@@ -97,11 +110,39 @@ div.items td {
 .top_cell {
   margin-top: 30px;
 }
-.photo {
-/*  max-height: 75%;
-  max-width: 75%;*/
+
+.photo { 
+  transition: all 0.35s ease-in-out; 
+}
+.photo:hover { 
+  transform: scale(2); 
 }
 
+/*
+.photo {
+    transition: 0.3s;
+}
+.photo:hover {
+
+    position:relative;
+    top:-25px;
+    left:-35px;
+    width:150%;
+    height:auto;
+    display:block;
+    z-index:999;
+
+}*/
+/*
+a {
+
+  cursor: pointer;
+
+
+}*/
+/*img {
+cursor: pointer;
+}*/
 
 .redirect {
   height: 12px;
@@ -133,9 +174,28 @@ div.items td {
   right: 5px;
 }
 
+select {
+    text-align-last:center;
+    /*padding-right: 29px;*/
+    /*direction: rtl;*/
 
+}
+
+option {
+  /*font-family: times;*/
+}
 /*td.item_picture {
   width: 30%;
 }*/
 
-/* TODO: center options in sort by */;
+/* 
+# TODO ASK
+
+3. Default eBay image is 404
+Spinner for number on hover only? 
+myform.name.value vs getID?
+autocomplete in chrome
+scroll to bottom of page smooth
+logo link to ebay
+
+*/

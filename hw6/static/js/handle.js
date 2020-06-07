@@ -89,17 +89,20 @@ function validate() {
     var query_string = "";
 
     // get keyword. Validation is done by required attribute
+    var kw = myform.keyword.value;
     query_string += "keywords=" + myform.keyword.value;
 
     // handle sortOrder
     query_string += "&sortOrder=" + myform.sort.value;
 
     // check price range
+    console.log("from: " + myform.from.value + " to: " + myform.to.value + " comp val: " + (myform.from.value > myform.to.value) + " comp num: " + (myform.from.valueAsNumber > myform.to.valueAsNumber))
+        
     if(myform.from.value < 0 || myform.to.value < 0) {
         alert("Price Range values cannot be negative! Please try a value greater than or equal to 0.0");
         return false;
     }
-    if(myform.from.value > myform.to.value && myform.to.value > 0) {
+    if(myform.from.valueAsNumber > myform.to.valueAsNumber && myform.to.value > 0) {
         alert("Oops! Lower price limit cannot be greater than upper price limit! Please try again.");
         return false;
     }
@@ -170,7 +173,7 @@ function validate() {
         if(totalResults == 0){
             document.getElementById('total').innerHTML = 'No Results found';
         } else {
-            document.getElementById('total').innerHTML = totalResults + ' Results found';
+            document.getElementById('total').innerHTML = totalResults + ' Results found for <i>' + kw + '</i>';
         }
         for (var i = 0; i < 3; i++) {
             document.getElementById('item' + i).style.display = 'block';
@@ -262,9 +265,11 @@ function validate() {
             }
             c_ship.appendChild(freeshipping);
 
-            if(item['expeditedShipping' == 'true']) {
+            if(item['expeditedShipping'] == 'true') {
+                // console.log('exp!!!!')
                 var expedit = document.createTextNode(' -- Expedited Shipping available');
             } else {
+                // console.log('NO exp!!!!')
                 var expedit = document.createTextNode('');
             }
             c_ship.appendChild(expedit);
@@ -282,7 +287,7 @@ function validate() {
             } else {
                 var shipprice = document.createTextNode('');
             }
-            c_price.appendChild(shipprice);
+            boldprice.appendChild(shipprice);
 
             var loc_span = document.createElement('span');
             c_price.appendChild(loc_span);
@@ -325,19 +330,25 @@ function validate() {
 
 function showMore() {
     for (var i = 3; i < returnedResults; i++) {
+
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+        
         document.getElementById('item' + i).style.display = 'block';
     }
     document.getElementById('show_more').style.display = 'none';
     document.getElementById('show_less').style.display = 'block';
-    window.scrollTo(0,document.body.scrollHeight);
+    // window.scrollTo(0,document.body.scrollHeight);
+    
 }
 function showLess() {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
     for (var i = 3; i < returnedResults; i++) {
         document.getElementById('item' + i).style.display = 'none';
     }
     document.getElementById('show_more').style.display = 'block';
     document.getElementById('show_less').style.display = 'none';
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
+    
 }
 
 function expand(div) {
