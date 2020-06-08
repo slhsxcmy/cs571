@@ -217,6 +217,7 @@ function validate() {
             var name_link = document.createElement('a');
             c_name.appendChild(name_link);
             name_link.href = item['viewItemURL'];
+            // name_link.target = "_blank";
             var name = document.createTextNode(item['title']);
             name_link.appendChild(name);
 
