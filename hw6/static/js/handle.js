@@ -1,4 +1,3 @@
-
 function genResultsDiv(){
 
     for (var i = 0; i < 10; i++) {
@@ -108,7 +107,7 @@ function validate() {
     query_string += "&sortOrder=" + myform.sort.value;
 
     // check price range
-    console.log("from: " + myform.from.value + " to: " + myform.to.value + " comp val: " + (myform.from.value > myform.to.value) + " comp num: " + (myform.from.valueAsNumber > myform.to.valueAsNumber))
+    // console.log("from: " + myform.from.value + " to: " + myform.to.value + " comp val: " + (myform.from.value > myform.to.value) + " comp num: " + (myform.from.valueAsNumber > myform.to.valueAsNumber))
         
     if(myform.from.value < 0 || myform.to.value < 0) {
         alert("Price Range values cannot be negative! Please try a value greater than or equal to 0.0");
@@ -221,8 +220,8 @@ function validate() {
             // image.id = "item" + i + "img";
             c_pic.appendChild(image);
             image.src = item['galleryURL'];
-            console.log(image.src)
-            console.log(image.src == "https://thumbs1.ebaystatic.com/pict/04040_0.jpg");
+            // console.log(image.src)
+            // console.log(image.src == "https://thumbs1.ebaystatic.com/pict/04040_0.jpg");
             if(image.src == "https://thumbs1.ebaystatic.com/pict/04040_0.jpg") {
                 image.src = '/static/images/ebay_default.jpg';
             }
@@ -347,7 +346,7 @@ function validate() {
         
     })
 
-    console.log('validate() return true');
+    // console.log('validate() return true');
 
     return true;
 }
@@ -362,7 +361,7 @@ function showMore() {
     document.getElementById('show_less').style.display = 'block';
     // window.scrollTo(0,document.body.scrollHeight);
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
-    console.log("document.body.scrollHeight="+document.body.scrollHeight);
+    // console.log("document.body.scrollHeight="+document.body.scrollHeight);
 }
 function showLess() {
     for (var i = 3; i < returnedResults; i++) {
@@ -373,11 +372,11 @@ function showLess() {
     // window.scrollTo(0, 0);
     
     window.scrollTo({ top: -1, behavior: 'smooth' })
-    console.log("document.body.scrollHeight="+document.body.scrollHeight);
+    // console.log("document.body.scrollHeight="+document.body.scrollHeight);
 }
 
 function expand(div) {
-    console.log("expand");
+    // console.log("expand");
     id = div.id; 
     var c_ret = document.getElementById(id + "ret");
     var c_ship = document.getElementById(id + "ship");
@@ -407,7 +406,7 @@ function expand(div) {
 
 }
 function collapse(div) {
-    console.log("collapse");
+    // console.log("collapse");
     id = div.id; 
     // console.log(div);
     var c_ret = document.getElementById(id + "ret");
@@ -423,4 +422,11 @@ function collapse(div) {
     div.onclick = function() { expand(this); }
         
 
+}
+
+function reset_form() {
+    // console.log('here');
+    var dropDown = document.getElementById("sort");
+    dropDown.selectedIndex = 0;
+    // console.log('dropDown.selectedIndex: ' + dropDown.selectedIndex);
 }
