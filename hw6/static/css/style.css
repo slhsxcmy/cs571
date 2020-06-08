@@ -195,7 +195,15 @@ select {
     text-align-last:center;
     /*padding-right: 29px;*/
     /*direction: rtl;*/
+/*
+    text-align-last:-moz-center;
+    text-align-last:-webkit-center;*/
 
+  text-align-last: center; text-align: center;
+  -webkit-text-align-last: center; -webkit-text-align: center;
+  -ms-text-align-last: center; -ms-text-align: center;
+  -moz-text-align-last: center; -moz-text-align: center;
+  /*text-indent: 20px;*/
 }
 
 option {
@@ -208,11 +216,9 @@ option {
 /* 
 # TODO ASK
 
-3. Default eBay image is 404
 Spinner for number on hover only? 
 myform.name.value vs getID?
 autocomplete in chrome
-scroll to bottom of page smooth
 logo link to ebay
 
 */
