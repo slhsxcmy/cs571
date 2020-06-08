@@ -388,6 +388,10 @@ function expand(div) {
     loc_span.style.display = 'inline';
     but.style.display = 'block';
 
+    // wrap title
+    var c_name = document.getElementById(id + "name");
+    c_name.style.whiteSpace = 'normal';
+
     // console.log(div.onclick);
     // if(div.onclick == function() {}){
     //     div.onclick = function() { expand(this); }
@@ -421,6 +425,9 @@ function collapse(div) {
 
     div.onclick = function() { expand(this); }
         
+    // ellipsis title
+    var c_name = document.getElementById(id + "name");
+    c_name.style.whiteSpace = 'nowrap';
 
 }
 
