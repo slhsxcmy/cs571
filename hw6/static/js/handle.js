@@ -331,23 +331,24 @@ function validate() {
 function showMore() {
     for (var i = 3; i < returnedResults; i++) {
 
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
         
         document.getElementById('item' + i).style.display = 'block';
     }
     document.getElementById('show_more').style.display = 'none';
     document.getElementById('show_less').style.display = 'block';
-    // window.scrollTo(0,document.body.scrollHeight);
-    
+    window.scrollTo(0,document.body.scrollHeight);
+    // window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+        
 }
 function showLess() {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
     for (var i = 3; i < returnedResults; i++) {
         document.getElementById('item' + i).style.display = 'none';
     }
     document.getElementById('show_more').style.display = 'block';
     document.getElementById('show_less').style.display = 'none';
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
+    
+    // window.scrollTo({ top: 0, behavior: 'smooth' })
     
 }
 
