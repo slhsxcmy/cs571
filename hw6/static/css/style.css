@@ -113,6 +113,10 @@ div.items td {
 
 .photo { 
   transition: all 0.35s ease-in-out; 
+  max-height: 100%;
+  max-width: 100%;
+  z-index: 999;
+  position: relative;
 }
 .photo:hover { 
   transform: scale(2); 

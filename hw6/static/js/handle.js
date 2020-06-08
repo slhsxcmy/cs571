@@ -206,6 +206,11 @@ function validate() {
             // image.id = "item" + i + "img";
             c_pic.appendChild(image);
             image.src = item['galleryURL'];
+            console.log(image.src)
+            console.log(image.src == "https://thumbs1.ebaystatic.com/pict/04040_0.jpg");
+            if(image.src == "https://thumbs1.ebaystatic.com/pict/04040_0.jpg") {
+                image.src = '/static/images/ebay_default.jpg';
+            }
             image.className = 'photo';
 
             var name_link = document.createElement('a');
