@@ -1,3 +1,4 @@
+
 function genResultsDiv(){
 
     for (var i = 0; i < 10; i++) {
@@ -325,7 +326,9 @@ function validate() {
         
     })
 
-    return false;
+    console.log('validate() return true');
+
+    return true;
 }
 
 function showMore() {
