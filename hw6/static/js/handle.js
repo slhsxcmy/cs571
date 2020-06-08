@@ -336,9 +336,9 @@ function showMore() {
     }
     document.getElementById('show_more').style.display = 'none';
     document.getElementById('show_less').style.display = 'block';
-    window.scrollTo(0,document.body.scrollHeight);
-    // window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
-        
+    // window.scrollTo(0,document.body.scrollHeight);
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+    console.log("document.body.scrollHeight="+document.body.scrollHeight);
 }
 function showLess() {
     for (var i = 3; i < returnedResults; i++) {
@@ -346,10 +346,10 @@ function showLess() {
     }
     document.getElementById('show_more').style.display = 'block';
     document.getElementById('show_less').style.display = 'none';
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     
-    // window.scrollTo({ top: 0, behavior: 'smooth' })
-    
+    window.scrollTo({ top: -1, behavior: 'smooth' })
+    console.log("document.body.scrollHeight="+document.body.scrollHeight);
 }
 
 function expand(div) {
