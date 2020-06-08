@@ -3,7 +3,8 @@ function genResultsDiv(){
 
     for (var i = 0; i < 10; i++) {
         var newdiv = document.createElement('div');
-        document.getElementById('results').insertBefore(newdiv, document.getElementById('show_more'));
+
+        document.getElementById('tables').appendChild(newdiv);
         newdiv.id = "item" + i;
         newdiv.className = "items";
         newdiv.onclick = function() { expand(this); }
