@@ -19,6 +19,7 @@ function genResultsDiv(){
         but.className = 'close';
         but.onclick = function() {event.stopPropagation(); collapse(this.parentNode.parentNode);}
         but.style.display = 'none';
+        but.style.textShadow = 'black -2px 0px, black 2px 0px, black 0px -2px, black 0px 2px';
         but.id = 'item' + i + 'close';
         // <button aria-label="Close">×</button>
 
