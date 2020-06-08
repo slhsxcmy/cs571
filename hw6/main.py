@@ -11,6 +11,10 @@ def entry():
     # print(app.root_path)
     return app.send_static_file('index.html')
 
+@app.route('/hello')
+def hello():
+    """Return a friendly HTTP greeting."""
+    return 'Hello World!!!!!!!!!!!!!'
 
 @app.route('/query')
 def query():

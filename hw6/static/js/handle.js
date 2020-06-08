@@ -158,7 +158,7 @@ function validate() {
         ++filter_index;
     }
 
-    URL = "http://127.0.0.1:8080/query?" + query_string; //.substring(1);
+    URL = "/query?" + query_string; //.substring(1);
     // alert(URL);
     console.log(URL);
 
