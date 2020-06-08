@@ -57,7 +57,6 @@ form table, form td {
 }
 
 .items:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 #show_more, #show_less {
@@ -79,8 +78,9 @@ div.items table {
 
   position: relative;
 }
-
-
+div.items table:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
 
 
 div.items tr {
