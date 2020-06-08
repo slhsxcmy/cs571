@@ -35,11 +35,19 @@ form table {
   border-collapse: collapse;
 }
 
-form table, form td {
+
+form td {
+  border-bottom: 1px solid gray;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+form table {
   border: 1px solid black;
   padding-left: 10px;
   padding-right: 10px;
 }
+
 
 
 #from, #to{
@@ -168,7 +176,7 @@ cursor: pointer;
   /*display: block;*/
 }
 
-input {
+input, select {
 
   margin-top: 5px;
   margin-bottom: 5px;
