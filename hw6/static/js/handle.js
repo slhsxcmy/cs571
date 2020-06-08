@@ -81,6 +81,11 @@ function genResultsDiv(){
 }
 
 function validate() {
+
+    // clear tables first
+    document.getElementById('tables').innerHTML = '';
+    genResultsDiv();
+
     // document.getElementById("total").innerHTML = "Text";
     // var xhttp = new XMLHttpRequest();
     
@@ -178,11 +183,15 @@ function validate() {
         } else {
             document.getElementById('total').innerHTML = totalResults + ' Results found for <i>' + kw + '</i>';
         }
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < 3 && i < returnedResults; i++) {
             document.getElementById('item' + i).style.display = 'block';
         }
         if(returnedResults > 3) {
             document.getElementById('show_more').style.display = 'block';
+            document.getElementById('show_less').style.display = 'none';
+        } else {
+            document.getElementById('show_more').style.display = 'none';
+            document.getElementById('show_less').style.display = 'none';
         }
 
         for (var i = 0; i < returnedResults; i++) {
