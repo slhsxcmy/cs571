@@ -86,6 +86,10 @@ function validate() {
     document.getElementById('tables').innerHTML = '';
     genResultsDiv();
 
+    document.getElementById('total').innerHTML = '';
+    document.getElementById('show_more').style.display = 'none';
+    document.getElementById('show_less').style.display = 'none';
+
     // document.getElementById("total").innerHTML = "Text";
     // var xhttp = new XMLHttpRequest();
     
