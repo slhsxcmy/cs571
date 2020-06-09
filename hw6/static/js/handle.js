@@ -113,7 +113,11 @@ function validate() {
         alert("Price Range values cannot be negative! Please try a value greater than or equal to 0.0");
         return false;
     }
-    if(myform.from.valueAsNumber > myform.to.valueAsNumber && myform.to.value > 0) {
+
+    console.log(myform.from.valueAsNumber)
+    console.log(myform.to.valueAsNumber)
+    // console.log(myform.from.valueAsNumber >myform.to.valueAsNumber)
+    if(myform.from.valueAsNumber > myform.to.valueAsNumber && myform.from.value != '' && myform.to.value != '') {
         alert("Oops! Lower price limit cannot be greater than upper price limit! Please try again.");
         return false;
     }
