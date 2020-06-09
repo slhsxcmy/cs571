@@ -117,11 +117,13 @@ function validate() {
         alert("Oops! Lower price limit cannot be greater than upper price limit! Please try again.");
         return false;
     }
-    if(myform.from.value > 0){
+
+    // console.log(myform.from.value == '');
+    if(myform.from.value != ''){
         query_string += "&itemFilter(" + filter_index + ").name=MinPrice&itemFilter(" + filter_index + ").value=" + myform.from.value + " &itemFilter(" + filter_index + ").paramName=Currency&itemFilter(" + filter_index + ").paramValue=USD";
         ++filter_index;
     }
-    if(myform.to.value > 0){
+    if(myform.to.value != ''){
         query_string += "&itemFilter(" + filter_index + ").name=MaxPrice&itemFilter(" + filter_index + ").value=" + myform.to.value + "&itemFilter(" + filter_index + ").paramName=Currency&itemFilter(" + filter_index + ").paramValue=USD";
         ++filter_index;
     }

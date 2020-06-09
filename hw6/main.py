@@ -76,9 +76,10 @@ def parse(response):
         print(e)
     return_dict['totalResults'] = totalResults
     return_dict['searchResult'] = []  # list
-    count = 0
-    i = 0
-    while count < 10 and count < size and count < totalResults:
+    count = 0  # returned results to front end
+    i = 0  # received results from ebay
+    print(size, totalResults)
+    while count < 10 and count < size and count < totalResults and i < size and i < totalResults:
         # print(i)
         try:
             item_dict = {}
@@ -101,7 +102,8 @@ def parse(response):
         except KeyError:
             i += 1
         except Exception as e:
-            print(e)
+            print('Exception:',e)
+            break
         
     return_dict['returnedResults'] = count  # Should be usually 10
     return jsonify(return_dict)
