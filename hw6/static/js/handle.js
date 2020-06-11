@@ -114,8 +114,8 @@ function validate() {
         return false;
     }
 
-    console.log(myform.from.valueAsNumber)
-    console.log(myform.to.valueAsNumber)
+    // console.log(myform.from.valueAsNumber)
+    // console.log(myform.to.valueAsNumber)
     // console.log(myform.from.valueAsNumber >myform.to.valueAsNumber)
     if(myform.from.valueAsNumber > myform.to.valueAsNumber && myform.from.value != '' && myform.to.value != '') {
         alert("Oops! Lower price limit cannot be greater than upper price limit! Please try again.");
@@ -441,5 +441,11 @@ function reset_form() {
     // console.log('here');
     var dropDown = document.getElementById("sort");
     dropDown.selectedIndex = 0;
+
+    document.getElementById('tables').innerHTML = '';
+    document.getElementById('total').innerHTML = '';
+    document.getElementById('show_more').style.display = 'none';
+    document.getElementById('show_less').style.display = 'none';
+
     // console.log('dropDown.selectedIndex: ' + dropDown.selectedIndex);
 }
