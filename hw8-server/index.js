@@ -37,7 +37,7 @@ const axios = require('axios');
 
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.get(`/hello`, (request, response) => {
     console.log(request.url);
@@ -114,3 +114,6 @@ app.get(`/query`, (request, response) => {
 });
 
 app.listen(PORT, () => console.log(`Express server currently running on port ${PORT}`));
+
+
+module.exports = app;
