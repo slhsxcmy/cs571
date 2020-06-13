@@ -1,3 +1,8 @@
 label.form-check-label {
     font-weight: bold;
 }
+
+.search_form {
+    width: 500px;
+    margin: auto;
+}

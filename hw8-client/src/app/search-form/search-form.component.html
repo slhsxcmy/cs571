@@ -1,21 +1,21 @@
-<form>
+<form action="" class="search_form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
 
   <div class="form-group row">
     <label class="col-sm-2 col-form-label" for="keyword">Key words<span style="color:red">*</span></label>
     <div class="col-sm-10"><input required ngModel name="keyword" id="keyword" type="text" class="form-control"
-        #keyword="ngModel" (change)="log(keyword)">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label" for="from">Price range</label>
-    <div class="col-sm-5">
-      <input type="number" id="from" class="form-control">
-    </div>
-    <div class="col-sm-5">
-      <input type="number" id="to" class="form-control">
+        #keyword="ngModel">
     </div>
   </div>
 
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label" for="from">Price range</label>
+    <div class="col-sm-5">
+      <input type="number" ngModel name="from" id="from" class="form-control">
+    </div>
+    <div class="col-sm-5">
+      <input type="number" ngModel name="to" id="to" class="form-control">
+    </div>
+  </div>
 
   <div class="form-group row">
     <label class="col-sm-2 col-form-label" for="new">Condition</label>
@@ -72,7 +72,7 @@
 
 
   <input type="submit" class="btn btn-primary" value="Search">
-  <input type="reset" class="btn btn-secondary" value="Clear">
+  <input type="reset" class="btn btn-secondary" value="Clear" onclick="reset_form();">
 
   <div class="alert alert-warning" *ngIf="keyword.touched && !keyword.valid">Please enter a keyword</div>
   <div class="alert alert-warning" *ngIf="">Please use appropriate values for minPrice/maxPrice</div>

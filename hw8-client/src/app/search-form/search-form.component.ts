@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
+
+// function validate(control: FormControl){
+//   return
+// }
 
 @Component({
   selector: 'search-form',
@@ -7,4 +13,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchFormComponent {
   log(x) { console.log(x); }
+  onSubmit(data) {
+    console.log(data);
+  }
 }
