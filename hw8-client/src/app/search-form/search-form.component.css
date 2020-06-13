@@ -1,8 +1,14 @@
+
 label.form-check-label {
-    font-weight: bold;
+    font-weight: bold; 
+    margin-right: 5px;
 }
 
+label.col-form-label {
+    /* text-align: left; */
+    font-weight: bold; 
+}
 .search_form {
-    width: 500px;
+    /* width: 500px; */
     margin: auto;
 }

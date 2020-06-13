@@ -1,65 +1,72 @@
-<form action="" class="search_form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+<form action="" class="search_form form-horizontal">
 
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label" for="keyword">Key words<span style="color:red">*</span></label>
-    <div class="col-sm-10"><input required ngModel name="keyword" id="keyword" type="text" class="form-control"
-        #keyword="ngModel">
+
+  <div class="form-group row has-error" [ngClass]="{ 'has-error': invalidKeyword() }">
+    <label class="col-sm-2 col-form-label">Key words<span style="color:red">*</span></label>
+    <div class="col-sm-10">
+      <input required name="keyword" id="keyword" type="text" class="form-control">
     </div>
   </div>
 
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label" for="from">Price range</label>
+  <div class="form-group row has-error" [ngClass]="{ 'has-error': invalidRange() }">
+    <label class="col-sm-2 col-form-label">Price range</label>
     <div class="col-sm-5">
-      <input type="number" ngModel name="from" id="from" class="form-control">
+      <input type="number" name="from" id="from" class="form-control">
     </div>
     <div class="col-sm-5">
-      <input type="number" ngModel name="to" id="to" class="form-control">
+      <input type="number" name="to" id="to" class="form-control">
     </div>
   </div>
 
+
   <div class="form-group row">
-    <label class="col-sm-2 col-form-label" for="new">Condition</label>
-    <div class="col-sm-10 form-check">
-      <div class="form-check">
+    <label class="col-sm-2 col-form-label">Condition</label>
+    <div class=col-sm-10>
+      <div class="form-check form-check-inline">
+
         <input class="form-check-input" type="checkbox" id="new" value="1000">
-        <label class="form-check-label col-md-1" for="new">New</label>
+        <label class="form-check-label" for="new">New</label>
+
         <input class="form-check-input" type="checkbox" id="used" value="3000">
-        <label class="form-check-label col-md-1" for="used">Used</label>
+        <label class="form-check-label" for="used">Used</label>
+
+
         <input class="form-check-input" type="checkbox" id="vgood" value="4000">
-        <label class="form-check-label col-md-2" for="vgood">Very Good</label>
+        <label class="form-check-label" for="vgood">Very Good</label>
         <input class="form-check-input" type="checkbox" id="good" value="5000">
-        <label class="form-check-label col-md-1" for="good">Good</label>
+        <label class="form-check-label" for="good">Good</label>
         <input class="form-check-input" type="checkbox" id="acceptable" value="6000">
-        <label class="form-check-label col-md-1" for="acceptable">Acceptable</label>
+        <label class="form-check-label" for="acceptable">Acceptable</label>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Seller</label>
+    <div class="col-sm-10">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="returns" value="true">
+        <label class="form-check-label" for="returns">Return Accepted</label>
       </div>
     </div>
   </div>
 
   <div class="form-group row">
-    <div class="col-sm-2">Seller</div>
+    <label class="col-sm-2 col-form-label">Shipping</label>
     <div class="col-sm-10">
-      <div class="form-check">
+      <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="returns" value="true">
-        <label class="form-check-label col-md-2" for="returns">Return Accepted</label>
+        <label class="form-check-label" for="returns">Free</label>
+        <input class="form-check-input" type="checkbox" id="returns" value="true">
+        <label class="form-check-label" for="returns">Expedited</label>
       </div>
     </div>
   </div>
+
 
   <div class="form-group row">
-    <div class="col-sm-2">Shipping</div>
-    <div class="col-sm-10">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="returns" value="true">
-        <label class="form-check-label col-md-2" for="returns">Free</label>
-        <input class="form-check-input" type="checkbox" id="returns" value="true">
-        <label class="form-check-label col-md-2" for="returns">Expedited</label>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="form-group" row>
-    <label class="col-sm-2" for="sort">Select list:</label>
+    <label class="col-sm-2 col-form-label">Select list:</label>
     <div class="col-sm-10">
       <select class="form-control" name="sort" id="sort">
         <option value="BestMatch" selected>Best Match</option>
@@ -71,10 +78,11 @@
   </div>
 
 
-  <input type="submit" class="btn btn-primary" value="Search">
-  <input type="reset" class="btn btn-secondary" value="Clear" onclick="reset_form();">
-
-  <div class="alert alert-warning" *ngIf="keyword.touched && !keyword.valid">Please enter a keyword</div>
-  <div class="alert alert-warning" *ngIf="">Please use appropriate values for minPrice/maxPrice</div>
+  <input type="reset" class="btn btn-secondary float-right" value="Clear" onclick="reset_form();">
+  <input type="submit" class="btn btn-primary float-right" value="Search">
+  
+  <div class="alert alert-warning" id="keyword_error" *ngIf="invalidKeyword()">Please enter a keyword</div>
+  <div class="alert alert-warning" id="range_error" *ngIf="invalidRange()">Please use appropriate values for
+    minPrice/maxPrice</div>
 
 </form>
