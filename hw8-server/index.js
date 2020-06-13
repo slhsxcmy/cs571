@@ -37,7 +37,8 @@ const axios = require('axios');
 
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+
+
 
 app.get(`/hello`, (request, response) => {
     console.log(request.url);
@@ -55,17 +56,10 @@ app.route('/api/cats/:name').get((req, res) => {
     res.send({ name: requestedCatName })
 })
 
-app.get(`/`, (request, response) => {
-    response.send(`
-		<div>
-			<h1>Todo List</h1>
-			<ul>
-				<li style="text-decoration:line-through">Learn about Express routing</li>
-				<li style="text-decoration:line-through">Create my own routes</li>
-			</ul>
-		</div>
-	`);
+app.get('/', (req, res) => {
+    res.send('Hello from App Engine!');
 });
+
 
 app.get(`/query`, (request, response) => {
 
@@ -113,7 +107,7 @@ app.get(`/query`, (request, response) => {
 
 });
 
-app.listen(PORT, () => console.log(`Express server currently running on port ${PORT}`));
-
-
-module.exports = app;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}...`);
+});
