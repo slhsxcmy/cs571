@@ -12,38 +12,20 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./search-form.component.css']
 })
 export class SearchFormComponent {
-  registered = false;
-  submitted = false;
-  userForm: FormGroup;
+  form: FormGroup;
 
   constructor(private formBuilder: FormBuilder) { }
 
-  invalidKeyword() {
-    return (this.submitted && this.userForm.controls.keyword.errors != null);
-  }
-
-  invalidRange() {
-    if(!this.submitted) return false;
-
-    return this.userForm.controls.from.errors != null;
-  }
-
   ngOnInit() {
-    this.userForm = this.formBuilder.group({
-      keyword: ['', Validators.required],
-      from: ['', ],
-
+    this.form = this.formBuilder.group({
+      keyword: [null, Validators.required],
+      from: [null],
+      to: [null],
+      condition: [null],
+      returns: [null],
+      freeshipping: [null],
+      expshipping: [null]
     });
   }
 
-  onSubmit() {
-    this.submitted = true;
-
-    if (this.userForm.invalid == true) {
-      return;
-    }
-    else {
-      this.registered = true;
-    }
-  }
 }
