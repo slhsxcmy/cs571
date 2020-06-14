@@ -12,11 +12,10 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./search-form.component.css']
 })
 export class SearchFormComponent {
-
-
+  range_invalid_flag = false;
+  
   constructor(private fb: FormBuilder) { }
-
-  mainForm = this.fb.group({
+  mainForm = this.fb.group({ 
     keyword: ['', Validators.required],
     range: this.fb.group({
       from: [''],
@@ -41,6 +40,10 @@ export class SearchFormComponent {
 
     console.warn(this.mainForm.value);
 
+    if (this.mainForm.get(['range','from']).value > this.mainForm.get(['range','to']).value) {
+      // console.log('Incorrect');
+      this.range_invalid_flag = true;
+    }
     // console.warn(this.mainForm.controls['keyword'].value);
     // console.warn(this.mainForm.get(['range','from']).value);
     // console.warn(this.mainForm.get('range').get('to').value);

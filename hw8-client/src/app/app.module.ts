@@ -1,5 +1,3 @@
-import { CoursesService } from './courses.service';
-import { CoursesComponent } from './courses.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
@@ -10,22 +8,24 @@ import { ItemComponent } from './item/item.component';
 import { ItemsComponent } from './items/items.component';
 import { SearchFormComponent } from './search-form/search-form.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
     ItemComponent,
     ItemsComponent,
-    CoursesComponent,
     SearchFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [  // for dependency injection // 1 instance for whole module
-    CoursesService
+    
   ],
   bootstrap: [AppComponent]
 })

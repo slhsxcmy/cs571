@@ -81,8 +81,9 @@
     <input type="reset" class="btn btn-secondary float-right" value="Clear" onclick="reset_form();">
     <input type="submit" class="btn btn-primary float-right" value="Search">
 
-    <div class="alert alert-warning" id="keyword_error" *ngIf="">Please enter a keyword</div>
-    <!-- <div class="alert alert-warning" id="range_error">Please use appropriate values for minPrice/maxPrice -->
-    <!-- </div> -->
+    <div class="alert alert-warning" id="keyword_error" *ngIf="">Please enter a keyword
+    </div>
+    <div class="alert alert-warning" id="range_error" *ngIf="range_invalid_flag">Please use appropriate values for minPrice/maxPrice
+    </div>
 
 </form>
