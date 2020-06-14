@@ -12,20 +12,40 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./search-form.component.css']
 })
 export class SearchFormComponent {
-  form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
 
-  ngOnInit() {
-    this.form = this.formBuilder.group({
-      keyword: [null, Validators.required],
-      from: [null],
-      to: [null],
-      condition: [null],
-      returns: [null],
-      freeshipping: [null],
-      expshipping: [null]
-    });
+  constructor(private fb: FormBuilder) { }
+
+  mainForm = this.fb.group({
+    keyword: ['', Validators.required],
+    range: this.fb.group({
+      from: [''],
+      to: ['']
+    }),
+    condition: this.fb.group({
+      new: [''],
+      used: [''],
+      vgood: [''],
+      good: [''],
+      acceptable: ['']
+
+    }),
+    returns: [''],
+    freeshipping: [''],
+    expshipping: [''],
+    sort: ['']
+  })
+
+  onSubmit() {
+
+
+    console.warn(this.mainForm.value);
+
+    // console.warn(this.mainForm.controls['keyword'].value);
+    // console.warn(this.mainForm.get(['range','from']).value);
+    // console.warn(this.mainForm.get('range').get('to').value);
+
   }
+
 
 }
