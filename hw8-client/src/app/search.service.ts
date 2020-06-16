@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchService {
 
-  baseurl = 'http://localhost:3000/query?';
+  baseurl = 'https://hw8-server-cs571su2020.wl.r.appspot.com/query?';
   constructor(private _http: HttpClient) { }
 
   search(myform) {
