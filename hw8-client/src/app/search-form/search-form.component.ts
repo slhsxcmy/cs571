@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { SearchService } from '../search.service';
 
 // function validate(control: FormControl){
 //   return
@@ -18,7 +19,7 @@ export class SearchFormComponent {
   registered = false;
   submitted = false;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private _searchService: SearchService) { }
   mainForm = this.fb.group({
     keyword: ['',
       {
@@ -41,7 +42,7 @@ export class SearchFormComponent {
     returns: [''],
     freeshipping: [''],
     expshipping: [''],
-    sort: ['']
+    sort: ['BestMatch']
   });
 
 
@@ -57,9 +58,7 @@ export class SearchFormComponent {
     this.submitted = true;
 
 
-    // validate here?
-    // this.mainForm.controls['range'].value.setErrors({'incorrect': true});
-
+    console.log(this.mainForm.value);
 
 
     if (this.mainForm.invalid == true) {
@@ -81,6 +80,14 @@ export class SearchFormComponent {
 
       this.registered = true;
       console.log("Form submitted!");
+
+      this._searchService.search(this.mainForm.value)
+        .subscribe(
+          response => console.log("Success", response),
+          error => console.error("Error", error)
+
+        );
+
 
 
       // console.warn(this.mainForm.value);
@@ -104,7 +111,7 @@ export const rangeValidator: ValidatorFn = (control: FormGroup): ValidationError
   const from = control.get('from');
   const to = control.get('to');
   // console.log(from);
-  console.log(to.value == '');
+  // console.log(to.value == '');
 
   return (from.value != null && from.value < 0)
     || (to.value != null && to.value < 0)
