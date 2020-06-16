@@ -33,11 +33,12 @@ YourAppID = "MingyuCu-CS571-PRD-12eae7200-3078afa9"
 
 
 const express = require('express');
-
+const cors = require('cors');
 const axios = require('axios');
 
 
 const app = express();
+app.use(cors());
 
 
 
