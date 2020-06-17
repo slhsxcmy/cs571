@@ -1,14 +1,20 @@
-.text_left {
-    text-align: left;
+/* @media (min-width: 568px) {
+    .container {
+        width: 550px;
+    }
 }
 
-.text_center {
-    text-align: center;
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
 }
 
-.container {
-    width: 1000px;
-}
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+} */
 
 h1 {
     color: red;
@@ -17,4 +23,26 @@ h1 {
 #logo {
     height: 100px;
     margin-top: 20px;
+}
+
+label.form-check-label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+label.col-form-label {
+    /* text-align: left; */
+    font-weight: bold;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
 }

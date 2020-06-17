@@ -4,20 +4,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ItemComponent } from './item/item.component';
-import { ItemsComponent } from './items/items.component';
-import { SearchFormComponent } from './search-form/search-form.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPaginationModule } from 'ngx-pagination';
 
+import {MatCardModule} from '@angular/material/card';
+
 @NgModule({
   declarations: [
-    AppComponent,
-    ItemComponent,
-    ItemsComponent,
-    SearchFormComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +22,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatCardModule
   ],
   providers: [  // for dependency injection // 1 instance for whole module
 
