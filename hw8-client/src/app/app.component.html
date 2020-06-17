@@ -131,7 +131,7 @@
             itemsPerPage: 5,
             currentPage: currPage,
             totalItems: returnedResults
-        }">
+        }; index as i">
             <div class="row">
                 <div class="col-sm-2"><img id="photo" src="{{item.galleryURL}}" class="img-fluid"></div>
                 <div class="col-sm-10">
@@ -140,10 +140,10 @@
                     </a>
                     <p class="price"><b>Price: </b>{{item.price}}</p>
                     <span class="location"><i>{{item.location}}</i></span>
-                    <button mat-flat-button>Show Details</button>
-                    <button mat-flat-button>Hide Details</button>
+                    <button mat-flat-button *ngIf="item.showing_detail == false" (click)="item.showing_detail = true">Show Details</button>
+                    <button mat-flat-button *ngIf="item.showing_detail == true" (click)="item.showing_detail = false">Hide Details</button>
 
-                    <mat-tab-group>
+                    <mat-tab-group *ngIf="item.showing_detail == true">
                         <mat-tab label="Basic Info">
                             <div class="row item-detail">
                                 <div class="col-5"><b>Category Name</b></div>

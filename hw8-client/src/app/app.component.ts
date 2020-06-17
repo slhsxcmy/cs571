@@ -49,6 +49,7 @@ export class AppComponent {
       // "testicon": '<span class="material-icons">clear</span>',
     };
 
+    this.searchResult[0].showing_detail = false;  // flag for show hide button
     // console.log(this.searchResult[0].galleryURL);
 
 
@@ -83,7 +84,7 @@ export class AppComponent {
 
   show(index) {
     console.log('showing ' + index);
-    
+
   }
 
   hide(index) {
@@ -166,6 +167,8 @@ export class AppComponent {
             if (item["galleryURL"] == undefined || item["galleryURL"] == "https://thumbs1.ebaystatic.com/pict/04040_0.jpg") {
               item["galleryURL"] = 'assets/ebay_default.png';
             }
+
+            item.showing_detail = false;  // flag for show hide button
           }
           // console.log(this.searchResult[0]["xxx"]);
 
