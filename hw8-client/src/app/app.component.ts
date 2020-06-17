@@ -20,7 +20,7 @@ export class AppComponent {
 
   currPage = 1;
 
-  no_result_flag = false;
+  // no_result_flag = false;
   got_search_result_flag = true; // true for debug
   kw = "";
 
@@ -156,9 +156,9 @@ export class AppComponent {
           // console.log( this.totalResults);
           // console.log( this.returnedResults);
 
-          if (this.returnedResults == 0) {
-            this.no_result_flag = true;
-          }
+          // if (this.returnedResults == 0) {
+          //   this.no_result_flag = true;
+          // }
 
           // console.log(this.searchResult[0].galleryURL);
           for (let item of this.searchResult) {
@@ -199,9 +199,3 @@ export const rangeValidator: ValidatorFn = (control: FormGroup): ValidationError
     || (from.value != null && to.value != null && from.value > 0 && to.value > 0 && from.value > to.value)
     ? { 'rangeError': true } : null;
 };
-
-
-/*TODO
-toggle show hide
-item detail table
-*/

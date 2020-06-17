@@ -3,7 +3,7 @@
 <div class="container">
     <div class="text-center">
         <a href="https://ebay.com"><img id='logo' src="assets/eBayLogo.png"></a>
-        <a href="https://ebay.com"><img id='logo' src="assets/ebay_default.png"></a>
+        <!-- <a href="https://ebay.com"><img id='logo' src="assets/ebay_default.png"></a> -->
     </div>
 
     <form class="form-horizontal" [formGroup]="mainForm" (ngSubmit)="onSubmit()" #myform="ngForm">
@@ -101,17 +101,17 @@
     </form>
 
 
-    <div class="alert alert-warning" id="keyword_error" *ngIf="invalidKeyword()">
+    <div class="alert yellow-warning text-center" id="keyword_error" *ngIf="invalidKeyword()">
         Please enter a keyword
     </div>
 
 
-    <div class="alert alert-warning" id="range_error" *ngIf="invalidRange()">
+    <div class="alert yellow-warning text-center" id="range_error" *ngIf="invalidRange()">
         Please use appropriate values for minPrice/maxPrice
     </div>
 
 
-    <div class="alert alert-warning" id="no_result" *ngIf="got_search_result_flag && no_result_flag">
+    <div class="alert yellow-warning text-center" id="no_result" *ngIf="got_search_result_flag && (this.returnedResults == 0)">
         No exact matches found
     </div>
 
@@ -120,7 +120,7 @@
 
 
 
-    <div *ngIf="got_search_result_flag && !no_result_flag">
+    <div *ngIf="got_search_result_flag && !(this.returnedResults == 0)">
         <h3>Results for {{kw}}</h3>
 
         <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="currPage = $event">

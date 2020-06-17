@@ -62,3 +62,13 @@ div.item {
 div.item-detail {
     min-height: 30px;
 }
+
+h3 {
+    font-size: 20px;
+}
+
+.yellow-warning {
+    color: black;
+    background-color: #fffac8;
+    border: none;
+}
