@@ -9,6 +9,8 @@ import { SearchService } from './search.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  DEBUG = false;
+
   title = 'hw8-client';
 
   registered = false;
@@ -52,7 +54,10 @@ export class AppComponent {
     this.searchResult[0].showing_detail = false;  // flag for show hide button
     // console.log(this.searchResult[0].galleryURL);
 
-
+    if (this.DEBUG) {
+      this.searchResult[0].showing_detail = true;
+      this.got_search_result_flag = true;
+    }
 
   }
 

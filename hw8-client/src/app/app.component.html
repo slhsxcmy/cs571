@@ -132,121 +132,159 @@
 
 
         </div>
-
-
-        <div class="item" *ngFor="let item of searchResult | paginate:{
+        <!-- 
+        <div class="item card flex-row flex-wrap" *ngFor="let item of searchResult | paginate:{
             id: 'listing_pagination',
             itemsPerPage: 5,
             currentPage: currPage,
             totalItems: returnedResults
         }; index as i">
-            <div class="row">
-                <div class="col-sm-2 text-center"><img class="img-fluid photo" src="{{item.galleryURL}}"></div>
+            <div class="card-header border-0 text-center">
+                <img src="//placehold.it/200" alt="">
+            </div>
+            <div class="card-block px-2">
+                <h4 class="card-title">Title</h4>
+                <p class="card-text">Description</p>
+                <a href="#" class="btn btn-primary">BUTTON</a>
+            </div>
+            <div class="w-100"></div>
+
+
+        </div>
+
+
+        <div class="item card">
+            <div class="row no-gutters">
+                <div class="col-auto">
+                    <img src="//placehold.it/200" class="img-fluid" alt="">
+                </div>
+                <div class="col">
+                    <div class="card-block px-2">
+                        <h4 class="card-title">Title</h4>
+                        <p class="card-text">Description</p>
+                        <a href="#" class="btn btn-primary">BUTTON</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer w-100 text-muted">
+                Footer stating cats are CUTE little animals
+            </div>
+        </div> -->
+
+        <div class="card" *ngFor="let item of searchResult | paginate:{
+            id: 'listing_pagination',
+            itemsPerPage: 5,
+            currentPage: currPage,
+            totalItems: returnedResults
+        }; index as i">
+            <div class="row no-gutters">
+                <div class="col-sm-2 text-center pt-3 px-3"><img class="img-fluid photo" src="{{item.galleryURL}}"></div>
+
                 <div class="col-sm-10">
                     <a href="{{item.viewItemURL}}">
-                        <p class="title"> {{item.title}}</p>
+                        <p class="title pt-3"> {{item.title}}</p>
                     </a>
                     <p class="price"><b>Price: </b>${{item.price}}</p>
                     <span class="location"><i>{{item.location}}</i></span>
-                    <button mat-flat-button *ngIf="item.showing_detail == false" (click)="item.showing_detail = true">Show Details</button>
-                    <button mat-flat-button *ngIf="item.showing_detail == true" (click)="item.showing_detail = false">Hide Details</button>
+                    <button class="btn white-back" *ngIf="item.showing_detail == false" (click)="item.showing_detail = true">Show Details</button>
+                    <button class="btn white-back" *ngIf="item.showing_detail == true" (click)="item.showing_detail = false">Hide Details</button>
 
                     <mat-tab-group *ngIf="item.showing_detail == true">
                         <mat-tab label="Basic Info">
                             <div class="row item-detail">
-                                <div class="col-5"><b>Category Name</b></div>
-                                <div class="col-5">{{item.category}}</div>
+                                <div class="col-7 col-sm-3"><b>Category Name</b></div>
+                                <div class="">{{item.category}}</div>
                             </div>
                             <div class="row item-detail">
-                                <div class="col-5"><b>Condition</b></div>
-                                <div class="col-5">{{item.condition}}</div>
+                                <div class="col-7 col-sm-3"><b>Condition</b></div>
+                                <div class="">{{item.condition}}</div>
                             </div>
 
                         </mat-tab>
                         <mat-tab label="Shipping Info">
                             <div class="row item-detail">
-                                <div class="col-5"><b>ShippingType</b></div>
-                                <div class="col-5">{{item.shippingType}}</div>
+                                <div class="col-7 col-sm-3"><b>ShippingType</b></div>
+                                <div class="">{{item.shippingType}}</div>
                             </div>
                             <div class="row item-detail">
-                                <div class="col-5"><b>Shipping cost</b></div>
-                                <div class="col-5">{{item.shippingServiceCost}}</div>
-                            </div>
-
-                            <div class="row item-detail">
-                                <div class="col-5"><b>Shiptolocations</b></div>
-                                <div class="col-5">{{item.shipToLocations}}</div>
-                            </div>
-                            <div class="row item-detail">
-                                <div class="col-5"><b>ExpeditedShipping</b></div>
-                                <div class="col-5" *ngIf="item.expeditedShipping == 'true'">
-                                    <span class="material-icons" style="color:green;">done</span>
-                                </div>
-                                <div class="col-sm-6" *ngIf="item.expeditedShipping != 'true'">
-                                    <span class="material-icons" style="color:red;">clear</span>
-                                </div>
-
+                                <div class="col-7 col-sm-3"><b>Shipping cost</b></div>
+                                <div class="">{{item.shippingServiceCost}}</div>
                             </div>
 
                             <div class="row item-detail">
-                                <div class="col-5"><b>OneDayShippingAvailable</b></div>
-                                <div class="col-5" *ngIf="item.oneDayShippingAvailable == 'true'">
-                                    <span class="material-icons" style="color:green;">done</span>
+                                <div class="col-7 col-sm-3"><b>Shiptolocations</b></div>
+                                <div class=" ">{{item.shipToLocations}}</div>
+                            </div>
+                            <div class="row item-detail">
+                                <div class="col-7 col-sm-3"><b>ExpeditedShipping</b></div>
+                                <div class=" " *ngIf="item.expeditedShipping=='true' ">
+                                    <span class="material-icons " style="color:green; ">done</span>
                                 </div>
-                                <div class="col-sm-6" *ngIf="item.oneDayShippingAvailable != 'true'">
-                                    <span class="material-icons" style="color:red;">clear</span>
+                                <div class=" " *ngIf="item.expeditedShipping !='true' ">
+                                    <span class="material-icons " style="color:red; ">clear</span>
+                                </div>
+
+                            </div>
+
+                            <div class="row item-detail">
+                                <div class="col-7 col-sm-3"><b>OneDayShippingAvailable</b></div>
+                                <div class=" " *ngIf="item.oneDayShippingAvailable=='true' ">
+                                    <span class="material-icons " style="color:green; ">done</span>
+                                </div>
+                                <div class=" " *ngIf="item.oneDayShippingAvailable !='true' ">
+                                    <span class="material-icons " style="color:red; ">clear</span>
                                 </div>
 
 
                             </div>
 
                         </mat-tab>
-                        <mat-tab label="Listing Info">
+                        <mat-tab label="Listing Info ">
                             <div class="row item-detail">
-                                <div class="col-5"><b>BestOfferEnabled</b></div>
-                                <div class="col-5" *ngIf="item.bestOfferEnabled == 'true'">
-                                    <span class="material-icons" style="color:green;">done</span>
+                                <div class="col-7 col-sm-3"><b>BestOfferEnabled</b></div>
+                                <div class="" *ngIf="item.bestOfferEnabled=='true' ">
+                                    <span class="material-icons " style="color:green; ">done</span>
                                 </div>
-                                <div class="col-sm-6" *ngIf="item.bestOfferEnabled != 'true'">
-                                    <span class="material-icons" style="color:red;">clear</span>
+                                <div class="" *ngIf="item.bestOfferEnabled !='true' ">
+                                    <span class="material-icons " style="color:red; ">clear</span>
                                 </div>
 
                             </div>
                             <div class="row item-detail">
-                                <div class="col-5"><b>BuyItNowAvailable</b></div>
-                                <div class="col-5" *ngIf="item.buyItNowAvailable == 'true'">
-                                    <span class="material-icons" style="color:green;">done</span>
+                                <div class="col-7 col-sm-3"><b>BuyItNowAvailable</b></div>
+                                <div class="" *ngIf="item.buyItNowAvailable=='true' ">
+                                    <span class="material-icons " style="color:green; ">done</span>
                                 </div>
-                                <div class="col-sm-6" *ngIf="item.buyItNowAvailable != 'true'">
-                                    <span class="material-icons" style="color:red;">clear</span>
-                                </div>
-
-                            </div>
-
-
-                            <div class="row item-detail">
-                                <div class="col-5"><b>ListingType</b></div>
-                                <div class="col-5">{{item.listingType}}</div>
-                            </div>
-
-
-
-
-                            <div class="row item-detail">
-                                <div class="col-5"><b>Gift</b></div>
-                                <div class="col-5" *ngIf="item.gift == 'true'">
-                                    <span class="material-icons" style="color:green;">done</span>
-                                </div>
-                                <div class="col-sm-6" *ngIf="item.gift != 'true'">
-                                    <span class="material-icons" style="color:red;">clear</span>
+                                <div class="" *ngIf="item.buyItNowAvailable !='true' ">
+                                    <span class="material-icons " style="color:red; ">clear</span>
                                 </div>
 
                             </div>
 
 
                             <div class="row item-detail">
-                                <div class="col-5"><b>WatchCount</b></div>
-                                <div class="col-5">{{item.watchCount}}</div>
+                                <div class="col-7 col-sm-3"><b>ListingType</b></div>
+                                <div class="">{{item.listingType}}</div>
+                            </div>
+
+
+
+
+                            <div class="row item-detail">
+                                <div class="col-7 col-sm-3"><b>Gift</b></div>
+                                <div class="" *ngIf="item.gift=='true' ">
+                                    <span class="material-icons " style="color:green; ">done</span>
+                                </div>
+                                <div class="" *ngIf="item.gift !='true' ">
+                                    <span class="material-icons " style="color:red; ">clear</span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row item-detail">
+                                <div class="col-7 col-sm-3"><b>WatchCount</b></div>
+                                <div class="">{{item.watchCount}}</div>
                             </div>
                         </mat-tab>
                     </mat-tab-group>

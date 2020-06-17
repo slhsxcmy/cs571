@@ -32,9 +32,12 @@ label.form-check-label {
 
 label.col-form-label {
     /* text-align: left; */
-    font-weight: bold;
+    font-weight: 700;
+    padding-bottom: 0;
 }
 
+
+/* 
 .text-left {
     text-align: left;
 }
@@ -46,6 +49,7 @@ label.col-form-label {
 .text-right {
     text-align: right;
 }
+ */
 
 
 /* 
@@ -54,15 +58,6 @@ label.col-form-label {
     box-shadow: none;
     border-radius: 0;
 } */
-
-div.item {
-    background-color: #dddddd;
-    margin-bottom: 10px;
-}
-
-div.item-detail {
-    min-height: 30px;
-}
 
 h3 {
     font-size: 20px;
@@ -78,11 +73,13 @@ h3 {
     display: inline;
 }
 
+
+/* 
 .photo {
     margin-left: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
-}
+} */
 
 .title {
     font-size: 18px;
@@ -93,11 +90,45 @@ h3 {
 }
 
 .material-icons {
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 .btn-primary {
     background-color: #087abc;
     border-color: #087abc;
     margin-right: 5px;
+}
+
+.card {
+    background-color: #dddddd;
+    /* !important; */
+    margin-bottom: 10px;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+}
+
+
+/* 
+.card-header {
+    background-color: #dddddd !important;
+}
+ */
+
+.card>* {
+    border-radius: 0;
+    background-color: #dddddd;
+    /* !important; */
+}
+
+div.item-detail {
+    min-height: 2em;
+}
+
+b {
+    font-weight: 700;
+}
+
+.white-back {
+    background-color: white;
 }
