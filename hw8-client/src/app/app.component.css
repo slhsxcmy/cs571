@@ -60,5 +60,5 @@ div.item {
 }
 
 div.item-detail {
-    height: 30px;
+    min-height: 30px;
 }

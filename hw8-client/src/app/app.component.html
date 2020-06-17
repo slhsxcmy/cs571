@@ -121,6 +121,10 @@
 
     <div *ngIf="got_search_result_flag && !no_result_flag">
         <h3>Results for {{kw}}</h3>
+
+        <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="currPage = $event">
+        </pagination-controls>
+
         <div class="item" *ngFor="let item of searchResult; index as i">
             <!-- <mat-card> -->
 
@@ -131,46 +135,45 @@
             </mat-card-actions> -->
             <!-- </mat-card> -->
             <div class="row">
-                <div class="col-sm-3"><img id="photo" src="{{item.galleryURL}}"></div>
-                <div class="col-sm-9">
+                <div class="col-sm-2"><img id="photo" src="{{item.galleryURL}}"></div>
+                <div class="col-sm-10">
                     <a href="{{item.viewItemURL}}">
                         <p class="title"> {{item.title}}</p>
                     </a>
                     <p class="price"><b>Price: </b>{{item.price}}</p>
                     <span class="location"><i>{{item.location}}</i></span>
-                    <button mat-flat-button (click)="toggle(i)">foo</button>
+                    <button mat-flat-button (click)="show(i)">Show Details</button>
+                    <button mat-flat-button (click)="hide(i)">Hide Details</button>
 
-
-
-                    <mat-tab-group>
+                    <mat-tab-group id="{{ 'detail' + i }}">
                         <mat-tab label="Basic Info">
                             <div class="row item-detail">
-                                <div class="col-sm-3"><b>Category Name</b></div>
-                                <div class="col-sm-6">{{item.category}}</div>
+                                <div class="col-5"><b>Category Name</b></div>
+                                <div class="col-5">{{item.category}}</div>
                             </div>
                             <div class="row item-detail">
-                                <div class="col-sm-3"><b>Condition</b></div>
-                                <div class="col-sm-6">{{item.condition}}</div>
+                                <div class="col-5"><b>Condition</b></div>
+                                <div class="col-5">{{item.condition}}</div>
                             </div>
 
                         </mat-tab>
                         <mat-tab label="Shipping Info">
                             <div class="row item-detail">
-                                <div class="col-sm-3"><b>ShippingType</b></div>
-                                <div class="col-sm-6">{{item.shippingType}}</div>
+                                <div class="col-5"><b>ShippingType</b></div>
+                                <div class="col-5">{{item.shippingType}}</div>
                             </div>
                             <div class="row item-detail">
-                                <div class="col-sm-3"><b>Shipping cost</b></div>
-                                <div class="col-sm-6">{{item.shippingServiceCost}}</div>
+                                <div class="col-5"><b>Shipping cost</b></div>
+                                <div class="col-5">{{item.shippingServiceCost}}</div>
                             </div>
 
                             <div class="row item-detail">
-                                <div class="col-sm-3"><b>Shiptolocations</b></div>
-                                <div class="col-sm-6">{{item.shipToLocations}}</div>
+                                <div class="col-5"><b>Shiptolocations</b></div>
+                                <div class="col-5">{{item.shipToLocations}}</div>
                             </div>
                             <div class="row item-detail">
-                                <div class="col-sm-3"><b>ExpeditedShipping</b></div>
-                                <div class="col-sm-6" *ngIf="item.expeditedShipping == 'true'">
+                                <div class="col-5"><b>ExpeditedShipping</b></div>
+                                <div class="col-5" *ngIf="item.expeditedShipping == 'true'">
                                     <span class="material-icons" style="color:green;">done</span>
                                 </div>
                                 <div class="col-sm-6" *ngIf="item.expeditedShipping != 'true'">
@@ -180,8 +183,8 @@
                             </div>
 
                             <div class="row item-detail">
-                                <div class="col-sm-3"><b>OneDayShippingAvailable</b></div>
-                                <div class="col-sm-6" *ngIf="item.oneDayShippingAvailable == 'true'">
+                                <div class="col-5"><b>OneDayShippingAvailable</b></div>
+                                <div class="col-5" *ngIf="item.oneDayShippingAvailable == 'true'">
                                     <span class="material-icons" style="color:green;">done</span>
                                 </div>
                                 <div class="col-sm-6" *ngIf="item.oneDayShippingAvailable != 'true'">
@@ -194,8 +197,8 @@
                         </mat-tab>
                         <mat-tab label="Listing Info">
                             <div class="row item-detail">
-                                <div class="col-sm-3"><b>BestOfferEnabled</b></div>
-                                <div class="col-sm-6" *ngIf="item.bestOfferEnabled == 'true'">
+                                <div class="col-5"><b>BestOfferEnabled</b></div>
+                                <div class="col-5" *ngIf="item.bestOfferEnabled == 'true'">
                                     <span class="material-icons" style="color:green;">done</span>
                                 </div>
                                 <div class="col-sm-6" *ngIf="item.bestOfferEnabled != 'true'">
@@ -204,8 +207,8 @@
 
                             </div>
                             <div class="row item-detail">
-                                <div class="col-sm-3"><b>BuyItNowAvailable</b></div>
-                                <div class="col-sm-6" *ngIf="item.buyItNowAvailable == 'true'">
+                                <div class="col-5"><b>BuyItNowAvailable</b></div>
+                                <div class="col-5" *ngIf="item.buyItNowAvailable == 'true'">
                                     <span class="material-icons" style="color:green;">done</span>
                                 </div>
                                 <div class="col-sm-6" *ngIf="item.buyItNowAvailable != 'true'">
@@ -216,16 +219,16 @@
 
 
                             <div class="row item-detail">
-                                <div class="col-sm-3"><b>ListingType</b></div>
-                                <div class="col-sm-6">{{item.listingType}}</div>
+                                <div class="col-5"><b>ListingType</b></div>
+                                <div class="col-5">{{item.listingType}}</div>
                             </div>
 
 
 
 
                             <div class="row item-detail">
-                                <div class="col-sm-3"><b>Gift</b></div>
-                                <div class="col-sm-6" *ngIf="item.gift == 'true'">
+                                <div class="col-5"><b>Gift</b></div>
+                                <div class="col-5" *ngIf="item.gift == 'true'">
                                     <span class="material-icons" style="color:green;">done</span>
                                 </div>
                                 <div class="col-sm-6" *ngIf="item.gift != 'true'">
@@ -236,8 +239,8 @@
 
 
                             <div class="row item-detail">
-                                <div class="col-sm-3"><b>WatchCount</b></div>
-                                <div class="col-sm-6">{{item.watchCount}}</div>
+                                <div class="col-5"><b>WatchCount</b></div>
+                                <div class="col-5">{{item.watchCount}}</div>
                             </div>
                         </mat-tab>
                     </mat-tab-group>

@@ -24,7 +24,7 @@ export class AppComponent {
   got_search_result_flag = true; // true for debug
   kw = "";
 
-  // item = 
+  // show_flags = []
 
   constructor(private fb: FormBuilder, private _searchService: SearchService) {
     this.searchResult = new Array<any>();
@@ -47,137 +47,141 @@ export class AppComponent {
       "watchCount": "8",
       "viewItemURL": "https://www.ebay.com/itm/8-MOVIE-HARRY-POTTER-4K-ULTRA-HD-8-DISC-COLLECTION-COMPLETE-MINT-NO-DIGITAL-/353100781233",
       // "testicon": '<span class="material-icons">clear</span>',
-  };
+    };
 
-  // console.log(this.searchResult[0].galleryURL);
+    // console.log(this.searchResult[0].galleryURL);
 
-
-
-}
-
-
-mainForm = this.fb.group({
-  keyword: ['',
-    {
-      validators: Validators.required, updateOn: "submit"
-    }],
-  range: this.fb.group({
-    from: [''],
-    to: ['']
-  }, {
-    validators: rangeValidator, updateOn: "submit"
-  }),
-  condition: this.fb.group({
-    new: [''],
-    used: [''],
-    vgood: [''],
-    good: [''],
-    acceptable: ['']
-
-  }),
-  returns: [''],
-  freeshipping: [''],
-  expshipping: [''],
-  sort: ['BestMatch']
-});
-
-toggle(index){
-  console.log(index);
-
-}
-
-invalidKeyword() {
-  return (this.submitted && this.mainForm.controls.keyword.errors != null);
-}
-
-invalidRange() {
-  return (this.submitted && this.mainForm.controls.range.errors != null);
-}
-
-reset_form() {
-  // console.log("start reset_form");
-  this.submitted = false;
-  this.got_search_result_flag = false;
-  // this.mainForm.reset();
-  this.mainForm.patchValue({
-    keyword: '',
-    range: {
-      from: '',
-      to: '',
-    },
-    condition: {
-      new: '',
-      used: '',
-      vgood: '',
-      good: '',
-      acceptable: ''
-
-    },
-    returns: '',
-    freeshipping: '',
-    expshipping: '',
-    sort: 'BestMatch'
-  });
-}
-
-onSubmit() {
-  this.submitted = true;
-
-
-  console.log(this.mainForm.value);
-
-
-  if (this.mainForm.invalid == true) {
-    return;
-  } else {
-
-    this.kw = this.mainForm.get('keyword').value;
-
-    // this.registered = true;
-    // console.log("Form submitted!");
-
-
-    this._searchService.search(this.mainForm.value)
-      .subscribe((data) => {
-        // console.log(data);
-
-        this.got_search_result_flag = true;
-
-        this.searchResult = data.searchResult;
-        this.totalResults = data.totalResults;
-        this.returnedResults = data.returnedResults;
-
-        console.log(this.searchResult);
-        // console.log( this.totalResults);
-        // console.log( this.returnedResults);
-
-        if (this.returnedResults == 0) {
-          this.no_result_flag = true;
-        }
-
-        // console.log(this.searchResult[0].galleryURL);
-        for (let item of this.searchResult) {
-          // console.log(item);
-
-          if (item["galleryURL"] == undefined || item["galleryURL"] == "https://thumbs1.ebaystatic.com/pict/04040_0.jpg") {
-            item["galleryURL"] = 'assets/ebay_default.png';
-          }
-        }
-        // console.log(this.searchResult[0]["xxx"]);
-
-
-
-      }
-        // response => console.log("Success", response),
-        // error => console.error("Error", error)
-
-      );
 
 
   }
 
 
-}
+  mainForm = this.fb.group({
+    keyword: ['',
+      {
+        validators: Validators.required, updateOn: "submit"
+      }],
+    range: this.fb.group({
+      from: [''],
+      to: ['']
+    }, {
+      validators: rangeValidator, updateOn: "submit"
+    }),
+    condition: this.fb.group({
+      new: [''],
+      used: [''],
+      vgood: [''],
+      good: [''],
+      acceptable: ['']
+
+    }),
+    returns: [''],
+    freeshipping: [''],
+    expshipping: [''],
+    sort: ['BestMatch']
+  });
+
+  show(index) {
+    console.log('showing ' + index);
+    
+  }
+
+  hide(index) {
+    console.log('hiding ' + index);
+  }
+
+  invalidKeyword() {
+    return (this.submitted && this.mainForm.controls.keyword.errors != null);
+  }
+
+  invalidRange() {
+    return (this.submitted && this.mainForm.controls.range.errors != null);
+  }
+
+  reset_form() {
+    // console.log("start reset_form");
+    this.submitted = false;
+    this.got_search_result_flag = false;
+    // this.mainForm.reset();
+    this.mainForm.patchValue({
+      keyword: '',
+      range: {
+        from: '',
+        to: '',
+      },
+      condition: {
+        new: '',
+        used: '',
+        vgood: '',
+        good: '',
+        acceptable: ''
+
+      },
+      returns: '',
+      freeshipping: '',
+      expshipping: '',
+      sort: 'BestMatch'
+    });
+  }
+
+  onSubmit() {
+    this.submitted = true;
+
+
+    console.log(this.mainForm.value);
+
+
+    if (this.mainForm.invalid == true) {
+      return;
+    } else {
+
+      this.kw = this.mainForm.get('keyword').value;
+
+      // this.registered = true;
+      // console.log("Form submitted!");
+
+
+      this._searchService.search(this.mainForm.value)
+        .subscribe((data) => {
+          // console.log(data);
+
+          this.got_search_result_flag = true;
+
+          this.searchResult = data.searchResult;
+          this.totalResults = data.totalResults;
+          this.returnedResults = data.returnedResults;
+
+          console.log(this.searchResult);
+          // console.log( this.totalResults);
+          // console.log( this.returnedResults);
+
+          if (this.returnedResults == 0) {
+            this.no_result_flag = true;
+          }
+
+          // console.log(this.searchResult[0].galleryURL);
+          for (let item of this.searchResult) {
+            // console.log(item);
+
+            if (item["galleryURL"] == undefined || item["galleryURL"] == "https://thumbs1.ebaystatic.com/pict/04040_0.jpg") {
+              item["galleryURL"] = 'assets/ebay_default.png';
+            }
+          }
+          // console.log(this.searchResult[0]["xxx"]);
+
+
+
+        }
+          // response => console.log("Success", response),
+          // error => console.error("Error", error)
+
+        );
+
+
+    }
+
+
+  }
 }
 
 /** A hero's name can't match the hero's alter ego */
@@ -192,3 +196,9 @@ export const rangeValidator: ValidatorFn = (control: FormGroup): ValidationError
     || (from.value != null && to.value != null && from.value > 0 && to.value > 0 && from.value > to.value)
     ? { 'rangeError': true } : null;
 };
+
+
+/*TODO
+toggle show hide
+item detail table
+*/
