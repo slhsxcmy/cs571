@@ -199,3 +199,6 @@ export const rangeValidator: ValidatorFn = (control: FormGroup): ValidationError
     || (from.value != null && to.value != null && from.value > 0 && to.value > 0 && from.value > to.value)
     ? { 'rangeError': true } : null;
 };
+/*TODO
+detailed card columns
+*/

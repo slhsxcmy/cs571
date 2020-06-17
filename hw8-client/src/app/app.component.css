@@ -57,6 +57,7 @@ label.col-form-label {
 
 div.item {
     background-color: #dddddd;
+    margin-bottom: 10px;
 }
 
 div.item-detail {
@@ -71,4 +72,32 @@ h3 {
     color: black;
     background-color: #fffac8;
     border: none;
+}
+
+.inline {
+    display: inline;
+}
+
+.photo {
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.title {
+    font-size: 18px;
+}
+
+.location {
+    margin-right: 5px;
+}
+
+.material-icons {
+    vertical-align: middle;
+}
+
+.btn-primary {
+    background-color: #087abc;
+    border-color: #087abc;
+    margin-right: 5px;
 }

@@ -121,10 +121,18 @@
 
 
     <div *ngIf="got_search_result_flag && !(this.returnedResults == 0)">
-        <h3>Results for {{kw}}</h3>
 
-        <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="currPage = $event">
-        </pagination-controls>
+        <div class="control">
+            <h3 class="inline">Results for {{kw}}</h3>
+
+            <div class="text-right inline">
+                <pagination-controls id="listing_pagination" maxSize="8" directionLinks="true" (pageChange)="currPage = $event">
+                </pagination-controls>
+            </div>
+
+
+        </div>
+
 
         <div class="item" *ngFor="let item of searchResult | paginate:{
             id: 'listing_pagination',
@@ -133,7 +141,7 @@
             totalItems: returnedResults
         }; index as i">
             <div class="row">
-                <div class="col-sm-2"><img id="photo" src="{{item.galleryURL}}" class="img-fluid"></div>
+                <div class="col-sm-2 text-center"><img class="img-fluid photo" src="{{item.galleryURL}}"></div>
                 <div class="col-sm-10">
                     <a href="{{item.viewItemURL}}">
                         <p class="title"> {{item.title}}</p>
@@ -245,165 +253,5 @@
                 </div>
             </div>
         </div>
-        <!-- 
-        <div *ngIf="got_search_result_flag && !no_result_flag">
-            <h3>Results for {{kw}}</h3>
-
-
-
-            <div class="item" *ngFor="let item of searchResult; index as i">
-
-                <div class="row">
-                    <div class="col-sm-2"><img id="photo" src="{{item.galleryURL}}"></div>
-                    <div class="col-sm-10">
-                        <a href="{{item.viewItemURL}}">
-                            <p class="title"> {{item.title}}</p>
-                        </a>
-                        <p class="price"><b>Price: </b>{{item.price}}</p>
-                        <span class="location"><i>{{item.location}}</i></span>
-                        <button mat-flat-button (click)="show(i)">Show Details</button>
-                        <button mat-flat-button (click)="hide(i)">Hide Details</button>
-
-                        <mat-tab-group id="{{ 'detail' + i }}">
-                            <mat-tab label="Basic Info">
-                                <div class="row item-detail">
-                                    <div class="col-5"><b>Category Name</b></div>
-                                    <div class="col-5">{{item.category}}</div>
-                                </div>
-                                <div class="row item-detail">
-                                    <div class="col-5"><b>Condition</b></div>
-                                    <div class="col-5">{{item.condition}}</div>
-                                </div>
-
-                            </mat-tab>
-                            <mat-tab label="Shipping Info">
-                                <div class="row item-detail">
-                                    <div class="col-5"><b>ShippingType</b></div>
-                                    <div class="col-5">{{item.shippingType}}</div>
-                                </div>
-                                <div class="row item-detail">
-                                    <div class="col-5"><b>Shipping cost</b></div>
-                                    <div class="col-5">{{item.shippingServiceCost}}</div>
-                                </div>
-
-                                <div class="row item-detail">
-                                    <div class="col-5"><b>Shiptolocations</b></div>
-                                    <div class="col-5">{{item.shipToLocations}}</div>
-                                </div>
-                                <div class="row item-detail">
-                                    <div class="col-5"><b>ExpeditedShipping</b></div>
-                                    <div class="col-5" *ngIf="item.expeditedShipping == 'true'">
-                                        <span class="material-icons" style="color:green;">done</span>
-                                    </div>
-                                    <div class="col-sm-6" *ngIf="item.expeditedShipping != 'true'">
-                                        <span class="material-icons" style="color:red;">clear</span>
-                                    </div>
-
-                                </div>
-
-                                <div class="row item-detail">
-                                    <div class="col-5"><b>OneDayShippingAvailable</b></div>
-                                    <div class="col-5" *ngIf="item.oneDayShippingAvailable == 'true'">
-                                        <span class="material-icons" style="color:green;">done</span>
-                                    </div>
-                                    <div class="col-sm-6" *ngIf="item.oneDayShippingAvailable != 'true'">
-                                        <span class="material-icons" style="color:red;">clear</span>
-                                    </div>
-
-
-                                </div>
-
-                            </mat-tab>
-                            <mat-tab label="Listing Info">
-                                <div class="row item-detail">
-                                    <div class="col-5"><b>BestOfferEnabled</b></div>
-                                    <div class="col-5" *ngIf="item.bestOfferEnabled == 'true'">
-                                        <span class="material-icons" style="color:green;">done</span>
-                                    </div>
-                                    <div class="col-sm-6" *ngIf="item.bestOfferEnabled != 'true'">
-                                        <span class="material-icons" style="color:red;">clear</span>
-                                    </div>
-
-                                </div>
-                                <div class="row item-detail">
-                                    <div class="col-5"><b>BuyItNowAvailable</b></div>
-                                    <div class="col-5" *ngIf="item.buyItNowAvailable == 'true'">
-                                        <span class="material-icons" style="color:green;">done</span>
-                                    </div>
-                                    <div class="col-sm-6" *ngIf="item.buyItNowAvailable != 'true'">
-                                        <span class="material-icons" style="color:red;">clear</span>
-                                    </div>
-
-                                </div>
-
-
-                                <div class="row item-detail">
-                                    <div class="col-5"><b>ListingType</b></div>
-                                    <div class="col-5">{{item.listingType}}</div>
-                                </div>
-
-
-
-
-                                <div class="row item-detail">
-                                    <div class="col-5"><b>Gift</b></div>
-                                    <div class="col-5" *ngIf="item.gift == 'true'">
-                                        <span class="material-icons" style="color:green;">done</span>
-                                    </div>
-                                    <div class="col-sm-6" *ngIf="item.gift != 'true'">
-                                        <span class="material-icons" style="color:red;">clear</span>
-                                    </div>
-
-                                </div>
-
-
-                                <div class="row item-detail">
-                                    <div class="col-5"><b>WatchCount</b></div>
-                                    <div class="col-5">{{item.watchCount}}</div>
-                                </div>
-                            </mat-tab>
-                        </mat-tab-group>
-                    </div>
-                </div>
-
-
-
-
-            </div>
-
-        </div>
-
-
-
-
-        <div *ngIf="got_search_result_flag && !no_result_flag">
-            <h3>Results for {{kw}}</h3>
-            <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="currPage = $event">
-
-            </pagination-controls>
-
-            <table class="table table-striped">
-
-                <tr *ngFor="let item of searchResult | paginate:{
-              id: 'listing_pagination',
-              itemsPerPage: 5,
-              currentPage: currPage,
-              totalItems: returnedResults
-          }">
-
-                    <td>
-                        {{item.title}}
-                    </td>
-                    <td>
-                        {{item.price}}
-                    </td>
-                    <td>
-                        <img src="{{item.galleryURL}}">
-
-                    </td>
-
-                </tr>
-
-            </table>
-        </div>
-    </div> -->
+    </div>
+</div>
