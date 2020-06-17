@@ -1,4 +1,4 @@
-<legend>Main Search Form!!!</legend>
+<!-- <legend>Main Search Form!!!</legend> -->
 <form class="search_form form-horizontal" [formGroup]="mainForm" (ngSubmit)="onSubmit()" #myform="ngForm">
 
 
@@ -8,9 +8,6 @@
             <input name="keyword" id="keyword" type="text" class="form-control" formControlName="keyword">
         </div>
 
-        <div class="alert alert-warning" id="keyword_error" *ngIf="invalidKeyword()">
-            Please enter a keyword
-        </div>
 
     </div>
 
@@ -24,9 +21,6 @@
         </div>
 
 
-        <div class="alert alert-warning" id="range_error" *ngIf="invalidRange()">
-            Please use appropriate values for minPrice/maxPrice
-        </div>
 
     </div>
 
@@ -90,7 +84,55 @@
     </div>
 
 
-    <input type="reset" class="btn btn-secondary float-right" value="Clear" onclick="reset_form();">
+    <input type="button" class="btn btn-secondary float-right" value="Clear" (click)="reset_form();">
     <input type="submit" class="btn btn-primary float-right" value="Search">
 
+
 </form>
+
+
+<div class="alert alert-warning" id="keyword_error" *ngIf="invalidKeyword()">
+    Please enter a keyword
+</div>
+
+
+<div class="alert alert-warning" id="range_error" *ngIf="invalidRange()">
+    Please use appropriate values for minPrice/maxPrice
+</div>
+
+
+<div class="alert alert-warning" id="no_result" *ngIf="got_search_result_flag && no_result_flag">
+    No exact matches found
+</div>
+
+
+<div *ngIf="got_search_result_flag && !no_result_flag">
+    <h3>Results for {{kw}}</h3>
+    <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="currPage = $event">
+
+    </pagination-controls>
+
+    <table class="table table-striped">
+
+        <tr *ngFor="let item of searchResult | paginate:{
+            id: 'listing_pagination',
+            itemsPerPage: 5,
+            currentPage: currPage,
+            totalItems: returnedResults
+        }">
+
+            <td>
+                {{item.title}}
+            </td>
+            <td>
+                {{item.price}}
+            </td>
+            <td>
+                <img src="{{item.galleryUrl}}">
+
+            </td>
+
+        </tr>
+
+    </table>
+</div>

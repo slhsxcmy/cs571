@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'items',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
-
-  constructor() { }
+  data: Array<any>;
+  totalRecords: Number;
+  // page
+  constructor(private searchService: SearchService) {
+    this.data = new Array<any>();
+   }
 
   ngOnInit(): void {
+    // this.searchService.
   }
 
 }

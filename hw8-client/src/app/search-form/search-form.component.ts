@@ -14,12 +14,28 @@ import { SearchService } from '../search.service';
   styleUrls: ['./search-form.component.css']
 })
 export class SearchFormComponent {
-  range_invalid_flag = false;
+  // range_invalid_flag = false;
 
   registered = false;
   submitted = false;
 
-  constructor(private fb: FormBuilder, private _searchService: SearchService) { }
+  searchResult: Array<any>;
+  totalResults: number;
+  returnedResults: number;
+
+  currPage = 1;
+
+  no_result_flag = false;
+  got_search_result_flag = false;
+  kw = "";
+
+
+
+  constructor(private fb: FormBuilder, private _searchService: SearchService) {
+    this.searchResult = new Array<any>();
+  }
+
+
   mainForm = this.fb.group({
     keyword: ['',
       {
@@ -54,6 +70,31 @@ export class SearchFormComponent {
     return (this.submitted && this.mainForm.controls.range.errors != null);
   }
 
+  reset_form() {
+    // console.log("start reset_form");
+
+    // this.mainForm.reset();
+    this.mainForm.patchValue({
+      keyword: '',
+      range: {
+        from: '',
+        to: '',
+      },
+      condition: {
+        new: '',
+        used: '',
+        vgood: '',
+        good: '',
+        acceptable: ''
+
+      },
+      returns: '',
+      freeshipping: '',
+      expshipping: '',
+      sort: 'BestMatch'
+    });
+  }
+
   onSubmit() {
     this.submitted = true;
 
@@ -64,41 +105,39 @@ export class SearchFormComponent {
     if (this.mainForm.invalid == true) {
       return;
     } else {
-      // let data: any = Object.assign({ guid: this.guid }, this.userForm.value);
 
-      // construct URL
+      this.kw = this.mainForm.get('keyword').value;
 
+      // this.registered = true;
+      // console.log("Form submitted!");
 
-      // this.http.get('/api/v1/customer', data).subscribe((data: any) => {
-
-      //   let path = '/user/' + data.customer.uid;
-
-      //   this.router.navigate([path]);
-      // }, error => {
-      //   this.serviceErrors = error.error.error;
-      // });
-
-      this.registered = true;
-      console.log("Form submitted!");
 
       this._searchService.search(this.mainForm.value)
-        .subscribe(
-          response => console.log("Success", response),
-          error => console.error("Error", error)
+        .subscribe((data) => {
+          console.log(data);
+
+          this.got_search_result_flag = true;
+
+          this.searchResult = data.searchResult;
+          this.totalResults = data.totalResults;
+          this.returnedResults = data.returnedResults;
+
+          // console.log( this.searchResult);
+          // console.log( this.totalResults);
+          // console.log( this.returnedResults);
+
+          if (this.returnedResults == 0) {
+            this.no_result_flag = true;
+          }
+
+
+
+        }
+          // response => console.log("Success", response),
+          // error => console.error("Error", error)
 
         );
 
-
-
-      // console.warn(this.mainForm.value);
-
-      // if (this.mainForm.get(['range', 'from']).value > this.mainForm.get(['range', 'to']).value) {
-      //   // console.log('Incorrect');
-      //   this.range_invalid_flag = true;
-      // }
-      // console.warn(this.mainForm.controls['keyword'].value);
-      // console.warn(this.mainForm.get(['range','from']).value);
-      // console.warn(this.mainForm.get('range').get('to').value);
 
     }
 
