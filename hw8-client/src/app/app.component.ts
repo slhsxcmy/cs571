@@ -21,13 +21,37 @@ export class AppComponent {
   currPage = 1;
 
   no_result_flag = false;
-  got_search_result_flag = false;
+  got_search_result_flag = true; // true for debug
   kw = "";
 
-
+  // item = 
 
   constructor(private fb: FormBuilder, private _searchService: SearchService) {
     this.searchResult = new Array<any>();
+    this.searchResult[0] = {
+      "title": "8-MOVIE HARRY POTTER 4K ULTRA HD 8-DISC COLLECTION COMPLETE ✔☆MINT☆✔ NO DIGITAL",
+      "galleryURL": "https://thumbs2.ebaystatic.com/m/mzHoDpvFQ3IaKgJT9BrNssg/140.jpg",
+      "price": "88.81",
+      "location": "Anaheim,CA,USA",
+      "category": "DVDs & Blu-ray Discs",
+      "condition": "Like New",
+      "shippingType": "Free",
+      "shippingServiceCost": "0.0",
+      "shipToLocations": "Worldwide",
+      "expeditedShipping": "false",
+      "oneDayShippingAvailable": "false",
+      "bestOfferEnabled": "true",
+      "buyItNowAvailable": "false",
+      "listingType": "FixedPrice",
+      "gift": "false",
+      "watchCount": "8",
+      "viewItemURL": "https://www.ebay.com/itm/8-MOVIE-HARRY-POTTER-4K-ULTRA-HD-8-DISC-COLLECTION-COMPLETE-MINT-NO-DIGITAL-/353100781233"
+    };
+
+    // console.log(this.searchResult[0].galleryURL);
+
+
+
   }
 
 
@@ -67,7 +91,8 @@ export class AppComponent {
 
   reset_form() {
     // console.log("start reset_form");
-
+    this.submitted = false;
+    this.got_search_result_flag = false;
     // this.mainForm.reset();
     this.mainForm.patchValue({
       keyword: '',
@@ -109,7 +134,7 @@ export class AppComponent {
 
       this._searchService.search(this.mainForm.value)
         .subscribe((data) => {
-          console.log(data);
+          // console.log(data);
 
           this.got_search_result_flag = true;
 
@@ -117,13 +142,23 @@ export class AppComponent {
           this.totalResults = data.totalResults;
           this.returnedResults = data.returnedResults;
 
-          // console.log( this.searchResult);
+          console.log(this.searchResult);
           // console.log( this.totalResults);
           // console.log( this.returnedResults);
 
           if (this.returnedResults == 0) {
             this.no_result_flag = true;
           }
+
+          // console.log(this.searchResult[0].galleryURL);
+          for (let item of this.searchResult) {
+            // console.log(item);
+
+            if (item["galleryURL"] == undefined || item["galleryURL"] == "https://thumbs1.ebaystatic.com/pict/04040_0.jpg") {
+              item["galleryURL"] = 'assets/ebay_default.png';
+            }
+          }
+          // console.log(this.searchResult[0]["xxx"]);
 
 
 

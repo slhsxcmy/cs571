@@ -46,3 +46,15 @@ label.col-form-label {
 .text-right {
     text-align: right;
 }
+
+
+/* 
+.mat-card {
+    background-color: #dddddd;
+    box-shadow: none;
+    border-radius: 0;
+} */
+
+div.item {
+    background-color: #dddddd;
+}

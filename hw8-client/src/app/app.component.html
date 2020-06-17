@@ -3,6 +3,8 @@
 <div class="container">
     <div class="text-center">
         <a href="https://ebay.com"><img id='logo' src="assets/eBayLogo.png"></a>
+        <!-- <img src="assets/eBayDefault.png"> -->
+        <!-- <img src="assets/ebay_default.png"> -->
     </div>
 
     <form class="form-horizontal" [formGroup]="mainForm" (ngSubmit)="onSubmit()" #myform="ngForm">
@@ -113,6 +115,52 @@
     </div>
 
 
+
+
+
+    <div *ngIf="got_search_result_flag && !no_result_flag">
+        <h3>Results for {{kw}}</h3>
+        <div class="item" *ngFor="let item of searchResult">
+            <!-- <mat-card> -->
+
+            <!-- <mat-card-title>TITLE</mat-card-title>
+            <mat-card-content>CONTNET</mat-card-content>
+            <mat-card-actions>
+                <button mat-flat-button>Login</button>
+            </mat-card-actions> -->
+            <!-- </mat-card> -->
+            <div class="row">
+                <div class="col-sm-3"><img src="{{item.galleryURL}}"></div>
+                <div class="col-sm-9">
+                    <a href="{{item.viewItemURL}}">
+                        <p class="title"> {{item.title}}</p>
+                    </a>
+                    <p class="price"><b>Price: </b>{{item.price}}</p>
+                    <p class="location"><i>{{item.location}}</i></p>
+                    <button mat-flat-button>foo</button>
+                </div>
+            </div>
+
+
+
+            <mat-tab-group>
+                <mat-tab label="One">
+                    <h1>Some tab content</h1>
+                    <p>...</p>
+                </mat-tab>
+                <mat-tab label="Two">
+                    <h1>Some more tab content</h1>
+                    <p>...</p>
+                </mat-tab>
+            </mat-tab-group>
+
+        </div>
+
+    </div>
+
+
+
+
     <div *ngIf="got_search_result_flag && !no_result_flag">
         <h3>Results for {{kw}}</h3>
         <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="currPage = $event">
@@ -135,7 +183,7 @@
                     {{item.price}}
                 </td>
                 <td>
-                    <img src="{{item.galleryUrl}}">
+                    <img src="{{item.galleryURL}}">
 
                 </td>
 
@@ -144,12 +192,3 @@
         </table>
     </div>
 </div>
-
-
-<mat-card>
-    <mat-card-title>TITLE</mat-card-title>
-    <mat-card-content>CONTNET</mat-card-content>
-    <mat-card-actions>
-        <button mat-flat-button>Login</button>
-    </mat-card-actions>
-</mat-card>

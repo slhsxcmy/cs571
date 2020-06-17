@@ -9,7 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPaginationModule } from 'ngx-pagination';
 
-import {MatCardModule} from '@angular/material/card';
+// import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import {MatCardModule} from '@angular/material/card';
     HttpClientModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    MatCardModule
+    // MatCardModule,
+    MatTabsModule,
+    MatButtonModule
   ],
   providers: [  // for dependency injection // 1 instance for whole module
 
