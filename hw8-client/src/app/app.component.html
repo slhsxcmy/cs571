@@ -3,8 +3,7 @@
 <div class="container">
     <div class="text-center">
         <a href="https://ebay.com"><img id='logo' src="assets/eBayLogo.png"></a>
-        <!-- <img src="assets/eBayDefault.png"> -->
-        <!-- <img src="assets/ebay_default.png"> -->
+        <a href="https://ebay.com"><img id='logo' src="assets/ebay_default.png"></a>
     </div>
 
     <form class="form-horizontal" [formGroup]="mainForm" (ngSubmit)="onSubmit()" #myform="ngForm">
@@ -130,7 +129,7 @@
             </mat-card-actions> -->
             <!-- </mat-card> -->
             <div class="row">
-                <div class="col-sm-3"><img src="{{item.galleryURL}}"></div>
+                <div class="col-sm-3"><img id="photo" src="{{item.galleryURL}}"></div>
                 <div class="col-sm-9">
                     <a href="{{item.viewItemURL}}">
                         <p class="title"> {{item.title}}</p>
