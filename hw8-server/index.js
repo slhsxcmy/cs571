@@ -87,7 +87,13 @@ function parse(response_json) {
             let items = response_json["findItemsAdvancedResponse"][0]["searchResult"][0]["item"];
             let item = items[i]
             item_dict["title"] = item["title"][0]
-            item_dict["galleryURL"] = item["galleryURL"][0]
+            try{
+                item_dict["galleryURL"] = item["galleryURL"][0]  // check removed Piazza @399 
+                // item_dict["galleryURL"] = item["galleryURLxxxx"][0]  // check removed Piazza @399 
+            } catch (error){
+                // do nothing
+                console.log('no image found');
+            }
             item_dict["price"] = item["sellingStatus"][0]["currentPrice"][0]["__value__"]
             item_dict["location"] = item["location"][0]
             item_dict["category"] = item["primaryCategory"][0]["categoryName"][0]
