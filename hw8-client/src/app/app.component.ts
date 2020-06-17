@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
-import { HttpClient } from "@angular/common/http";
-import { Router } from "@angular/router";
 import { SearchService } from './search.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

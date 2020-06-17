@@ -21,13 +21,13 @@ h1 {
 }
 
 #logo {
-    height: 100px;
+    max-height: 100px;
     margin-top: 20px;
 }
 
 label.form-check-label {
-    font-weight: bold;
-    margin-right: 5px;
+    font-weight: 700;
+    margin-right: 0.2em;
 }
 
 label.col-form-label {
@@ -85,8 +85,12 @@ h3 {
     font-size: 18px;
 }
 
+.price {
+    margin-bottom: 0;
+}
+
 .location {
-    margin-right: 5px;
+    margin-right: 1em;
 }
 
 .material-icons {
@@ -106,6 +110,7 @@ h3 {
     box-shadow: none;
     border-radius: 0;
     border: none;
+    padding-bottom: 1em;
 }
 
 
