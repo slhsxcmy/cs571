@@ -45,134 +45,139 @@ export class AppComponent {
       "listingType": "FixedPrice",
       "gift": "false",
       "watchCount": "8",
-      "viewItemURL": "https://www.ebay.com/itm/8-MOVIE-HARRY-POTTER-4K-ULTRA-HD-8-DISC-COLLECTION-COMPLETE-MINT-NO-DIGITAL-/353100781233"
-    };
+      "viewItemURL": "https://www.ebay.com/itm/8-MOVIE-HARRY-POTTER-4K-ULTRA-HD-8-DISC-COLLECTION-COMPLETE-MINT-NO-DIGITAL-/353100781233",
+      "testicon": '<span class="material-icons">clear</span>',
+  };
 
-    // console.log(this.searchResult[0].galleryURL);
-
-
-
-  }
+  // console.log(this.searchResult[0].galleryURL);
 
 
-  mainForm = this.fb.group({
-    keyword: ['',
-      {
-        validators: Validators.required, updateOn: "submit"
-      }],
-    range: this.fb.group({
-      from: [''],
-      to: ['']
-    }, {
-      validators: rangeValidator, updateOn: "submit"
-    }),
-    condition: this.fb.group({
-      new: [''],
-      used: [''],
-      vgood: [''],
-      good: [''],
-      acceptable: ['']
 
-    }),
-    returns: [''],
-    freeshipping: [''],
-    expshipping: [''],
-    sort: ['BestMatch']
+}
+
+
+mainForm = this.fb.group({
+  keyword: ['',
+    {
+      validators: Validators.required, updateOn: "submit"
+    }],
+  range: this.fb.group({
+    from: [''],
+    to: ['']
+  }, {
+    validators: rangeValidator, updateOn: "submit"
+  }),
+  condition: this.fb.group({
+    new: [''],
+    used: [''],
+    vgood: [''],
+    good: [''],
+    acceptable: ['']
+
+  }),
+  returns: [''],
+  freeshipping: [''],
+  expshipping: [''],
+  sort: ['BestMatch']
+});
+
+toggle(index){
+  console.log(index);
+
+}
+
+invalidKeyword() {
+  return (this.submitted && this.mainForm.controls.keyword.errors != null);
+}
+
+invalidRange() {
+  return (this.submitted && this.mainForm.controls.range.errors != null);
+}
+
+reset_form() {
+  // console.log("start reset_form");
+  this.submitted = false;
+  this.got_search_result_flag = false;
+  // this.mainForm.reset();
+  this.mainForm.patchValue({
+    keyword: '',
+    range: {
+      from: '',
+      to: '',
+    },
+    condition: {
+      new: '',
+      used: '',
+      vgood: '',
+      good: '',
+      acceptable: ''
+
+    },
+    returns: '',
+    freeshipping: '',
+    expshipping: '',
+    sort: 'BestMatch'
   });
+}
+
+onSubmit() {
+  this.submitted = true;
 
 
-  invalidKeyword() {
-    return (this.submitted && this.mainForm.controls.keyword.errors != null);
-  }
-
-  invalidRange() {
-    return (this.submitted && this.mainForm.controls.range.errors != null);
-  }
-
-  reset_form() {
-    // console.log("start reset_form");
-    this.submitted = false;
-    this.got_search_result_flag = false;
-    // this.mainForm.reset();
-    this.mainForm.patchValue({
-      keyword: '',
-      range: {
-        from: '',
-        to: '',
-      },
-      condition: {
-        new: '',
-        used: '',
-        vgood: '',
-        good: '',
-        acceptable: ''
-
-      },
-      returns: '',
-      freeshipping: '',
-      expshipping: '',
-      sort: 'BestMatch'
-    });
-  }
-
-  onSubmit() {
-    this.submitted = true;
+  console.log(this.mainForm.value);
 
 
-    console.log(this.mainForm.value);
+  if (this.mainForm.invalid == true) {
+    return;
+  } else {
+
+    this.kw = this.mainForm.get('keyword').value;
+
+    // this.registered = true;
+    // console.log("Form submitted!");
 
 
-    if (this.mainForm.invalid == true) {
-      return;
-    } else {
+    this._searchService.search(this.mainForm.value)
+      .subscribe((data) => {
+        // console.log(data);
 
-      this.kw = this.mainForm.get('keyword').value;
+        this.got_search_result_flag = true;
 
-      // this.registered = true;
-      // console.log("Form submitted!");
+        this.searchResult = data.searchResult;
+        this.totalResults = data.totalResults;
+        this.returnedResults = data.returnedResults;
 
+        console.log(this.searchResult);
+        // console.log( this.totalResults);
+        // console.log( this.returnedResults);
 
-      this._searchService.search(this.mainForm.value)
-        .subscribe((data) => {
-          // console.log(data);
-
-          this.got_search_result_flag = true;
-
-          this.searchResult = data.searchResult;
-          this.totalResults = data.totalResults;
-          this.returnedResults = data.returnedResults;
-
-          console.log(this.searchResult);
-          // console.log( this.totalResults);
-          // console.log( this.returnedResults);
-
-          if (this.returnedResults == 0) {
-            this.no_result_flag = true;
-          }
-
-          // console.log(this.searchResult[0].galleryURL);
-          for (let item of this.searchResult) {
-            // console.log(item);
-
-            if (item["galleryURL"] == undefined || item["galleryURL"] == "https://thumbs1.ebaystatic.com/pict/04040_0.jpg") {
-              item["galleryURL"] = 'assets/ebay_default.png';
-            }
-          }
-          // console.log(this.searchResult[0]["xxx"]);
-
-
-
+        if (this.returnedResults == 0) {
+          this.no_result_flag = true;
         }
-          // response => console.log("Success", response),
-          // error => console.error("Error", error)
 
-        );
+        // console.log(this.searchResult[0].galleryURL);
+        for (let item of this.searchResult) {
+          // console.log(item);
+
+          if (item["galleryURL"] == undefined || item["galleryURL"] == "https://thumbs1.ebaystatic.com/pict/04040_0.jpg") {
+            item["galleryURL"] = 'assets/ebay_default.png';
+          }
+        }
+        // console.log(this.searchResult[0]["xxx"]);
 
 
-    }
+
+      }
+        // response => console.log("Success", response),
+        // error => console.error("Error", error)
+
+      );
 
 
   }
+
+
+}
 }
 
 /** A hero's name can't match the hero's alter ego */

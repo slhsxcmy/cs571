@@ -91,8 +91,10 @@
         </div>
 
         <div class="text-right">
-            <input type="submit" class="btn btn-primary" value="Search">
-            <input type="button" class="btn btn-secondary" value="Clear" (click)="reset_form();">
+            <button type="submit" class="btn btn-primary"><span class="material-icons">search</span>Search</button>
+            <button type="button" class="btn btn-secondary" (click)="reset_form();"><span class="material-icons">clear_all</span>Clear</button>
+            <!-- <input type="submit" class="btn btn-primary" value="Search"> -->
+            <!-- <input type="button" class="btn btn-secondary" value="Clear" (click)="reset_form();"> -->
         </div>
 
 
@@ -119,7 +121,7 @@
 
     <div *ngIf="got_search_result_flag && !no_result_flag">
         <h3>Results for {{kw}}</h3>
-        <div class="item" *ngFor="let item of searchResult">
+        <div class="item" *ngFor="let item of searchResult; index as i">
             <!-- <mat-card> -->
 
             <!-- <mat-card-title>TITLE</mat-card-title>
@@ -135,23 +137,64 @@
                         <p class="title"> {{item.title}}</p>
                     </a>
                     <p class="price"><b>Price: </b>{{item.price}}</p>
-                    <p class="location"><i>{{item.location}}</i></p>
-                    <button mat-flat-button>foo</button>
+                    <span class="location"><i>{{item.location}}</i></span>
+                    <button mat-flat-button (click)="toggle(i)">foo</button>
+
+
+
+                    <mat-tab-group>
+                        <mat-tab label="Basic Info">
+                            <div class="row item-detail">
+                                <div class="col-sm-3"><b>Category Name</b></div>
+                                <div class="col-sm-6">{{item.category}}</div>
+                            </div>
+                            <div class="row item-detail">
+                                <div class="col-sm-3"><b>Condition</b></div>
+                                <div class="col-sm-6">{{item.condition}}</div>
+                            </div>
+
+                        </mat-tab>
+                        <mat-tab label="Shipping Info">
+                            <div class="row item-detail">
+                                <div class="col-sm-3"><b>ShippingType</b></div>
+                                <div class="col-sm-6">{{item.shippingType}}</div>
+                            </div>
+                            <div class="row item-detail">
+                                <div class="col-sm-3"><b>Shipping cost</b></div>
+                                <div class="col-sm-6">{{item.shippingServiceCost}}</div>
+                            </div>
+
+                            <div class="row item-detail">
+                                <div class="col-sm-3"><b>Shiptolocations</b></div>
+                                <div class="col-sm-6">{{item.shipToLocations}}</div>
+                            </div>
+                            <div class="row item-detail">
+                                <div class="col-sm-3"><b>ExpeditedShipping</b></div>
+                                <div class="col-sm-6">{{item.expeditedShipping == 'true' ? 'YES' : 'NO'}}</div>
+                            </div>
+
+                            <div class="row item-detail">
+                                <div class="col-sm-3"><b>OneDayShippingAvailable</b></div>
+                                <div class="col-sm-6">
+
+
+                                    {{item.oneDayShippingAvailable == 'true' ? '<span class="material-icons">clear</span>' : '<span class="material-icons">clear</span>' }}</div>
+                            </div>
+
+                        </mat-tab>
+                        <mat-tab label="Listing Info">
+                            <div class="row item-detail">
+                                <div class="col-sm-3"><b>ExpeditedShipping</b></div>
+                                <div class="col-sm-6">{{item.testicon}}</div>
+                            </div>
+
+                        </mat-tab>
+                    </mat-tab-group>
                 </div>
             </div>
 
 
 
-            <mat-tab-group>
-                <mat-tab label="One">
-                    <h1>Some tab content</h1>
-                    <p>...</p>
-                </mat-tab>
-                <mat-tab label="Two">
-                    <h1>Some more tab content</h1>
-                    <p>...</p>
-                </mat-tab>
-            </mat-tab-group>
 
         </div>
 
