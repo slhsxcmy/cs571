@@ -12,7 +12,7 @@
         <div class="form-group row" [ngClass]="{ 'has-error': invalidKeyword() }">
             <label class="col-sm-2 col-form-label">Key words<span style="color:red">*</span></label>
             <div class="col-sm-10">
-                <input name="keyword" id="keyword" type="text" class="form-control" formControlName="keyword">
+                <input name="keyword" id="keyword" type="text" class="form-control" formControlName="keyword" placeholder="Enter keywords">
             </div>
 
 
@@ -21,10 +21,10 @@
         <div class="form-group row" formGroupName="range" [ngClass]="{ 'has-error': invalidRange() }">
             <label class="col-sm-2 col-form-label">Price range</label>
             <div class="col-sm-5">
-                <input type="number" name="from" id="from" class="form-control" formControlName="from">
+                <input type="number" name="from" id="from" class="form-control" formControlName="from" placeholder="Min Price">
             </div>
             <div class="col-sm-5">
-                <input type="number" name="to" id="to" class="form-control" formControlName="to">
+                <input type="number" name="to" id="to" class="form-control" formControlName="to" placeholder="Max Price">
             </div>
 
 
@@ -90,7 +90,7 @@
             </div>
         </div>
 
-        <div class="text-right">
+        <div class="text-right" style="margin-bottom: 50px;">
             <button type="submit" class="btn btn-primary"><span class="material-icons">search</span>Search</button>
             <button type="button" class="btn btn-secondary" (click)="reset_form();"><span class="material-icons">clear_all</span>Clear</button>
             <!-- <input type="submit" class="btn btn-primary" value="Search"> -->
@@ -146,7 +146,7 @@
                     <a href="{{item.viewItemURL}}">
                         <p class="title"> {{item.title}}</p>
                     </a>
-                    <p class="price"><b>Price: </b>{{item.price}}</p>
+                    <p class="price"><b>Price: </b>${{item.price}}</p>
                     <span class="location"><i>{{item.location}}</i></span>
                     <button mat-flat-button *ngIf="item.showing_detail == false" (click)="item.showing_detail = true">Show Details</button>
                     <button mat-flat-button *ngIf="item.showing_detail == true" (click)="item.showing_detail = false">Hide Details</button>

@@ -21,7 +21,7 @@ export class AppComponent {
   currPage = 1;
 
   // no_result_flag = false;
-  got_search_result_flag = true; // true for debug
+  got_search_result_flag = false; // true for debug
   kw = "";
 
   // show_flags = []
@@ -127,6 +127,7 @@ export class AppComponent {
 
   onSubmit() {
     this.submitted = true;
+    this.got_search_result_flag = false;
 
 
     console.log(this.mainForm.value);
