@@ -46,7 +46,7 @@ export class AppComponent {
       "gift": "false",
       "watchCount": "8",
       "viewItemURL": "https://www.ebay.com/itm/8-MOVIE-HARRY-POTTER-4K-ULTRA-HD-8-DISC-COLLECTION-COMPLETE-MINT-NO-DIGITAL-/353100781233",
-      "testicon": '<span class="material-icons">clear</span>',
+      // "testicon": '<span class="material-icons">clear</span>',
   };
 
   // console.log(this.searchResult[0].galleryURL);

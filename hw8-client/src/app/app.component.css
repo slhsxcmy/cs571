@@ -58,3 +58,7 @@ label.col-form-label {
 div.item {
     background-color: #dddddd;
 }
+
+div.item-detail {
+    height: 30px;
+}
