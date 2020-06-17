@@ -120,11 +120,13 @@ h3 {
 }
  */
 
+
+/* 
 .card>* {
     border-radius: 0;
     background-color: #dddddd;
-    /* !important; */
-}
+ 
+} */
 
 div.item-detail {
     min-height: 2em;

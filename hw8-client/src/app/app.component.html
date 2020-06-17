@@ -122,13 +122,15 @@
 
     <div *ngIf="got_search_result_flag && !(this.returnedResults == 0)">
 
-        <div class="control">
-            <h3 class="inline">Results for {{kw}}</h3>
-
-            <div class="text-right inline">
-                <pagination-controls id="listing_pagination" maxSize="8" directionLinks="true" (pageChange)="currPage = $event">
-                </pagination-controls>
+        <div class="row">
+            <h3 class="col-sm-4">Results for {{kw}}</h3>
+            <div class="col-sm-8">
+                <div class="text-right ">
+                    <pagination-controls id="listing_pagination" directionLinks="true" (pageChange)="currPage = $event">
+                    </pagination-controls>
+                </div>
             </div>
+
 
 
         </div>
@@ -177,10 +179,10 @@
             currentPage: currPage,
             totalItems: returnedResults
         }; index as i">
-            <div class="row no-gutters">
-                <div class="col-sm-2 text-center pt-3 px-3"><img class="img-fluid photo" src="{{item.galleryURL}}"></div>
+            <div class="row mx-0">
+                <div class="col-sm-2 text-center px-0 pt-3"><img class="img-fluid photo" src="{{item.galleryURL}}"></div>
 
-                <div class="col-sm-10">
+                <div class="col-sm-10 px-3 px-sm-0">
                     <a href="{{item.viewItemURL}}">
                         <p class="title pt-3"> {{item.title}}</p>
                     </a>

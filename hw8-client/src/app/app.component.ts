@@ -8,7 +8,7 @@ import { SearchService } from './search.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  DEBUG = false;
+  DEBUG = true;
 
   title = 'hw8-client';
 
