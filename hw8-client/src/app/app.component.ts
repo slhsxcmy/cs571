@@ -67,8 +67,8 @@ export class AppComponent {
         validators: Validators.required, updateOn: "submit"
       }],
     range: this.fb.group({
-      from: [''],
-      to: ['']
+      from: [null],
+      to: [null]
     }, {
       validators: rangeValidator, updateOn: "submit"
     }),
@@ -203,7 +203,7 @@ export const rangeValidator: ValidatorFn = (control: FormGroup): ValidationError
 
   return (from.value != null && from.value < 0)
     || (to.value != null && to.value < 0)
-    || (from.value != null && to.value != null && from.value > 0 && to.value > 0 && from.value > to.value)
+    || (from.value != null && to.value != null && from.value >= 0 && to.value >= 0 && from.value > to.value)
     ? { 'rangeError': true } : null;
 };
 /* 
