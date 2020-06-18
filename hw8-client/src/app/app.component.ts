@@ -67,8 +67,8 @@ export class AppComponent {
         validators: Validators.required, updateOn: "submit"
       }],
     range: this.fb.group({
-      from: [null],
-      to: [null]
+      from: [''],
+      to: ['']
     }, {
       validators: rangeValidator, updateOn: "submit"
     }),
@@ -196,18 +196,40 @@ export class AppComponent {
 
 /** A hero's name can't match the hero's alter ego */
 export const rangeValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
-  const from = control.get('from');
-  const to = control.get('to');
-  // console.log(from);
-  // console.log(to.value == '');
+  const from = control.get('from').value;
+  const to = control.get('to').value;
+  console.log(from);
+  console.log(to);
 
-  return (from.value != null && from.value < 0)
-    || (to.value != null && to.value < 0)
-    || (from.value != null && to.value != null && from.value >= 0 && to.value >= 0 && from.value > to.value)
+
+  let patt = new RegExp("^[+]?([.]\\d+|\\d+([.]\\d+)?)$");
+
+  if (from != '' && !patt.test(from)) {
+    console.log('from not number error');
+    return { 'rangeError': true };
+  }
+
+  if (to != '' && !patt.test(to)) {
+    console.log('to not number error');
+    return { 'rangeError': true };
+  }
+
+  if (from != '' && to != '') {
+    if (Number(from) > Number(to)) {
+      console.log("from > to error");
+      return { 'rangeError': true };
+    }
+  }
+
+  return null;
+
+  return (from != null && from < 0)
+    || (to != null && to < 0)
+    || (from != null && to != null && from >= 0 && to >= 0 && from > to)
     ? { 'rangeError': true } : null;
 };
-/* 
-form-contrl font size 
+/*
+form-contrl font size
 OK: max = 0 = inf
 OK: currPage reset on search
 OK: bold warning bold Result for
