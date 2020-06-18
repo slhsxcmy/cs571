@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { SearchService } from './search.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+
 
 @Component({
   selector: 'app-root',
@@ -25,9 +27,40 @@ export class AppComponent {
   got_search_result_flag = false; // true for debug
   kw = "";
 
+  paginationSize = "";
+
   // show_flags = []
 
-  constructor(private fb: FormBuilder, private _searchService: SearchService) {
+  constructor(private fb: FormBuilder, private _searchService: SearchService, private breakpointObserver: BreakpointObserver) {
+    breakpointObserver.observe([
+      // Breakpoints.XSmall, // '(max-width: 599px)'
+      // Breakpoints.Small,
+      // Breakpoints.Medium,
+      // Breakpoints.Large,
+      // Breakpoints.XLarge,
+      '(max-width: 839px)',
+      // '(min-width: 839px)'
+    ]).subscribe(result => {
+      if (result.breakpoints['(max-width: 839px)']) {
+        this.paginationSize = "5";
+      } else {
+        // handle desktop
+        this.paginationSize = "10";
+      }
+      // if (result.breakpoints[Breakpoints.XSmall]) {
+      //   // handle mobile
+      //   this.paginationSize = "5";
+      // } else if (result.breakpoints[Breakpoints.Small]) {
+      //   // handle tablet
+      //   this.paginationSize = "7";
+      // } else {
+      //   // handle desktop
+      //   this.paginationSize = "10";
+      // }
+    });
+    // this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
+    // console.log("small: " + this.isSmallScreen);
+
     this.searchResult = new Array<any>();
     this.searchResult[0] = {
       "title": "8-MOVIE HARRY POTTER 4K ULTRA HD 8-DISC COLLECTION COMPLETE ✔☆MINT☆✔ NO DIGITAL",

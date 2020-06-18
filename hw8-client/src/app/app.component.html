@@ -125,9 +125,11 @@
         <div class="row">
             <h3 class="col-sm-4">Results for {{kw}}</h3>
             <div class="col-sm-8">
-                <div class="text-right ">
-                    <pagination-controls id="listing_pagination" directionLinks="true" (pageChange)="currPage = $event">
+                <div class="text-center">
+                    <pagination-controls [maxSize]="paginationSize" id="listing_pagination" directionLinks="true" (pageChange)="currPage = $event">
                     </pagination-controls>
+                    <!-- <pagination-controls maxSize="5" id="listing_pagination" directionLinks="true" (pageChange)="currPage = $event"> -->
+                    <!-- </pagination-controls> -->
                 </div>
             </div>
 

@@ -16,3 +16,9 @@ body {
 select option:hover {
     box-shadow: 0 0 10px 100px #1882A8 inset;
 } */
+
+.ngx-pagination {
+    padding-inline-start: 0;
+    font-size: 0.8em;
+    margin-bottom: 0.6em;
+}
