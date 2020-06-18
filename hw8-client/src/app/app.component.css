@@ -26,13 +26,13 @@ h1 {
 }
 
 label.form-check-label {
-    font-weight: 700;
-    margin-right: 0.2em;
+    /* font-weight: 700; */
+    margin-right: 0.5em;
 }
 
 label.col-form-label {
     /* text-align: left; */
-    font-weight: 700;
+    /* font-weight: 700; */
     padding-bottom: 0;
 }
 
@@ -67,6 +67,7 @@ h3 {
     color: black;
     background-color: #fffac8;
     border: none;
+    font-weight: 500;
 }
 
 .inline {
@@ -132,10 +133,30 @@ div.item-detail {
     min-height: 2em;
 }
 
-b {
-    font-weight: 700;
+b,
+label.col-form-label,
+label.form-check-label {
+    font-weight: 500;
 }
 
 .white-back {
     background-color: white;
 }
+
+.mat-tab-body-content {
+    overflow: hidden;
+}
+
+.form-control {
+    font-size: inherit;
+}
+
+.form-check-inline {
+    margin-right: 0;
+}
+
+
+/* 
+h3 {
+    font-weight: 500;
+} */

@@ -34,8 +34,8 @@ export class AppComponent {
       "galleryURL": "https://thumbs2.ebaystatic.com/m/mzHoDpvFQ3IaKgJT9BrNssg/140.jpg",
       "price": "88.81",
       "location": "Anaheim,CA,USA",
-      "category": "DVDs & Blu-ray Discs",
-      "condition": "Like New",
+      "category": "DVDs & Blu-ray Discs iscs",
+      "condition": "Like New Like New Like New Like New",
       "shippingType": "Free",
       "shippingServiceCost": "0.0",
       "shipToLocations": "Worldwide",
@@ -107,6 +107,7 @@ export class AppComponent {
     // console.log("start reset_form");
     this.submitted = false;
     this.got_search_result_flag = false;
+    this.currPage = 1;
     // this.mainForm.reset();
     this.mainForm.patchValue({
       keyword: '',
@@ -132,6 +133,7 @@ export class AppComponent {
   onSubmit() {
     this.submitted = true;
     this.got_search_result_flag = false;
+    this.currPage = 1;
 
 
     console.log(this.mainForm.value);
@@ -149,7 +151,7 @@ export class AppComponent {
 
       this._searchService.search(this.mainForm.value)
         .subscribe((data) => {
-          // console.log(data);
+          console.log(data);
 
           this.got_search_result_flag = true;
 
@@ -157,7 +159,7 @@ export class AppComponent {
           this.totalResults = data.totalResults;
           this.returnedResults = data.returnedResults;
 
-          console.log(this.searchResult);
+          // console.log(this.searchResult);
           // console.log( this.totalResults);
           // console.log( this.returnedResults);
 
@@ -204,6 +206,11 @@ export const rangeValidator: ValidatorFn = (control: FormGroup): ValidationError
     || (from.value != null && to.value != null && from.value > 0 && to.value > 0 && from.value > to.value)
     ? { 'rangeError': true } : null;
 };
-/*TODO
-detailed card columns
+/* 
+form-contrl font size 
+OK: max = 0 = inf
+OK: currPage reset on search
+OK: bold warning bold Result for
+Fail: dropdown gray background
+OK: min max price 1 line on mobile
 */

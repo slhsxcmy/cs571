@@ -20,10 +20,10 @@
 
         <div class="form-group row" formGroupName="range" [ngClass]="{ 'has-error': invalidRange() }">
             <label class="col-sm-2 col-form-label">Price range</label>
-            <div class="col-sm-5">
+            <div class="col-sm-5 col-6">
                 <input type="number" name="from" id="from" class="form-control" formControlName="from" placeholder="Min Price">
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-5 col-6">
                 <input type="number" name="to" id="to" class="form-control" formControlName="to" placeholder="Max Price">
             </div>
 
@@ -35,7 +35,7 @@
         <div class="form-group row" formGroupName="condition">
             <label class="col-sm-2 col-form-label">Condition</label>
             <div class=col-sm-10>
-                <div class="form-check form-check-inline flex-row">
+                <div class="form-check form-check-inline">
 
                     <input class="form-check-input" type="checkbox" name="new" id="new" value="1000" formControlName="new">
                     <label class="form-check-label" for="new">New</label>
@@ -79,7 +79,7 @@
 
 
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Select list:</label>
+            <label class="col-sm-2 col-form-label">Sort Order</label>
             <div class="col-sm-10">
                 <select class="form-control" name="sort" id="sort" formControlName="sort">
           <option value="BestMatch" selected>BestMatch</option>
@@ -180,7 +180,7 @@
             totalItems: returnedResults
         }; index as i">
             <div class="row mx-0">
-                <div class="col-sm-2 text-center px-0 pt-3"><img class="img-fluid photo" src="{{item.galleryURL}}"></div>
+                <div class="col-sm-2 text-center px-3 pt-3"><img class="img-fluid photo" src="{{item.galleryURL}}"></div>
 
                 <div class="col-sm-10 px-3 px-sm-0">
                     <a href="{{item.viewItemURL}}">
@@ -194,11 +194,11 @@
                     <mat-tab-group *ngIf="item.showing_detail == true">
                         <mat-tab label="Basic Info">
                             <div class="row item-detail">
-                                <div class="col-7 col-sm-3"><b>Category Name</b></div>
+                                <div class="col-5 col-sm-3"><b>Category Name</b></div>
                                 <div class="">{{item.category}}</div>
                             </div>
                             <div class="row item-detail">
-                                <div class="col-7 col-sm-3"><b>Condition</b></div>
+                                <div class="col-5 col-sm-3"><b>Condition</b></div>
                                 <div class="">{{item.condition}}</div>
                             </div>
 
