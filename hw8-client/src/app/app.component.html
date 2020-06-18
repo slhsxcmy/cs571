@@ -81,12 +81,12 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Sort Order</label>
             <div class="col-sm-10">
-                <select class="form-control" name="sort" id="sort" formControlName="sort">
-          <option value="BestMatch" selected>BestMatch</option>
-          <option value="CurrentPriceHighest">CurrentPriceHighest</option>
-          <option value="PricePlusShippingHighest">PricePlusShippingHighest</option>
-          <option value="PricePlusShippingLowest">PricePlusShippingLowest</option>
-        </select>
+                <select class="form-control custom-select" name="sort" id="sort" formControlName="sort">
+                    <option value="BestMatch" selected>BestMatch</option>
+                    <option value="CurrentPriceHighest">CurrentPriceHighest</option>
+                    <option value="PricePlusShippingHighest">PricePlusShippingHighest</option>
+                    <option value="PricePlusShippingLowest">PricePlusShippingLowest</option>
+                </select>
             </div>
         </div>
 
@@ -193,18 +193,73 @@
 
                     <mat-tab-group *ngIf="item.showing_detail == true">
                         <mat-tab label="Basic Info">
-                            <div class="row item-detail">
+                            <table class="table">
+                                <tr>
+                                    <th>Category Name</th>
+                                    <td>{{item.category}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Condition</th>
+                                    <td>{{item.condition}}</td>
+                                </tr>
+                            </table>
+                            <!-- <div class="row item-detail">
                                 <div class="col-5 col-sm-3"><b>Category Name</b></div>
                                 <div class="">{{item.category}}</div>
                             </div>
                             <div class="row item-detail">
                                 <div class="col-5 col-sm-3"><b>Condition</b></div>
                                 <div class="">{{item.condition}}</div>
-                            </div>
+                            </div> -->
 
                         </mat-tab>
                         <mat-tab label="Shipping Info">
-                            <div class="row item-detail">
+                            <table class="table">
+                                <tr>
+                                    <th>ShippingType</th>
+                                    <td>{{item.shippingType}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Shipping cost</th>
+                                    <td>{{item.shippingServiceCost}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Shiptolocations</th>
+                                    <td>{{item.shipToLocations}}</td>
+                                </tr>
+                                <tr>
+                                    <th>ExpeditedShipping</th>
+                                    <td>
+
+                                        <!-- <div *ngIf="item.expeditedShipping=='true' ">
+                                            <span class="material-icons " style="color:green; " >done</span>
+                                        </div>
+                                        <div *ngIf="item.expeditedShipping !='true' ">
+                                            <span class="material-icons " style="color:red; ">clear</span>
+                                        </div> -->
+
+                                        <!-- <div *ngIf="item.expeditedShipping=='true'"> -->
+                                        <span class="material-icons " style="color:green;" *ngIf="item.expeditedShipping=='true'">done</span>
+                                        <!-- </div> -->
+                                        <!-- <div *ngIf="item.expeditedShipping !='true'"> -->
+                                        <span class="material-icons " style="color:red;" *ngIf="item.expeditedShipping !='true'">clear</span>
+                                        <!-- </div> -->
+
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>OneDayShippingAvailable</th>
+                                    <td>
+
+                                        <span class="material-icons " style="color:green;" *ngIf="item.oneDayShippingAvailable=='true'">done</span>
+                                        <span class="material-icons " style="color:red;" *ngIf="item.oneDayShippingAvailable !='true'">clear</span>
+
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- <div class="row item-detail">
                                 <div class="col-7 col-sm-3"><b>ShippingType</b></div>
                                 <div class="">{{item.shippingType}}</div>
                             </div>
@@ -238,10 +293,44 @@
                                 </div>
 
 
-                            </div>
+                            </div> -->
 
                         </mat-tab>
                         <mat-tab label="Listing Info ">
+                            <table class="table">
+                                <tr>
+                                    <th>BestOfferEnabled</th>
+                                    <td>
+                                        <span class="material-icons " style="color:green;" *ngIf="item.bestOfferEnabled=='true'">done</span>
+                                        <span class="material-icons " style="color:red;" *ngIf="item.bestOfferEnabled !='true'">clear</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>BuyItNowAvailable</th>
+                                    <td>
+                                        <span class="material-icons " style="color:green;" *ngIf="item.buyItNowAvailable=='true'">done</span>
+                                        <span class="material-icons " style="color:red;" *ngIf="item.buyItNowAvailable !='true'">clear</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>ListingType</th>
+                                    <td>{{item.listingType}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Gift</th>
+                                    <td>
+                                        <span class="material-icons " style="color:green;" *ngIf="item.gift=='true'">done</span>
+                                        <span class="material-icons " style="color:red;" *ngIf="item.gift !='true'">clear</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>WatchCount</th>
+                                    <td>{{item.watchCount}}</td>
+                                </tr>
+
+                            </table>
+
+                            <!-- 
                             <div class="row item-detail">
                                 <div class="col-7 col-sm-3"><b>BestOfferEnabled</b></div>
                                 <div class="" *ngIf="item.bestOfferEnabled=='true' ">
@@ -287,7 +376,7 @@
                             <div class="row item-detail">
                                 <div class="col-7 col-sm-3"><b>WatchCount</b></div>
                                 <div class="">{{item.watchCount}}</div>
-                            </div>
+                            </div> -->
                         </mat-tab>
                     </mat-tab-group>
                 </div>

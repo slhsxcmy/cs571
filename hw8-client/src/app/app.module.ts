@@ -12,6 +12,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 // import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
     NgxPaginationModule,
     // MatCardModule,
     MatTabsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ],
   providers: [  // for dependency injection // 1 instance for whole module
 

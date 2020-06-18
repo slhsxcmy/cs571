@@ -34,7 +34,7 @@ export class AppComponent {
       "galleryURL": "https://thumbs2.ebaystatic.com/m/mzHoDpvFQ3IaKgJT9BrNssg/140.jpg",
       "price": "88.81",
       "location": "Anaheim,CA,USA",
-      "category": "DVDs & Blu-ray Discs iscs",
+      "category": "DVDs & Blu-ray DiscsDVDs & Blu-ray DiscsDVDs & Blu-ray Discs",
       "condition": "Like New Like New Like New Like New",
       "shippingType": "Free",
       "shippingServiceCost": "0.0",

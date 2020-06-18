@@ -135,7 +135,8 @@ div.item-detail {
 
 b,
 label.col-form-label,
-label.form-check-label {
+label.form-check-label,
+th {
     font-weight: 500;
 }
 
@@ -160,3 +161,52 @@ label.form-check-label {
 h3 {
     font-weight: 500;
 } */
+
+th {
+    /* width: 1%;
+    white-space: nowrap; */
+    /* max-width: 100%;
+    white-space: nowrap; */
+}
+
+td {
+    /* white-space: normal !important;
+    word-wrap: break-word; */
+}
+
+table {
+    /* table-layout: fixed; */
+}
+
+table.table-fit {
+    /* width: auto !important; */
+    /* table-layout: auto !important; */
+}
+
+
+/* 
+table.table-fit td {
+    width: auto !important;
+} */
+
+td {
+    white-space: normal;
+    word-break: break-all;
+}
+
+table {
+    /* table-layout: fixed; */
+    width: 100%;
+}
+
+table,
+tr,
+th,
+td {
+    border: none;
+}
+
+th {
+    width: 1%;
+    white-space: nowrap;
+}
