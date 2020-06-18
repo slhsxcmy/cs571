@@ -27,7 +27,7 @@ h1 {
 
 label.form-check-label {
     /* font-weight: 700; */
-    margin-right: 0.5em;
+    margin-right: 0.2em;
 }
 
 label.col-form-label {
@@ -209,4 +209,18 @@ td {
 th {
     width: 1%;
     white-space: nowrap;
+}
+
+option,
+
+/* select:hover, */
+
+
+/* select:focus, */
+
+select:focus:active {
+    background-color: rgba(0, 0, 0, 0.4);
+    /* background-color: #7b7c7f; */
+    /* opacity: 0; */
+    color: white;
 }
