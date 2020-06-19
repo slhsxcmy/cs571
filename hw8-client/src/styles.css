@@ -22,3 +22,23 @@ select option:hover {
     font-size: 0.8em;
     margin-bottom: 0.6em;
 }
+
+@media screen and (max-width: 768px) {
+    .btn:focus,
+    .btn-primary:focus,
+    .btn-secondary:focus,
+    .ngx-pagination a:focus {
+        border-color: orange !important;
+        border-width: 0.1em !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .btn:focus,
+    .btn-primary:focus,
+    .btn-secondary:focus,
+    .ngx-pagination a:focus {
+        border-color: #2a65c5 !important;
+        border-width: 0.1em !important;
+    }
+}

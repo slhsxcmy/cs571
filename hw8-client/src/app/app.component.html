@@ -92,7 +92,7 @@
 
         <div class="text-right" style="margin-bottom: 50px;">
             <button type="submit" class="btn btn-primary"><span class="material-icons">search</span>Search</button>
-            <button type="button" class="btn btn-secondary" (click)="reset_form();"><span class="material-icons">clear_all</span>Clear</button>
+            <button type="button" class="btn btn-secondary" (click)="reset_form();"><span class="material-icons">clear_all</span><span class="hover-black">Clear</span></button>
             <!-- <input type="submit" class="btn btn-primary" value="Search"> -->
             <!-- <input type="button" class="btn btn-secondary" value="Clear" (click)="reset_form();"> -->
         </div>
@@ -190,8 +190,10 @@
                     </a>
                     <p class="price"><b>Price: </b>${{item.price}}</p>
                     <span class="location"><i>{{item.location}}</i></span>
-                    <button class="btn white-back" *ngIf="item.showing_detail == false" (click)="item.showing_detail = true">Show Details</button>
-                    <button class="btn white-back" *ngIf="item.showing_detail == true" (click)="item.showing_detail = false">Hide Details</button>
+                    <!-- <button class="btn white-back" *ngIf="item.showing_detail == false" (click)="item.showing_detail = true">Show Details</button>
+                    <button class="btn white-back" *ngIf="item.showing_detail == true" (click)="item.showing_detail = false">Hide Details</button> -->
+
+                    <button class="btn white-back" (click)="item.showing_detail = !item.showing_detail;buttonText = (buttonText == 'Show Details') ? 'Hide Details' : 'Show Details'">{{buttonText}}</button>
 
                     <mat-tab-group *ngIf="item.showing_detail == true">
                         <mat-tab label="Basic Info">

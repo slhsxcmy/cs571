@@ -28,6 +28,7 @@ export class AppComponent {
   kw = "";
 
   paginationSize = "";
+  buttonText = 'Show Details';
 
   // show_flags = []
 
@@ -161,6 +162,9 @@ export class AppComponent {
       expshipping: '',
       sort: 'BestMatch'
     });
+  }
+
+  toggle(){ 
   }
 
   onSubmit() {

@@ -211,16 +211,24 @@ th {
     white-space: nowrap;
 }
 
-option,
-
-/* select:hover, */
-
-
-/* select:focus, */
-
-select:focus:active {
+option {
+    border: none;
     background-color: rgba(0, 0, 0, 0.4);
     /* background-color: #7b7c7f; */
     /* opacity: 0; */
     color: white;
+}
+
+option:hover,
+option:focus,
+option:active {
+    border: none;
+}
+
+.hover-black:hover {
+    color: black;
+}
+
+select {
+    /* background: rgba(150, 150, 150, 0.3); */
 }
