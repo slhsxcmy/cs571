@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="text-center">
-        <a href="https://ebay.com"><img id='logo' src="assets/eBayLogo.png"></a>
+        <a href="https://ebay.com" target="_blank"><img id='logo' src="assets/eBayLogo.png"></a>
         <!-- <a href="https://ebay.com"><img id='logo' src="assets/ebay_default.png"></a> -->
     </div>
 
@@ -185,15 +185,15 @@
                 <div class="col-sm-2 text-center px-3 pt-3"><img class="img-fluid photo" src="{{item.galleryURL}}"></div>
 
                 <div class="col-sm-10 px-3 px-sm-0">
-                    <a href="{{item.viewItemURL}}">
+                    <a href="{{item.viewItemURL}}" target="_blank">
                         <p class="title pt-3"> {{item.title}}</p>
                     </a>
                     <p class="price"><b>Price: </b>${{item.price}}</p>
-                    <span class="location"><i>{{item.location}}</i></span>
+                    <span class="location"><i>{{item.location}}</i></span> ¸
                     <!-- <button class="btn white-back" *ngIf="item.showing_detail == false" (click)="item.showing_detail = true">Show Details</button>
                     <button class="btn white-back" *ngIf="item.showing_detail == true" (click)="item.showing_detail = false">Hide Details</button> -->
 
-                    <button class="btn white-back" (click)="item.showing_detail = !item.showing_detail;buttonText = (buttonText == 'Show Details') ? 'Hide Details' : 'Show Details'">{{buttonText}}</button>
+                    <button class="btn white-back" (click)="item.showing_detail = !item.showing_detail;item.buttonText = (item.showing_detail) ? 'Hide Details' : 'Show Details'; ">{{item.buttonText}}</button>
 
                     <mat-tab-group *ngIf="item.showing_detail == true">
                         <mat-tab label="Basic Info">

@@ -28,7 +28,7 @@ export class AppComponent {
   kw = "";
 
   paginationSize = "";
-  buttonText = 'Show Details';
+  
 
   // show_flags = []
 
@@ -213,6 +213,7 @@ export class AppComponent {
             }
 
             item.showing_detail = false;  // flag for show hide button
+            item.buttonText = 'Show Details';
           }
           // console.log(this.searchResult[0]["xxx"]);
 
