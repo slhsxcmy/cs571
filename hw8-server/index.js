@@ -41,25 +41,8 @@ const app = express();
 app.use(cors());
 
 
-
-app.get(`/hello`, (request, response) => {
-    console.log(request.url);
-    response.send('Hello World!!!!!!!!!!!!!!!!');
-});
-
-app.route('/api/cats').get((req, res) => {
-    res.send({
-        cats: [{ name: 'lilly' }, { name: 'lucy' }],
-    })
-})
-
-app.route('/api/cats/:name').get((req, res) => {
-    const requestedCatName = req.params['name']
-    res.send({ name: requestedCatName })
-})
-
 app.get('/', (req, res) => {
-    res.send('Hello from App Engine!');
+    res.send('CS571 Summer 2020<br>Server for Homeworks 8 and 9!<br>Mingyu Cui');
 });
 
 
@@ -87,10 +70,9 @@ function parse(response_json) {
             let items = response_json["findItemsAdvancedResponse"][0]["searchResult"][0]["item"];
             let item = items[i]
             item_dict["title"] = item["title"][0]
-            try{
-                item_dict["galleryURL"] = item["galleryURL"][0]  // check removed Piazza @399 
-                // item_dict["galleryURL"] = item["galleryURLxxxx"][0]  // check removed Piazza @399 
-            } catch (error){
+            try {
+                item_dict["galleryURL"] = item["galleryURL"][0] // check removed. Piazza @399 
+            } catch (error) {
                 // do nothing
                 console.log('no image found');
             }
@@ -110,6 +92,8 @@ function parse(response_json) {
             item_dict["watchCount"] = item["listingInfo"][0]["watchCount"][0]
 
             item_dict["viewItemURL"] = item["viewItemURL"][0]
+
+            item_dict["itemId"] = item["itemId"][0]
 
             // console.log(item_dict["aa"][0])
 
@@ -191,6 +175,9 @@ app.get(`/query`, (request, response) => {
 });
 
 
+
+
+
 app.get(`/original`, (request, response) => {
 
     api_params = {
@@ -242,6 +229,102 @@ app.get(`/original`, (request, response) => {
 
 });
 
+
+// app.route('/cats').get((req, res) => {
+//     res.send({
+//         cats: [{ name: 'lilly' }, { name: 'lucy' }],
+//     })
+// })
+
+// app.route('/cats/:name').get((req, res) => {
+//     const requestedCatName = req.params['name']
+//     res.send({ name: requestedCatName })
+// })
+
+
+function parse_single(response_json) {
+    let item_dict = {};
+    try {
+        item_dict.Subtitle = response_json.Item.Subtitle;
+    } catch (error) {}
+
+    let NameValueList = response_json.Item.ItemSpecifics.NameValueList;
+
+    // console.log(NameValueList);
+    item_dict.NameValueList = [];
+    try {
+        for (let i = 0, j = 0; i < NameValueList.length && j < 5; i++) {
+            let pair = NameValueList[i];
+            // console.log("pair: " + pair);
+
+            let name = pair.Name;
+            let value = pair.Value[0];
+            console.log(name + ": " + value);
+
+            // console.log(name == "Brand");
+
+            if (name == "Brand") item_dict.Brand = value;
+            else {
+                item_dict.NameValueList.push({
+                    [name]: value
+                });
+                j++;
+            }
+        }
+    } catch (error) { console.log(error); }
+
+    try {
+        item_dict.Seller = response_json.Item.Seller;
+        item_dict.ReturnPolicy = response_json.Item.ReturnPolicy;
+    } catch (error) { console.log(error); }
+
+
+    // return response_json;
+    return item_dict;
+}
+
+app.get(`/single/:itemID`, (request, response) => {
+
+    const itemID = request.params['itemID']
+
+    api_params = {
+        'callname': 'GetSingleItem',
+        'responseencoding': 'JSON',
+        'appid': YourAppID,
+        'siteid': '0',
+        'version': '967',
+        'ItemID': itemID,
+        'IncludeSelector': 'Description,Details,ItemSpecifics'
+
+    }
+
+
+    for (const key in request.query) {
+        let value = request.query[key];
+        api_params[key] = value;
+    }
+
+
+    axios.get('https://open.api.ebay.com/shopping', {
+        params: api_params
+    }).then(function(api_response) {
+        // console.log(res.request._header);
+        console.log(api_response.data);
+
+        return_json = parse_single(api_response.data);
+        response.json(return_json)
+
+    }).catch(function(error) {
+        console.log(error);
+    });
+
+
+});
+
+
+
+// single item: https://open.api.ebay.com/shopping?callname=GetSingleItem&responseencoding=JSON&appid=MingyuCu-CS571-PRD-12eae7200-3078afa9&siteid=0&version=967&ItemID=254603172743&IncludeSelector=Description,Details,ItemSpecifics
+// http://localhost:3000/single/253462854618
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
