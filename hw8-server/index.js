@@ -251,7 +251,7 @@ function parse_single(response_json) {
     let NameValueList = response_json.Item.ItemSpecifics.NameValueList;
 
     // console.log(NameValueList);
-    item_dict.NameValueList = {};
+    item_dict.ItemSpecifics = [];
     try {
         for (let i = 0, j = 0; i < NameValueList.length && j < 5; i++) {
             let pair = NameValueList[i];
@@ -263,7 +263,7 @@ function parse_single(response_json) {
 
             if (name == "Brand") item_dict.Brand = value;
             else {
-                item_dict.NameValueList[name] = value;
+                item_dict.ItemSpecifics.push(value);
                 j++;
             }
         }
