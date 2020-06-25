@@ -1,4 +1,4 @@
-package com.codinginflow.recylerviewjsonexample;
+package com.codinginflow.recyclerviewjsonexample;
 
 public class ExampleItem {
     private String mImageUrl;
