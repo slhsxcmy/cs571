@@ -5,7 +5,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CatalogActivity extends AppCompatActivity {
 
@@ -18,7 +21,7 @@ public class CatalogActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Search Results");
+//        getSupportActionBar().setTitle("Search Results");
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
@@ -28,5 +31,16 @@ public class CatalogActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textView);
         textView.setText(message);
 
+        textView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                    // https://developer.android.com/training/basics/firstapp/starting-activity
+                    Intent intent = new Intent(CatalogActivity.this, DetailActivity.class);
+//                    intent.putExtra("EXTRA_MESSAGE", url);
+                    startActivity(intent);
+
+
+            }
+        });
     }
 }
