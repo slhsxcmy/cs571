@@ -9,6 +9,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import pkg.hw9.R;
+import pkg.hw9.SellerFragment;
+import pkg.hw9.ShippingFragment;
+import pkg.hw9.SummaryFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -17,7 +20,7 @@ import pkg.hw9.R;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -29,7 +32,19 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        Fragment fragment = null;
+        switch (position) {
+            case 0:
+                fragment = new SummaryFragment();
+                break;
+            case 1:
+                fragment = new SellerFragment();
+                break;
+            case 2:
+                fragment = new ShippingFragment();
+                break;
+        }
+        return fragment;
     }
 
     @Nullable
@@ -40,7 +55,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
-        return 2;
+
+        return 3;
     }
 }
