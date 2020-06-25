@@ -8,6 +8,6 @@
     <color name="tab_selected_color">#ff0000</color>
     <color name="tab_normal_color">#00ff00</color>
     <color name="shopping_icon_color">#0000ff</color>
-<!--    <color name="ic_launcher_background">#015dd2</color>-->
+    <color name="ic_launcher_background">#015dd2</color>
 
 </resources>
