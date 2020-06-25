@@ -1,163 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <include
         android:id="@+id/my_toolbar"
-        layout="@layout/toolbar"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"></include>
-
+        layout="@layout/toolbar"></include>
 
     <TextView
         android:id="@+id/keywordPrompt"
         android:layout_width="120dp"
         android:layout_height="24dp"
-        android:layout_marginStart="24dp"
+        android:layout_below="@id/my_toolbar"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="72dp"
         android:text="Keyword"
         android:textColor="@color/prompt_text"
         android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/keywordField"
+        android:layout_width="360dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/keywordPrompt"
+        android:layout_marginLeft="24dp"
+        android:ems="10"
+        android:hint="Enter Keyword"
+        android:inputType="text"
+        android:textColorHint="@color/placeholder_text" />
 
 
     <TextView
-        android:id="@+id/sortPrompt"
-        android:layout_width="120dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="24dp"
+        android:id="@+id/keywordError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/keywordField"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="600dp"
-        android:text="Sort By"
-        android:textColor="@color/prompt_text"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Please enter mandatory field"
+        android:textColor="@color/error_text"
+        android:textSize="12sp"
+        android:textStyle="normal|italic"
+        android:visibility="gone" />
+
 
     <TextView
         android:id="@+id/rangePrompt"
         android:layout_width="120dp"
         android:layout_height="24dp"
-        android:layout_marginStart="24dp"
+        android:layout_below="@id/keywordError"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="200dp"
         android:text="Price Range"
         android:textColor="@color/prompt_text"
         android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/minField"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/rangePrompt"
+        android:layout_marginLeft="24dp"
+        android:ems="10"
+        android:hint="Minimum Price"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/placeholder_text" />
+
+    <EditText
+        android:id="@+id/maxField"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/rangePrompt"
+        android:layout_marginLeft="36dp"
+        android:layout_toRightOf="@id/minField"
+        android:ems="10"
+        android:hint="Maximum Price"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/placeholder_text" />
+
+    <TextView
+        android:id="@+id/rangeError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/minField"
+        android:layout_marginLeft="24dp"
+        android:text="Please enter valid price values"
+        android:textColor="@color/error_text"
+        android:textSize="12sp"
+        android:textStyle="normal|italic"
+        android:visibility="gone" />
+
 
     <TextView
         android:id="@+id/conditionPrompt"
         android:layout_width="120dp"
         android:layout_height="24dp"
-        android:layout_marginStart="24dp"
+        android:layout_below="@id/rangeError"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="400dp"
         android:text="Condition"
         android:textColor="@color/prompt_text"
         android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold" />
 
-    <!--    <EditText-->
-    <!--        android:id="@+id/keywordField"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:ems="10"-->
-    <!--        android:inputType="text"-->
-    <!--        android:text="Enter Keyword" />-->
+    <CheckBox
+        android:id="@+id/checkboxNew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/conditionPrompt"
+        android:layout_marginLeft="24dp"
+        android:text="New"
+        android:textStyle="normal|italic" />
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/rangePrompt"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="Price Range"-->
-    <!--        android:textColor="@color/prompt_text"-->
-    <!--        />-->
+    <CheckBox
+        android:id="@+id/checkboxUsed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/conditionPrompt"
+        android:layout_marginLeft="24dp"
+        android:layout_toRightOf="@id/checkboxNew"
+        android:text="Used"
+        android:textStyle="normal|italic" />
 
-    <!--&lt;!&ndash;    <LinearLayout&ndash;&gt;-->
-    <!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;        android:layout_height="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;        android:orientation="horizontal">&ndash;&gt;-->
+    <CheckBox
+        android:id="@+id/checkboxUnspecified"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/conditionPrompt"
+        android:layout_marginLeft="24dp"
+        android:layout_toRightOf="@id/checkboxUsed"
+        android:text="Unspecified"
+        android:textStyle="normal|italic" />
 
-    <!--&lt;!&ndash;        <EditText&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:id="@+id/minField"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:ems="10"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:inputType="numberDecimal"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:text="Minimum Price" />&ndash;&gt;-->
+    <TextView
+        android:id="@+id/sortPrompt"
+        android:layout_width="120dp"
+        android:layout_height="24dp"
+        android:layout_below="@id/checkboxNew"
+        android:layout_marginLeft="24dp"
+        android:text="Sort By"
+        android:textColor="@color/prompt_text"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
-    <!--&lt;!&ndash;        <EditText&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:id="@+id/maxField"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:ems="10"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:inputType="numberDecimal"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:text="Maximum Price" />&ndash;&gt;-->
-    <!--&lt;!&ndash;    </LinearLayout>&ndash;&gt;-->
+    <Spinner
+        android:id="@+id/sortSpinner"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sortPrompt"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="0dp" />
 
 
-    <!--    <LinearLayout-->
-    <!--        android:orientation="horizontal"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_weight="1"-->
-    <!--        >-->
+    <Button
+        android:layout_marginTop="30dp"
+        android:id="@+id/searchButton"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sortSpinner"
+        android:layout_marginLeft="36dp"
+        android:background="@color/button_bgcolor"
+        android:text="Search"
+        android:textColor="@android:color/white"
+        android:textSize="20dp" />
 
-    <!--        <EditText-->
-    <!--            android:id="@+id/minField"-->
-    <!--            android:ems="10"-->
-    <!--            android:inputType="numberDecimal"-->
-    <!--            android:text="Minimum Price"-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:gravity="left"/>-->
+    <Button
+        android:layout_marginTop="30dp"
+        android:id="@+id/clearButton"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sortSpinner"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@id/searchButton"
+        android:background="@color/button_bgcolor"
+        android:text="Clear"
+        android:textColor="@android:color/white"
+        android:textSize="20dp" />
 
-    <!--        <EditText-->
-    <!--            android:id="@+id/maxField"-->
-    <!--            android:ems="10"-->
-    <!--            android:inputType="numberDecimal"-->
-    <!--            android:text="Maximum Price"-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:gravity="left"/>-->
 
-    <!--    </LinearLayout>-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/rangePrompt2"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="Price Range"-->
-    <!--        android:textColor="@color/prompt_text" />-->
-
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_weight="1"-->
-    <!--        android:orientation="horizontal">-->
-
-    <!--        <CheckBox-->
-    <!--            android:id="@+id/checkBox"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text="CheckBox" />-->
-
-    <!--    </LinearLayout>-->
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

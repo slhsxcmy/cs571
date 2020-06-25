@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">eBay Catalog Search</string>
+    <string-array name="sort_options">
+        <item>Best Match</item>
+        <item>Price: Highest first</item>
+        <item>Price + Shipping: Highest first</item>
+        <item>Price + Shipping: Lowest first</item>
+    </string-array>
 </resources>
