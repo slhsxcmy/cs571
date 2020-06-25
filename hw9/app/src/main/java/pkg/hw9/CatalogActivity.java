@@ -15,29 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class CatalogActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
-
-        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        recyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        // specify an adapter (see also next example)
-//        mAdapter = new MyAdapter(myDataset);
-//        recyclerView.setAdapter(mAdapter);
-
-
 
         Toolbar toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
@@ -48,20 +31,6 @@ public class CatalogActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String message = intent.getStringExtra("EXTRA_MESSAGE");
 
-        // Capture the layout's TextView and set the string as its text
-        TextView textView = findViewById(R.id.textView);
-        textView.setText(message);
 
-        textView.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                    // https://developer.android.com/training/basics/firstapp/starting-activity
-                    Intent intent = new Intent(CatalogActivity.this, DetailActivity.class);
-//                    intent.putExtra("EXTRA_MESSAGE", url);
-                    startActivity(intent);
-
-
-            }
-        });
     }
 }
