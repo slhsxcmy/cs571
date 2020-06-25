@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -12,6 +13,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private EditText keywordField;
@@ -41,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         rangeError = findViewById(R.id.rangeError);
 
         sortSpinner = findViewById(R.id.sortSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sort_options, R.layout.support_simple_spinner_dropdown_item);
+        final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sort_options, R.layout.support_simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         sortSpinner.setAdapter(adapter);
 
@@ -52,15 +56,6 @@ public class MainActivity extends AppCompatActivity {
         searchButton = findViewById(R.id.searchButton);
         clearButton = findViewById(R.id.clearButton);
 
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (validateKeyword() && validateRange()) {
-                    String url = genURL();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Please fix all fields with errors", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
         clearButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 keywordField.setText("");
@@ -69,7 +64,24 @@ public class MainActivity extends AppCompatActivity {
                 checkboxNew.setChecked(false);
                 checkboxUsed.setChecked(false);
                 checkboxUnspecified.setChecked(false);
-                sortSpinner.setSelection(0);
+                sortSpinner.setSelection(0);  // index 0
+                keywordError.setVisibility(View.GONE);
+                rangeError.setVisibility(View.GONE);
+            }
+        });
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                boolean valid = true;
+                valid &= validateKeyword();
+                valid &= validateRange();
+
+                if (!valid) {
+                    Toast.makeText(getApplicationContext(), "Please fix all fields with errors", Toast.LENGTH_SHORT).show();
+                } else {
+                    String url = genURL();
+                    Log.d("TAG", "genURL: " + url);
+                }
 
             }
         });
@@ -83,8 +95,52 @@ public class MainActivity extends AppCompatActivity {
         int filter_index = 0;
         String query_string = "";
 
-        String kw = keywordField.getText().toString();
+//        String kw = keywordField.getText().toString();
         query_string += "keywords=" + keywordField.getText().toString();
+
+        switch (sortSpinner.getSelectedItemPosition()) {
+            case 0:
+                query_string += "&sortOrder=BestMatch";
+                break;
+            case 1:
+                query_string += "&sortOrder=CurrentPriceHighest";
+                break;
+            case 2:
+                query_string += "&sortOrder=PricePlusShippingHighest";
+                break;
+            case 3:
+                query_string += "&sortOrder=PricePlusShippingLowest";
+                break;
+        }
+
+        if (!minField.getText().toString().trim().isEmpty()) {
+            query_string += "&itemFilter(" + filter_index + ").name=MinPrice&itemFilter(" + filter_index + ").value=" + minField.getText().toString().trim() + "&itemFilter(" + filter_index + ").paramName=Currency&itemFilter(" + filter_index + ").paramValue=USD";
+            ++filter_index;
+        }
+
+        if (!maxField.getText().toString().trim().isEmpty()) {
+            query_string += "&itemFilter(" + filter_index + ").name=MaxPrice&itemFilter(" + filter_index + ").value=" + maxField.getText().toString().trim() + "&itemFilter(" + filter_index + ").paramName=Currency&itemFilter(" + filter_index + ").paramValue=USD";
+            ++filter_index;
+        }
+
+        List<String> checked = new ArrayList<>();
+        if (checkboxNew.isChecked()) checked.add("New");
+        if (checkboxUsed.isChecked()) checked.add("Used");
+        if (checkboxUnspecified.isChecked()) checked.add("Unspecified");
+
+        // console.log("count: " + checked.length);
+        if (checked.size() == 0) {
+        } else if (checked.size() == 1) {
+            query_string += "&itemFilter(" + filter_index + ").name=Condition&itemFilter(" + filter_index + ").value=" + checked.get(0);
+            ++filter_index;
+        } else {
+            query_string += "&itemFilter(" + filter_index + ").name=Condition";
+            for (int i = 0; i < checked.size(); i++) {
+                query_string += "&itemFilter(" + filter_index + ").value(" + i + ")=" + checked.get(i);
+            }
+            ++filter_index;
+        }
+
 
         return baseurl + query_string;
     }
@@ -103,6 +159,9 @@ public class MainActivity extends AppCompatActivity {
     private boolean validateRange() {
         String fromS = minField.getText().toString().trim();
         String toS = maxField.getText().toString().trim();
+
+//        Log.d("TAG", "validateRange: " + fromS + " " + toS);
+
         double from = 0, to = Double.MAX_VALUE;
         if (!fromS.isEmpty()) {
             try {
