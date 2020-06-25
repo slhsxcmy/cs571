@@ -3,10 +3,16 @@
     <color name="colorPrimary">#da7b55</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
     <color name="app_blue_eBay">#2d66f7</color>
     <color name="tab_selected_color">#ff0000</color>
     <color name="tab_normal_color">#00ff00</color>
     <color name="shopping_icon_color">#0000ff</color>
     <color name="ic_launcher_background">#015dd2</color>
+    <color name="prompt_text">#2d66f7</color>
+    <color name="placeholder_text">#A9A9A9</color>
+    <color name="error_text">#ff0000</color>
+    <color name="button_bgcolor">#2d66f7</color>
+
 
 </resources>
