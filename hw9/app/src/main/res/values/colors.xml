@@ -9,5 +9,6 @@
     <color name="tab_normal_color">#00ff00</color>
     <color name="shopping_icon_color">#0000ff</color>
     <color name="ic_launcher_background">#015dd2</color>
+    <color name="prompt_text">#2d66f7</color>
 
 </resources>

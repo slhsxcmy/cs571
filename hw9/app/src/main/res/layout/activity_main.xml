@@ -4,19 +4,160 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <include
         android:id="@+id/my_toolbar"
-        layout="@layout/toolbar"></include>
+        layout="@layout/toolbar"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"></include>
+
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/keywordPrompt"
+        android:layout_width="120dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="72dp"
+        android:text="Keyword"
+        android:textColor="@color/prompt_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/sortPrompt"
+        android:layout_width="120dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="600dp"
+        android:text="Sort By"
+        android:textColor="@color/prompt_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rangePrompt"
+        android:layout_width="120dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="200dp"
+        android:text="Price Range"
+        android:textColor="@color/prompt_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/conditionPrompt"
+        android:layout_width="120dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="400dp"
+        android:text="Condition"
+        android:textColor="@color/prompt_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/keywordField"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:ems="10"-->
+    <!--        android:inputType="text"-->
+    <!--        android:text="Enter Keyword" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/rangePrompt"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Price Range"-->
+    <!--        android:textColor="@color/prompt_text"-->
+    <!--        />-->
+
+    <!--&lt;!&ndash;    <LinearLayout&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_height="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:orientation="horizontal">&ndash;&gt;-->
+
+    <!--&lt;!&ndash;        <EditText&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:id="@+id/minField"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:ems="10"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:inputType="numberDecimal"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:text="Minimum Price" />&ndash;&gt;-->
+
+    <!--&lt;!&ndash;        <EditText&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:id="@+id/maxField"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:ems="10"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:inputType="numberDecimal"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:text="Maximum Price" />&ndash;&gt;-->
+    <!--&lt;!&ndash;    </LinearLayout>&ndash;&gt;-->
+
+
+    <!--    <LinearLayout-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_weight="1"-->
+    <!--        >-->
+
+    <!--        <EditText-->
+    <!--            android:id="@+id/minField"-->
+    <!--            android:ems="10"-->
+    <!--            android:inputType="numberDecimal"-->
+    <!--            android:text="Minimum Price"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:gravity="left"/>-->
+
+    <!--        <EditText-->
+    <!--            android:id="@+id/maxField"-->
+    <!--            android:ems="10"-->
+    <!--            android:inputType="numberDecimal"-->
+    <!--            android:text="Maximum Price"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:gravity="left"/>-->
+
+    <!--    </LinearLayout>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/rangePrompt2"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Price Range"-->
+    <!--        android:textColor="@color/prompt_text" />-->
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_weight="1"-->
+    <!--        android:orientation="horizontal">-->
+
+    <!--        <CheckBox-->
+    <!--            android:id="@+id/checkBox"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="CheckBox" />-->
+
+    <!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
