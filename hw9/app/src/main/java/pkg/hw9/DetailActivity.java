@@ -16,9 +16,9 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        DetailTabsPagerAdapter detailTabsPagerAdapter = new DetailTabsPagerAdapter(this, getSupportFragmentManager());
+        DetailAdapter detailAdapter = new DetailAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
-        viewPager.setAdapter(detailTabsPagerAdapter);
+        viewPager.setAdapter(detailAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 

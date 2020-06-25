@@ -17,13 +17,13 @@ import pkg.hw9.SummaryFragment;
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-public class DetailTabsPagerAdapter extends FragmentPagerAdapter {
+public class DetailAdapter extends FragmentPagerAdapter {
 
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
     private final Context mContext;
 
-    public DetailTabsPagerAdapter(Context context, FragmentManager fm) {
+    public DetailAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
     }
