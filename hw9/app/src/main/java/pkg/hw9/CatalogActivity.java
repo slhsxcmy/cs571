@@ -21,7 +21,6 @@ public class CatalogActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-//        getSupportActionBar().setTitle("Search Results");
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
