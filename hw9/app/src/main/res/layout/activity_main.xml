@@ -16,6 +16,7 @@
         android:layout_height="24dp"
         android:layout_below="@id/my_toolbar"
         android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
         android:text="Keyword"
         android:textColor="@color/prompt_text"
         android:textSize="16sp"
@@ -154,24 +155,24 @@
 
 
     <Button
-        android:layout_marginTop="30dp"
         android:id="@+id/searchButton"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/sortSpinner"
         android:layout_marginLeft="36dp"
+        android:layout_marginTop="30dp"
         android:background="@color/button_bgcolor"
         android:text="Search"
         android:textColor="@android:color/white"
         android:textSize="20dp" />
 
     <Button
-        android:layout_marginTop="30dp"
         android:id="@+id/clearButton"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/sortSpinner"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="30dp"
         android:layout_toRightOf="@id/searchButton"
         android:background="@color/button_bgcolor"
         android:text="Clear"
