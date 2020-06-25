@@ -29,7 +29,7 @@ export class SearchService {
     
     
     if (myform.range.from != null && myform.range.from !== '') {
-      query_string += "&itemFilter(" + filter_index + ").name=MinPrice&itemFilter(" + filter_index + ").value=" + myform.range.from + " &itemFilter(" + filter_index + ").paramName=Currency&itemFilter(" + filter_index + ").paramValue=USD";
+      query_string += "&itemFilter(" + filter_index + ").name=MinPrice&itemFilter(" + filter_index + ").value=" + myform.range.from + "&itemFilter(" + filter_index + ").paramName=Currency&itemFilter(" + filter_index + ").paramValue=USD";
       ++filter_index;
     }
     if (myform.range.to != null && myform.range.to !== '') {
