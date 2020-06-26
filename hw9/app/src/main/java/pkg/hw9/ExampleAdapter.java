@@ -58,10 +58,10 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         public ExampleViewHolder(View itemView) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.image_view);
-            mTextViewCreator = itemView.findViewById(R.id.text_view_creator);
-            mTextViewLikes = itemView.findViewById(R.id.text_view_likes);
-            mTextViewCreator2 = itemView.findViewById(R.id.text_view_creator2);
-            mTextViewLikes2 = itemView.findViewById(R.id.text_view_likes2);
+            mTextViewCreator = itemView.findViewById(R.id.text_view_title);
+            mTextViewLikes = itemView.findViewById(R.id.text_view_shipping);
+            mTextViewCreator2 = itemView.findViewById(R.id.text_view_condition);
+            mTextViewLikes2 = itemView.findViewById(R.id.text_view_price);
         }
     }
 }
