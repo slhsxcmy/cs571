@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/my_toolbar"
-        android:text="TODO 999 reuslts found"></TextView>
+        android:text="Total Results Count Pending Update"></TextView>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"

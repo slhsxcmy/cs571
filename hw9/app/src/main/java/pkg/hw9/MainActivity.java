@@ -18,7 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String EXTRA_REQUEST_URL ="requestUrl";
+    public static final String EXTRA_REQUEST_URL = "requestUrl";
+    public static final String EXTRA_KEYWORD = "searchKeyword";
+
+    public static final boolean DEBUG = true;
 
     private EditText keywordField;
     private EditText minField;
@@ -87,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     // https://developer.android.com/training/basics/firstapp/starting-activity
                     Intent intent = new Intent(MainActivity.this, CatalogActivity.class);
                     intent.putExtra(EXTRA_REQUEST_URL, url);
+                    intent.putExtra(EXTRA_KEYWORD, keywordField.getText().toString());
                     startActivity(intent);
                 }
 
@@ -98,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
     private String genURL() {
 
         String baseurl = "https://hw8-server-cs571su2020.wl.r.appspot.com/query?";
+        if (DEBUG) {
+            baseurl = "http://192.168.1.220:3000/query?";
+        }
+
 
         int filter_index = 0;
         String query_string = "";
