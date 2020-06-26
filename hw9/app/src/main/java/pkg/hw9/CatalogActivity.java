@@ -53,6 +53,10 @@ public class CatalogActivity extends AppCompatActivity {
 
         mExampleList = new ArrayList<>();
 
+        mExampleAdapter = new ExampleAdapter(CatalogActivity.this, mExampleList);
+        mRecyclerView.setAdapter(mExampleAdapter);
+
+
         resultCount = findViewById(R.id.result_count);
 
         mRequestQueue = Volley.newRequestQueue(this);
@@ -89,21 +93,22 @@ public class CatalogActivity extends AppCompatActivity {
 //                                Log.d("TAG", "onResponse: item: "+ item.toString(2));
 
                                 String imageUrl = item.getString("galleryURL");
-                                Log.d("TAG", "onResponse: imageUrl: "+ imageUrl);
+//                                Log.d("TAG", "onResponse: imageUrl: " + imageUrl);
 //
-//                                String title = hit.getString("title");
-//                                String shipping = hit.getString("shippingServiceCost");
-//
-//                                String condition = hit.getString("condition");
-//                                String price = hit.getString("price");
-//
+                                String title = "t";//hit.getString("title");
+                                String shipping = "s";//hit.getString("shippingServiceCost");
+
+                                String condition = "c";//hit.getString("condition");
+                                String price = "p";//hit.getString("price");
+
 //                                Log.d("TAG", "onResponse: " + imageUrl + " " + title + " " + shipping + "  " + condition + " " + price);
 
-//                                mExampleList.add(new ExampleItem(imageUrl, title, shipping, condition, price));
+                                mExampleList.add(new ExampleItem(imageUrl, title, shipping, condition, price));
+
+                                // notify adapter
+                                mExampleAdapter.notifyItemInserted(i);
                             }
 
-                            mExampleAdapter = new ExampleAdapter(CatalogActivity.this, mExampleList);
-                            mRecyclerView.setAdapter(mExampleAdapter);
 
                         } catch (JSONException e) {
                             Log.d("TAG", "onResponse: JSONException!");
