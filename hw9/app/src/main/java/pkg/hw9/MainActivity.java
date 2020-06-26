@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String EXTRA_REQUEST_URL ="requestUrl";
+
     private EditText keywordField;
     private EditText minField;
     private EditText maxField;
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
                     // https://developer.android.com/training/basics/firstapp/starting-activity
                     Intent intent = new Intent(MainActivity.this, CatalogActivity.class);
-                    intent.putExtra("EXTRA_MESSAGE", url);
+                    intent.putExtra(EXTRA_REQUEST_URL, url);
                     startActivity(intent);
                 }
 

@@ -1,10 +1,12 @@
 package pkg.hw9;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,6 +20,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import static pkg.hw9.MainActivity.EXTRA_REQUEST_URL;
 
 public class CatalogActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
@@ -41,7 +45,12 @@ public class CatalogActivity extends AppCompatActivity {
     }
 
     private void parseJSON() {
-        String url = "https://pixabay.com/api/?key=5303976-fd6581ad4ac165d1b75cc15b3&q=kitten&image_type=photo&pretty=true";
+        Intent intent = getIntent();
+        String url = intent.getStringExtra(EXTRA_REQUEST_URL);
+        Log.d("TAG", "parseJSON get url: " + url);
+
+        url = "https://pixabay.com/api/?key=5303976-fd6581ad4ac165d1b75cc15b3&q=kitten&image_type=photo&pretty=true";
+
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
