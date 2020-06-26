@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".CatalogActivity">
 
+    <include
+        android:id="@+id/my_toolbar"
+        layout="@layout/toolbar"></include>
+
+    <TextView
+        android:layout_below="@id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TODO 999 reuslts found"></TextView>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
