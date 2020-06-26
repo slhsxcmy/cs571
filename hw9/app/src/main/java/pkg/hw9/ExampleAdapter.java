@@ -2,6 +2,7 @@ package pkg.hw9;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,11 +36,15 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         String imageUrl = currentItem.getImageUrl();
         String creatorName = currentItem.getCreator();
         int likeCount = currentItem.getLikeCount();
+        String creatorName2 = currentItem.getCreator2();
+        int likeCount2 = currentItem.getLikeCount2();
+
+        Log.d("TAG", "onBindViewHolder: likes: " + likeCount);
 
         holder.mTextViewTitle.setText(creatorName);
-        holder.mTextViewShipping.setText("Likes: " + likeCount);
-        holder.mTextViewCondition.setText("2" + creatorName);
-        holder.mTextViewPrice.setText("Likes2: " + likeCount);
+        holder.mTextViewShipping.setText("likes : "+likeCount);
+        holder.mTextViewCondition.setText(creatorName2);
+        holder.mTextViewPrice.setText("likes 2 : "+likeCount2);
         Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
     }
 
