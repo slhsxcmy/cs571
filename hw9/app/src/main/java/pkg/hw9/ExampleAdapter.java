@@ -38,6 +38,8 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
 
         holder.mTextViewCreator.setText(creatorName);
         holder.mTextViewLikes.setText("Likes: " + likeCount);
+        holder.mTextViewCreator2.setText("2" + creatorName);
+        holder.mTextViewLikes2.setText("Likes2: " + likeCount);
         Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
     }
 
@@ -50,12 +52,16 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         public ImageView mImageView;
         public TextView mTextViewCreator;
         public TextView mTextViewLikes;
+        public TextView mTextViewCreator2;
+        public TextView mTextViewLikes2;
 
         public ExampleViewHolder(View itemView) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.image_view);
             mTextViewCreator = itemView.findViewById(R.id.text_view_creator);
             mTextViewLikes = itemView.findViewById(R.id.text_view_likes);
+            mTextViewCreator2 = itemView.findViewById(R.id.text_view_creator2);
+            mTextViewLikes2 = itemView.findViewById(R.id.text_view_likes2);
         }
     }
 }
