@@ -1,3 +1,4 @@
+// https://guides.codepath.com/android/using-the-recyclerview
 package pkg.hw9;
 
 import android.content.Intent;
@@ -82,10 +83,13 @@ public class CatalogActivity extends AppCompatActivity {
                             JSONArray jsonArray = response.getJSONArray("searchResult");
                             Log.d("TAG", "onResponse: searchResult length: " + jsonArray.length());
 
-//                            for (int i = 0; i < jsonArray.length(); i++) {
-//                                JSONObject hit = jsonArray.getJSONObject(i);
+                            for (int i = 0; i < Math.min(jsonArray.length(), MAX_RESULTS); i++) {
+//                                Log.d("TAG", "onResponse: " + i);
+                                JSONObject item = jsonArray.getJSONObject(i);
+//                                Log.d("TAG", "onResponse: item: "+ item.toString(2));
 
-//                                String imageUrl = hit.getString("galleryURL");
+                                String imageUrl = item.getString("galleryURL");
+                                Log.d("TAG", "onResponse: imageUrl: "+ imageUrl);
 //
 //                                String title = hit.getString("title");
 //                                String shipping = hit.getString("shippingServiceCost");
@@ -96,18 +100,20 @@ public class CatalogActivity extends AppCompatActivity {
 //                                Log.d("TAG", "onResponse: " + imageUrl + " " + title + " " + shipping + "  " + condition + " " + price);
 
 //                                mExampleList.add(new ExampleItem(imageUrl, title, shipping, condition, price));
-//                            }
+                            }
 
                             mExampleAdapter = new ExampleAdapter(CatalogActivity.this, mExampleList);
                             mRecyclerView.setAdapter(mExampleAdapter);
 
                         } catch (JSONException e) {
+                            Log.d("TAG", "onResponse: JSONException!");
                             e.printStackTrace();
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.d("TAG", "onErrorResponse: VolleyError!A");
                 error.printStackTrace();
             }
         });
