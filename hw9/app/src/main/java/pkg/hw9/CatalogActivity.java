@@ -95,11 +95,11 @@ public class CatalogActivity extends AppCompatActivity {
                                 String imageUrl = item.getString("galleryURL");
 //                                Log.d("TAG", "onResponse: imageUrl: " + imageUrl);
 //
-                                String title = "t";//hit.getString("title");
-                                String shipping = "s";//hit.getString("shippingServiceCost");
+                                String title = item.getString("title");
+                                String shipping = item.getString("shippingServiceCost");
 
-                                String condition = "c";//hit.getString("condition");
-                                String price = "p";//hit.getString("price");
+                                String condition = item.getString("condition");
+                                String price = item.getString("price");
 
 //                                Log.d("TAG", "onResponse: " + imageUrl + " " + title + " " + shipping + "  " + condition + " " + price);
 
