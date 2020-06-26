@@ -3,11 +3,11 @@ package pkg.hw9;
 public class ExampleItem {
     private String mImageUrl;
     private String mCreator;
-    private int mLikes;
+    private String mLikes;
     private String mCreator2;
-    private int mLikes2;
+    private String mLikes2;
 
-    public ExampleItem(String imageUrl, String creator, int likes, String creator2, int likes2) {
+    public ExampleItem(String imageUrl, String creator, String likes, String creator2, String likes2) {
         mImageUrl = imageUrl;
         mCreator = creator;
         mLikes = likes;
@@ -23,7 +23,7 @@ public class ExampleItem {
         return mCreator;
     }
 
-    public int getLikeCount() {
+    public String getLikeCount() {
         return mLikes;
     }
 
@@ -31,7 +31,7 @@ public class ExampleItem {
         return mCreator2;
     }
 
-    public int getLikeCount2() {
+    public String getLikeCount2() {
         return mLikes2;
     }
 }

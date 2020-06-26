@@ -35,9 +35,9 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
 
         String imageUrl = currentItem.getImageUrl();
         String creatorName = currentItem.getCreator();
-        int likeCount = currentItem.getLikeCount();
+        String likeCount = currentItem.getLikeCount();
         String creatorName2 = currentItem.getCreator2();
-        int likeCount2 = currentItem.getLikeCount2();
+        String likeCount2 = currentItem.getLikeCount2();
 
         Log.d("TAG", "onBindViewHolder: likes: " + likeCount);
 

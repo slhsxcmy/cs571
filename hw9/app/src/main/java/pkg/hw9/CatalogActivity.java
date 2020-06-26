@@ -64,10 +64,10 @@ public class CatalogActivity extends AppCompatActivity {
 
                                 String creatorName = hit.getString("user");
                                 String imageUrl = hit.getString("webformatURL");
-                                int likeCount = hit.getInt("likes");
+                                String likeCount = String.valueOf(hit.getInt("likes"));
 
                                 String creatorName2 = hit.getString("user") + " 2nd";
-                                int likeCount2 = hit.getInt("likes") - 100000;
+                                String likeCount2 = String.valueOf(hit.getInt("likes") - 100000);
 
                                 mExampleList.add(new ExampleItem(imageUrl, creatorName, likeCount, creatorName2, likeCount2));
                             }
