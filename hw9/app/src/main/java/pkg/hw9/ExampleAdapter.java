@@ -36,10 +36,10 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         String creatorName = currentItem.getCreator();
         int likeCount = currentItem.getLikeCount();
 
-        holder.mTextViewCreator.setText(creatorName);
-        holder.mTextViewLikes.setText("Likes: " + likeCount);
-        holder.mTextViewCreator2.setText("2" + creatorName);
-        holder.mTextViewLikes2.setText("Likes2: " + likeCount);
+        holder.mTextViewTitle.setText(creatorName);
+        holder.mTextViewShipping.setText("Likes: " + likeCount);
+        holder.mTextViewCondition.setText("2" + creatorName);
+        holder.mTextViewPrice.setText("Likes2: " + likeCount);
         Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
     }
 
@@ -50,18 +50,18 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
 
     public class ExampleViewHolder extends RecyclerView.ViewHolder {
         public ImageView mImageView;
-        public TextView mTextViewCreator;
-        public TextView mTextViewLikes;
-        public TextView mTextViewCreator2;
-        public TextView mTextViewLikes2;
+        public TextView mTextViewTitle;
+        public TextView mTextViewShipping;
+        public TextView mTextViewCondition;
+        public TextView mTextViewPrice;
 
         public ExampleViewHolder(View itemView) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.image_view);
-            mTextViewCreator = itemView.findViewById(R.id.text_view_title);
-            mTextViewLikes = itemView.findViewById(R.id.text_view_shipping);
-            mTextViewCreator2 = itemView.findViewById(R.id.text_view_condition);
-            mTextViewLikes2 = itemView.findViewById(R.id.text_view_price);
+            mTextViewTitle = itemView.findViewById(R.id.text_view_title);
+            mTextViewShipping = itemView.findViewById(R.id.text_view_shipping);
+            mTextViewCondition = itemView.findViewById(R.id.text_view_condition);
+            mTextViewPrice = itemView.findViewById(R.id.text_view_price);
         }
     }
 }
