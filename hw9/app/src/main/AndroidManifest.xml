@@ -20,16 +20,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".FormActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".CatalogActivity"
+            android:name=".MainActivity"
             android:label="Search Results"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".FormActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,12 +40,12 @@
 <!--        <activity-->
 <!--            android:name=".DetailActivity"-->
 <!--            android:label="@string/title_activity_detail"-->
-<!--            android:parentActivityName=".CatalogActivity">-->
+<!--            android:parentActivityName=".MainActivity">-->
 
 <!--            &lt;!&ndash; The meta-data tag is required if you support API level 15 and lower &ndash;&gt;-->
 <!--            <meta-data-->
 <!--                android:name="android.support.PARENT_ACTIVITY"-->
-<!--                android:value=".CatalogActivity" />-->
+<!--                android:value=".MainActivity" />-->
 
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->

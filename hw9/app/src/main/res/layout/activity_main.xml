@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <include
@@ -11,173 +13,8 @@
         layout="@layout/toolbar"></include>
 
     <TextView
-        android:id="@+id/keywordPrompt"
-        android:layout_width="120dp"
-        android:layout_height="24dp"
-        android:layout_below="@id/my_toolbar"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="20dp"
-        android:text="Keyword"
-        android:textColor="@color/prompt_text"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/keywordField"
-        android:layout_width="360dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/keywordPrompt"
-        android:layout_marginLeft="24dp"
-        android:ems="10"
-        android:hint="Enter Keyword"
-        android:inputType="text"
-        android:textColorHint="@color/placeholder_text" />
-
-
-    <TextView
-        android:id="@+id/keywordError"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/keywordField"
-        android:layout_marginLeft="24dp"
-        android:text="Please enter mandatory field"
-        android:textColor="@color/error_text"
-        android:textSize="12sp"
-        android:textStyle="normal|italic"
-        android:visibility="gone" />
+        android:text="TODO 999 results found"></TextView>
 
-
-    <TextView
-        android:id="@+id/rangePrompt"
-        android:layout_width="120dp"
-        android:layout_height="24dp"
-        android:layout_below="@id/keywordError"
-        android:layout_marginLeft="24dp"
-        android:text="Price Range"
-        android:textColor="@color/prompt_text"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/minField"
-        android:layout_width="140dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/rangePrompt"
-        android:layout_marginLeft="24dp"
-        android:ems="10"
-        android:hint="Minimum Price"
-        android:inputType="numberDecimal"
-        android:textColorHint="@color/placeholder_text" />
-
-    <EditText
-        android:id="@+id/maxField"
-        android:layout_width="140dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/rangePrompt"
-        android:layout_marginLeft="36dp"
-        android:layout_toRightOf="@id/minField"
-        android:ems="10"
-        android:hint="Maximum Price"
-        android:inputType="numberDecimal"
-        android:textColorHint="@color/placeholder_text" />
-
-    <TextView
-        android:id="@+id/rangeError"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/minField"
-        android:layout_marginLeft="24dp"
-        android:text="Please enter valid price values"
-        android:textColor="@color/error_text"
-        android:textSize="12sp"
-        android:textStyle="normal|italic"
-        android:visibility="gone" />
-
-
-    <TextView
-        android:id="@+id/conditionPrompt"
-        android:layout_width="120dp"
-        android:layout_height="24dp"
-        android:layout_below="@id/rangeError"
-        android:layout_marginLeft="24dp"
-        android:text="Condition"
-        android:textColor="@color/prompt_text"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <CheckBox
-        android:id="@+id/checkboxNew"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/conditionPrompt"
-        android:layout_marginLeft="24dp"
-        android:text="New"
-        android:textStyle="normal|italic" />
-
-    <CheckBox
-        android:id="@+id/checkboxUsed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/conditionPrompt"
-        android:layout_marginLeft="24dp"
-        android:layout_toRightOf="@id/checkboxNew"
-        android:text="Used"
-        android:textStyle="normal|italic" />
-
-    <CheckBox
-        android:id="@+id/checkboxUnspecified"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/conditionPrompt"
-        android:layout_marginLeft="24dp"
-        android:layout_toRightOf="@id/checkboxUsed"
-        android:text="Unspecified"
-        android:textStyle="normal|italic" />
-
-    <TextView
-        android:id="@+id/sortPrompt"
-        android:layout_width="120dp"
-        android:layout_height="24dp"
-        android:layout_below="@id/checkboxNew"
-        android:layout_marginLeft="24dp"
-        android:text="Sort By"
-        android:textColor="@color/prompt_text"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <Spinner
-        android:id="@+id/sortSpinner"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/sortPrompt"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="0dp" />
-
-
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/sortSpinner"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/button_bgcolor"
-        android:text="Search"
-        android:textColor="@android:color/white"
-        android:textSize="20dp" />
-
-    <Button
-        android:id="@+id/clearButton"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/sortSpinner"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="30dp"
-        android:layout_toRightOf="@id/searchButton"
-        android:background="@color/button_bgcolor"
-        android:text="Clear"
-        android:textColor="@android:color/white"
-        android:textSize="20dp" />
-
-
-</RelativeLayout>
+</LinearLayout>
