@@ -11,15 +11,16 @@
         layout="@layout/toolbar"></include>
 
     <TextView
-        android:layout_below="@id/my_toolbar"
+        android:id="@+id/result_count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/my_toolbar"
         android:text="TODO 999 reuslts found"></TextView>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/darker_gray" />
+        android:layout_below="@id/result_count"  />
 
 </RelativeLayout>
