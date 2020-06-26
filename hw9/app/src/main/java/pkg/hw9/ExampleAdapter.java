@@ -34,17 +34,17 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         ExampleItem currentItem = mExampleList.get(position);
 
         String imageUrl = currentItem.getImageUrl();
-        String creatorName = currentItem.getCreator();
-        String likeCount = currentItem.getLikeCount();
-        String creatorName2 = currentItem.getCreator2();
-        String likeCount2 = currentItem.getLikeCount2();
+        String title = currentItem.getTitle();
+        String shipping = currentItem.getShipping();
+        String condition = currentItem.getCondition();
+        String price = currentItem.getPrice();
 
-        Log.d("TAG", "onBindViewHolder: likes: " + likeCount);
+        Log.d("TAG", "onBindViewHolder: likes: " + shipping);
 
-        holder.mTextViewTitle.setText(creatorName);
-        holder.mTextViewShipping.setText("likes : "+likeCount);
-        holder.mTextViewCondition.setText(creatorName2);
-        holder.mTextViewPrice.setText("likes 2 : "+likeCount2);
+        holder.mTextViewTitle.setText(title);
+        holder.mTextViewShipping.setText("likes : "+shipping);
+        holder.mTextViewCondition.setText(condition);
+        holder.mTextViewPrice.setText("likes 2 : "+price);
         Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
     }
 

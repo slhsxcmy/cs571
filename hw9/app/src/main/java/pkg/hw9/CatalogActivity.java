@@ -62,14 +62,15 @@ public class CatalogActivity extends AppCompatActivity {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject hit = jsonArray.getJSONObject(i);
 
-                                String creatorName = hit.getString("user");
                                 String imageUrl = hit.getString("webformatURL");
-                                String likeCount = String.valueOf(hit.getInt("likes"));
 
-                                String creatorName2 = hit.getString("user") + " 2nd";
-                                String likeCount2 = String.valueOf(hit.getInt("likes") - 100000);
+                                String title = hit.getString("user");
+                                String shipping = String.valueOf(hit.getInt("likes"));
 
-                                mExampleList.add(new ExampleItem(imageUrl, creatorName, likeCount, creatorName2, likeCount2));
+                                String condition = hit.getString("user") + " 2nd";
+                                String price = String.valueOf(hit.getInt("likes") - 100000);
+
+                                mExampleList.add(new ExampleItem(imageUrl, title, shipping, condition, price));
                             }
 
                             mExampleAdapter = new ExampleAdapter(CatalogActivity.this, mExampleList);
