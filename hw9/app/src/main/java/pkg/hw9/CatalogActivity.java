@@ -27,8 +27,10 @@ import static pkg.hw9.MainActivity.DEBUG;
 import static pkg.hw9.MainActivity.EXTRA_KEYWORD;
 import static pkg.hw9.MainActivity.EXTRA_REQUEST_URL;
 
-public class CatalogActivity extends AppCompatActivity {
+public class CatalogActivity extends AppCompatActivity implements ExampleAdapter.OnItemClickListener {
     public static final int MAX_RESULTS = 50;
+
+    public static final String EXTRA_IMAGE_URL = "imageUrl";
 
     private RecyclerView mRecyclerView;
     private ExampleAdapter mExampleAdapter;
@@ -55,7 +57,7 @@ public class CatalogActivity extends AppCompatActivity {
 
         mExampleAdapter = new ExampleAdapter(CatalogActivity.this, mExampleList);
         mRecyclerView.setAdapter(mExampleAdapter);
-
+        mExampleAdapter.setOnItemClickListener(CatalogActivity.this);
 
         resultCount = findViewById(R.id.result_count);
 
@@ -64,6 +66,8 @@ public class CatalogActivity extends AppCompatActivity {
     }
 
     private void parseJSON() {
+
+        // TODO: Display progress bar waiting
 
         String url;
         final String keyword;
@@ -89,6 +93,7 @@ public class CatalogActivity extends AppCompatActivity {
 //                            JSONArray jsonArray = response.getJSONArray("hits");
 //                            JSONArray jsonArray = response.getJSONArray("searchResult");
                             int returnedResults = response.getInt("returnedResults");
+                            // TODO: if no results, toast.
                             resultCount.setText(Html.fromHtml("Showing <font color='#187bcd'><b>" + Math.min(returnedResults, MAX_RESULTS) + "</b></font> results for <font color='#187bcd'><b>" + keyword + "</b></font>"));
                             Log.d("TAG", "onResponse:returnedResults: " + returnedResults + " -- Showing " + Math.min(returnedResults, MAX_RESULTS) + " results for iphone");
 
@@ -133,5 +138,18 @@ public class CatalogActivity extends AppCompatActivity {
         });
 
         mRequestQueue.add(request);
+    }
+
+
+    @Override
+    public void onItemClick(int position) {
+        Intent detailIntent = new Intent(this, DetailActivity.class);
+        ExampleItem clickedItem = mExampleList.get(position);
+
+        detailIntent.putExtra(EXTRA_IMAGE_URL, clickedItem.getImageUrl());
+//        detailIntent.putExtra(EXTRA_CREATOR, clickedItem.getCreator());
+//        detailIntent.putExtra(EXTRA_LIKES, clickedItem.getLikeCount());
+
+        startActivity(detailIntent);
     }
 }

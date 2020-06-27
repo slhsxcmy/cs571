@@ -18,6 +18,15 @@ import java.util.ArrayList;
 public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder> {
     private Context mContext;
     private ArrayList<ExampleItem> mExampleList;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
 
     public ExampleAdapter(Context context, ArrayList<ExampleItem> exampleList) {
         mContext = context;
@@ -92,6 +101,18 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
 
             mTextViewCondition = itemView.findViewById(R.id.text_view_condition);
             mTextViewPrice = itemView.findViewById(R.id.text_view_price);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }
