@@ -2,6 +2,7 @@ package pkg.hw9;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,16 +37,26 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         String imageUrl = currentItem.getImageUrl();
         String title = currentItem.getTitle();
         String shipping = currentItem.getShipping();
+        String top = currentItem.getTop();
         String condition = currentItem.getCondition();
         String price = currentItem.getPrice();
 
-        Log.d("TAG", "onBindViewHolder: likes: " + shipping);
+//        Log.d("TAG", "onBindViewHolder: likes: " + shipping);
+        if (imageUrl.equals("https://thumbs1.ebaystatic.com/pict/04040_0.jpg")) {
+            Picasso.with(mContext).load(R.drawable.ebay_default).into(holder.mImageView);
+        } else {
+            Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
+        }
 
         holder.mTextViewTitle.setText(title);
-        holder.mTextViewShipping.setText("likes : "+shipping);
+        holder.mTextViewShipping.setText(Html.fromHtml("Ships for <b>$" + shipping + "</b>"));
+        if(top.equals("true")){
+            holder.mTextViewTop.setText("Top Rated Listing");
+        }else{
+            holder.mTextViewTop.setText("");
+        }
         holder.mTextViewCondition.setText(condition);
-        holder.mTextViewPrice.setText("likes 2 : "+price);
-        Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
+        holder.mTextViewPrice.setText("$" + price);
     }
 
     @Override
@@ -57,6 +68,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         public ImageView mImageView;
         public TextView mTextViewTitle;
         public TextView mTextViewShipping;
+        public TextView mTextViewTop;
         public TextView mTextViewCondition;
         public TextView mTextViewPrice;
 
@@ -65,6 +77,9 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
             mImageView = itemView.findViewById(R.id.image_view);
             mTextViewTitle = itemView.findViewById(R.id.text_view_title);
             mTextViewShipping = itemView.findViewById(R.id.text_view_shipping);
+
+            mTextViewTop = itemView.findViewById(R.id.text_view_top);
+
             mTextViewCondition = itemView.findViewById(R.id.text_view_condition);
             mTextViewPrice = itemView.findViewById(R.id.text_view_price);
         }

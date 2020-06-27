@@ -4,10 +4,9 @@ package pkg.hw9;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -49,7 +48,7 @@ public class CatalogActivity extends AppCompatActivity {
 
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+//        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));  // set in xml
 
         mExampleList = new ArrayList<>();
 
@@ -81,7 +80,7 @@ public class CatalogActivity extends AppCompatActivity {
 //                            JSONArray jsonArray = response.getJSONArray("hits");
 //                            JSONArray jsonArray = response.getJSONArray("searchResult");
                             int returnedResults = response.getInt("returnedResults");
-                            resultCount.setText("Showing " + Math.min(returnedResults, MAX_RESULTS) + " results for " + keyword);
+                            resultCount.setText(Html.fromHtml("Showing <font color='#187bcd'><b>" + Math.min(returnedResults, MAX_RESULTS) + "</b></font> results for <font color='#187bcd'><b>" + keyword + "</b></font>"));
                             Log.d("TAG", "onResponse:returnedResults: " + returnedResults + " -- Showing " + Math.min(returnedResults, MAX_RESULTS) + " results for iphone");
 
                             JSONArray jsonArray = response.getJSONArray("searchResult");
@@ -93,17 +92,18 @@ public class CatalogActivity extends AppCompatActivity {
 //                                Log.d("TAG", "onResponse: item: "+ item.toString(2));
 
                                 String imageUrl = item.getString("galleryURL");
-//                                Log.d("TAG", "onResponse: imageUrl: " + imageUrl);
+
+//                                Log.d("TAG------------------", "onResponse: imageUrl: " + imageUrl);
 //
                                 String title = item.getString("title");
                                 String shipping = item.getString("shippingServiceCost");
-
+                                String top = item.getString("topRatedListing");
                                 String condition = item.getString("condition");
                                 String price = item.getString("price");
 
 //                                Log.d("TAG", "onResponse: " + imageUrl + " " + title + " " + shipping + "  " + condition + " " + price);
 
-                                mExampleList.add(new ExampleItem(imageUrl, title, shipping, condition, price));
+                                mExampleList.add(new ExampleItem(imageUrl, title, shipping,top, condition, price));
 
                                 // notify adapter
                                 mExampleAdapter.notifyItemInserted(i);

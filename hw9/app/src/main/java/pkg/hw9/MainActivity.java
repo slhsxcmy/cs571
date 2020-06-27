@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_REQUEST_URL = "requestUrl";
     public static final String EXTRA_KEYWORD = "searchKeyword";
 
-    public static final boolean DEBUG = false;
+    public static final boolean DEBUG = true;
 
     private EditText keywordField;
     private EditText minField;
