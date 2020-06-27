@@ -10,9 +10,9 @@ public class ExampleItem {
     private String mCondition;
     private String mPrice;
     private String mID;
-    private ArrayList<String> mShippingInfo;
+    private String mShippingInfo;
 
-    public ExampleItem(String imageUrl, String title, String shipping, String top, String condition, String price, String ID, ArrayList<String> shippingInfo) {
+    public ExampleItem(String imageUrl, String title, String shipping, String top, String condition, String price, String ID, String shippingInfo) {
         mImageUrl = imageUrl;
         mTitle = title;
         mShipping = shipping;
@@ -20,7 +20,7 @@ public class ExampleItem {
         mCondition = condition;
         mPrice = price;
         mID = ID;
-        ArrayList<String> mShippingInfo = shippingInfo;
+        mShippingInfo = shippingInfo;
     }
 
     public String getImageUrl() {
@@ -51,7 +51,7 @@ public class ExampleItem {
         return mID;
     }
 
-    public ArrayList<String> getShippingInfo() {
+    public String getShippingInfo() {
         return mShippingInfo;
     }
 

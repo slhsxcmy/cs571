@@ -123,23 +123,7 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
                                 String price = item.getString("price");
                                 String id = item.getString("itemId");
 
-                                HashMap<String, String> shippingInfo = new HashMap<>();
-
-
-//                                shippingInfo.add(item.getString("handlingTime"));
-//                                shippingInfo.add(item.getString("oneDayShippingAvailable"));
-//                                shippingInfo.add(item.getString(shippingType) );
-//                                shippingInfo.add(item.getString("") );
-//                                shippingInfo.add(item.getString("") );
-//                                shippingInfo.add(item.getString("") );
-
-                                // https://stackoverflow.com/questions/7578236/how-to-send-hashmap-value-to-another-activity-using-an-intent
-//        item_dict["shippingType"] = item["shippingInfo"][0]["shippingType"][0]
-//        item_dict["shippingServiceCost"] = item["shippingInfo"][0]["shippingServiceCost"][0]["__value__"]
-//        item_dict["shipToLocations"] = item["shippingInfo"][0]["shipToLocations"][0]
-//        item_dict["expeditedShipping"] = item["shippingInfo"][0]["expeditedShipping"][0]
-//        item_dict["oneDayShippingAvailable"] = item["shippingInfo"][0]["oneDayShippingAvailable"][0]
-//        item_dict["handlingTime"] = item["shippingInfo"][0]["handlingTime"][0]
+                                String shippingInfo = item.getJSONObject("shippingInfo").toString();
 
                                 mExampleList.add(new ExampleItem(imageUrl, title, shipping, top, condition, price, id, shippingInfo));
 
