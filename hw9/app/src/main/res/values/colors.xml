@@ -2,12 +2,12 @@
 <resources>
     <color name="colorPrimary">#da7b55</color>
     <color name="colorPrimaryDark">#da7b55</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#800080</color>
 
     <color name="app_blue_eBay">#2d66f7</color>
-    <color name="tab_selected_color">#ff0000</color>
-    <color name="tab_normal_color">#00ff00</color>
-    <color name="shopping_icon_color">#0000ff</color>
+    <color name="tab_selected_color">#3b6ff0</color>
+    <color name="tab_normal_color">#3b6ff0</color>
+    <color name="shopping_icon_color">#ff0000</color>
     <color name="ic_launcher_background">#015dd2</color>
     <color name="prompt_text">#2d66f7</color>
     <color name="placeholder_text">#A9A9A9</color>
@@ -15,6 +15,8 @@
     <color name="button_bgcolor">#2d66f7</color>
     <color name="price_text">#6B8E23</color>
     <color name="icon_bgcolor">#7c7c7c</color>
+
+
 
 
 </resources>

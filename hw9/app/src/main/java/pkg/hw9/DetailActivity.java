@@ -2,8 +2,14 @@
 package pkg.hw9;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -40,6 +46,18 @@ public class DetailActivity extends AppCompatActivity {
         viewPager.setAdapter(detailAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+
+        Drawable seller_icon = getResources().getDrawable(R.drawable.ic_seller);
+//        seller_icon.setColorFilter(new PorterDuffColorFilter(0xff0000, PorterDuff.Mode.MULTIPLY));
+//        DrawableCompat.setTint(seller_icon, 0xff0000);
+
+        tabs.getTabAt(0).setIcon(R.drawable.information_variant_selected);
+        tabs.getTabAt(1).setIcon(seller_icon);
+        tabs.getTabAt(2).setIcon(R.drawable.truck_delivery_selected);
+        tabs.getTabAt(0).setText(getResources().getText(R.string.tab_text_1));
+        tabs.getTabAt(1).setText(getResources().getText(R.string.tab_text_2));
+        tabs.getTabAt(2).setText(getResources().getText(R.string.tab_text_3));
+//        tabs.setTabTextColors(R.color.tab_normal_color, R.color.tab_selected_color);
 
         Toolbar toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
