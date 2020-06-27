@@ -49,13 +49,23 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         }
 
         holder.mTextViewTitle.setText(title);
-        holder.mTextViewShipping.setText(Html.fromHtml("Ships for <b>$" + shipping + "</b>"));
-        if(top.equals("true")){
+
+        if (Double.valueOf(shipping) > 0) {
+            holder.mTextViewShipping.setText(Html.fromHtml("Ships for <b>$" + shipping + "</b>"));
+        } else {
+            holder.mTextViewShipping.setText(Html.fromHtml("<b>Free</b> shipping"));
+        }
+
+        if (top.equals("true")) {
             holder.mTextViewTop.setText("Top Rated Listing");
-        }else{
+        } else {
             holder.mTextViewTop.setText("");
         }
-        holder.mTextViewCondition.setText(condition);
+        if (!condition.isEmpty()) {
+            holder.mTextViewCondition.setText(condition);
+        } else {
+            holder.mTextViewCondition.setText("N/A");
+        }
         holder.mTextViewPrice.setText("$" + price);
     }
 

@@ -23,6 +23,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static pkg.hw9.MainActivity.DEBUG;
 import static pkg.hw9.MainActivity.EXTRA_KEYWORD;
 import static pkg.hw9.MainActivity.EXTRA_REQUEST_URL;
 
@@ -63,9 +64,17 @@ public class CatalogActivity extends AppCompatActivity {
     }
 
     private void parseJSON() {
-        Intent intent = getIntent();
-        String url = intent.getStringExtra(EXTRA_REQUEST_URL);
-        final String keyword = intent.getStringExtra(EXTRA_KEYWORD);
+
+        String url;
+        final String keyword;
+        if (!DEBUG) {
+            Intent intent = getIntent();
+            url = intent.getStringExtra(EXTRA_REQUEST_URL);
+            keyword = intent.getStringExtra(EXTRA_KEYWORD);
+        } else {
+            url = "http://192.168.1.220:3000/query?keywords=aa&sortOrder=BestMatch";
+            keyword = "DEBUG_KEYWORD";
+        }
         Log.d("TAG", "parseJSON get url: " + url);
 
 //        url = "https://pixabay.com/api/?key=5303976-fd6581ad4ac165d1b75cc15b3&q=kitten&image_type=photo&pretty=true";
@@ -103,7 +112,7 @@ public class CatalogActivity extends AppCompatActivity {
 
 //                                Log.d("TAG", "onResponse: " + imageUrl + " " + title + " " + shipping + "  " + condition + " " + price);
 
-                                mExampleList.add(new ExampleItem(imageUrl, title, shipping,top, condition, price));
+                                mExampleList.add(new ExampleItem(imageUrl, title, shipping, top, condition, price));
 
                                 // notify adapter
                                 mExampleAdapter.notifyItemInserted(i);

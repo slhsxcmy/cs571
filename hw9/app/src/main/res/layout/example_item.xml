@@ -22,15 +22,16 @@
             android:id="@+id/text_view_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:scrollHorizontally="true"
             android:text="TITLE"
             android:textColor="@android:color/black"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:scrollHorizontally="true"
-            android:ellipsize="end"
-            android:maxLines="3"/>
+            android:textStyle="bold" />
 
         <TextView
+            android:layout_marginTop="10dp"
             android:id="@+id/text_view_shipping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,18 +43,32 @@
             android:layout_height="wrap_content"
             android:text="TOP" />
 
-        <TextView
-            android:id="@+id/text_view_condition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CONDITION"
-            android:textStyle="italic"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
 
-        <TextView
-            android:id="@+id/text_view_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PRICE" />
+
+            <TextView
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/text_view_condition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CONDITION"
+                android:textStyle="italic" />
+
+            <TextView
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/text_view_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PRICE"
+                android:textColor="@color/price_text"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+        </RelativeLayout>
+
 
     </LinearLayout>
 
