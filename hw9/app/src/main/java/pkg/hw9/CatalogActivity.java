@@ -66,6 +66,8 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
     }
 
     private void parseJSON() {
+        Log.d("TAG", "parseJSON: START!!!!");
+
 
         // TODO: Display progress bar waiting
 

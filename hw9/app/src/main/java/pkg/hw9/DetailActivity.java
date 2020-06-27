@@ -13,8 +13,16 @@ import com.squareup.picasso.Picasso;
 import static pkg.hw9.CatalogActivity.EXTRA_IMAGE_URL;
 
 public class DetailActivity extends AppCompatActivity {
-
-
+//
+//    @Override
+//    public void onBackPressed() {
+//        // https://stackoverflow.com/questions/14274338/back-button-restarts-activity-in-stead-of-going-back
+//        super.onBackPressed();
+//        System.gc();
+//        Intent intent = new Intent(DetailActivity.this, CatalogActivity.class);
+//        startActivity(intent);
+//        finish();
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +38,6 @@ public class DetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
 
 
         Intent intent = getIntent();
