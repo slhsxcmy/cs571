@@ -31,6 +31,7 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
     public static final int MAX_RESULTS = 50;
 
     public static final String EXTRA_IMAGE_URL = "imageUrl";
+    public static final String EXTRA_ID = "itemID";
 
     private RecyclerView mRecyclerView;
     private ExampleAdapter mExampleAdapter;
@@ -66,7 +67,7 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
     }
 
     private void parseJSON() {
-        Log.d("TAG", "parseJSON: START!!!!");
+//        Log.d("TAG", "parseJSON: START!!!!");
 
 
         // TODO: Display progress bar waiting
@@ -116,10 +117,11 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
                                 String top = item.getString("topRatedListing");
                                 String condition = item.getString("condition");
                                 String price = item.getString("price");
+                                String id = item.getString("itemId");
 
 //                                Log.d("TAG", "onResponse: " + imageUrl + " " + title + " " + shipping + "  " + condition + " " + price);
 
-                                mExampleList.add(new ExampleItem(imageUrl, title, shipping, top, condition, price));
+                                mExampleList.add(new ExampleItem(imageUrl, title, shipping, top, condition, price, id));
 
                                 // notify adapter
                                 mExampleAdapter.notifyItemInserted(i);
@@ -149,8 +151,7 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
         ExampleItem clickedItem = mExampleList.get(position);
 
         detailIntent.putExtra(EXTRA_IMAGE_URL, clickedItem.getImageUrl());
-//        detailIntent.putExtra(EXTRA_CREATOR, clickedItem.getCreator());
-//        detailIntent.putExtra(EXTRA_LIKES, clickedItem.getLikeCount());
+        detailIntent.putExtra(EXTRA_ID, clickedItem.getID());
 
         startActivity(detailIntent);
     }
