@@ -11,12 +11,19 @@
         android:id="@+id/my_toolbar"
         layout="@layout/toolbar"></include>
 
+    <include
+        android:id="@+id/catalog_progress"
+        layout="@layout/progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/my_toolbar"></include>
+
     <TextView
         android:id="@+id/result_count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/my_toolbar"
-        android:text="Total Results Count Pending Update"></TextView>
+        android:layout_below="@id/catalog_progress"
+        android:text="Total Results Count Pending Update" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"

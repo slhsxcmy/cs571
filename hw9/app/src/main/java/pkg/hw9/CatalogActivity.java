@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -33,9 +35,10 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
 
     public static final String EXTRA_IMAGE_URL = "imageUrl";
     public static final String EXTRA_ID = "itemID";
-    private static final String EXTRA_TITLE = "itemTitle";
-    private static final String EXTRA_PRICE = "itemPrice";
-    private static final String EXTRA_SHIPPING = "shippingCost";
+    public static final String EXTRA_TITLE = "itemTitle";
+    public static final String EXTRA_PRICE = "itemPrice";
+    public static final String EXTRA_SHIPPING = "shippingCost";
+    public static final String EXTRA_SHIPINFO = "shippingInfo";
 
     private RecyclerView mRecyclerView;
     private ExampleAdapter mExampleAdapter;
@@ -43,6 +46,7 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
     private RequestQueue mRequestQueue;
 
     private TextView resultCount;
+    private RelativeLayout progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +69,7 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
         mExampleAdapter.setOnItemClickListener(CatalogActivity.this);
 
         resultCount = findViewById(R.id.result_count);
+        progress = findViewById(R.id.catalog_progress);
 
         mRequestQueue = Volley.newRequestQueue(this);
         parseJSON();
@@ -75,6 +80,7 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
 
 
         // TODO: Display progress bar waiting
+        progress.setVisibility(View.VISIBLE);
 
         String url;
         final String keyword;
@@ -131,6 +137,8 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
                                 mExampleAdapter.notifyItemInserted(i);
                             }
 
+                            // finished parsing JSON, hide progress bar
+                            progress.setVisibility(View.GONE);
 
                         } catch (JSONException e) {
                             Log.d("TAG", "onResponse: JSONException!");
@@ -159,6 +167,7 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
         detailIntent.putExtra(EXTRA_TITLE, clickedItem.getTitle());
         detailIntent.putExtra(EXTRA_PRICE, clickedItem.getPrice());
         detailIntent.putExtra(EXTRA_SHIPPING, clickedItem.getShipping());
+        detailIntent.putExtra(EXTRA_SHIPINFO, clickedItem.getShippingInfo());
 
 
         startActivity(detailIntent);

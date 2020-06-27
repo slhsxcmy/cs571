@@ -8,6 +8,7 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.ViewPager;
@@ -15,7 +16,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,10 +34,13 @@ import org.json.JSONObject;
 
 import static pkg.hw9.CatalogActivity.EXTRA_ID;
 import static pkg.hw9.CatalogActivity.EXTRA_IMAGE_URL;
+import static pkg.hw9.CatalogActivity.EXTRA_SHIPINFO;
 import static pkg.hw9.MainActivity.DEBUG;
 
 public class DetailActivity extends AppCompatActivity {
     private RequestQueue mRequestQueue;
+
+    private RelativeLayout progress;
 
 
     @Override
@@ -47,12 +53,14 @@ public class DetailActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
-        Drawable seller_icon = getResources().getDrawable(R.drawable.ic_seller);
+        progress = findViewById(R.id.detail_progress);
+
+//        Drawable seller_icon = getResources().getDrawable(R.drawable.ic_seller);
 //        seller_icon.setColorFilter(new PorterDuffColorFilter(0xff0000, PorterDuff.Mode.MULTIPLY));
 //        DrawableCompat.setTint(seller_icon, 0xff0000);
 
         tabs.getTabAt(0).setIcon(R.drawable.information_variant_selected);
-        tabs.getTabAt(1).setIcon(seller_icon);
+        tabs.getTabAt(1).setIcon(R.drawable.ic_seller);
         tabs.getTabAt(2).setIcon(R.drawable.truck_delivery_selected);
         tabs.getTabAt(0).setText(getResources().getText(R.string.tab_text_1));
         tabs.getTabAt(1).setText(getResources().getText(R.string.tab_text_2));
@@ -69,6 +77,7 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String imageUrl = intent.getStringExtra(EXTRA_IMAGE_URL);
         String id = intent.getStringExtra(EXTRA_ID);
+        String shippingInfo = intent.getStringExtra(EXTRA_SHIPINFO);
 
         Log.d("TAG", "DetailActivity onCreate ID: " + id);
 
@@ -78,13 +87,13 @@ public class DetailActivity extends AppCompatActivity {
 
 
         // populate views
-//        ImageView imageView = findViewById(R.id.image_view_detail);
 
-//        Picasso.with(this).load(imageUrl).fit().centerInside().into(imageView);
-
+//        viewPager.get
     }
 
     private void parseJSON_single(String id) {
+        progress.setVisibility(View.VISIBLE);
+
         String url;
         if (!DEBUG) {
             url = "https://hw8-server-cs571su2020.wl.r.appspot.com/single/" + id;
@@ -104,7 +113,7 @@ public class DetailActivity extends AppCompatActivity {
 //                            String subtitle = response.getString("Subtitle");
                             JSONArray itemSpecifics = response.getJSONArray("ItemSpecifics");
 
-
+                            progress.setVisibility(View.GONE);
                         } catch (JSONException e) {
                             Log.d("TAG", "onResponse: JSONException!");
                             e.printStackTrace();

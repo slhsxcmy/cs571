@@ -1,3 +1,4 @@
+// https://stackoverflow.com/questions/9245408/best-practice-for-instantiating-a-new-android-fragment
 package pkg.hw9;
 
 import android.content.Context;
@@ -14,8 +15,9 @@ import pkg.hw9.SummaryFragment;
  * one of the sections/tabs/pages.
  */
 public class DetailAdapter extends FragmentPagerAdapter {
+//
 
-//    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
+    //    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
     private final Context mContext;
 
     public DetailAdapter(Context context, FragmentManager fm) {
@@ -30,7 +32,7 @@ public class DetailAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new SummaryFragment();
+                fragment = new SummaryFragment();  // dummies
                 break;
             case 1:
                 fragment = new SellerFragment();
