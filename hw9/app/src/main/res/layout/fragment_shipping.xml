@@ -28,11 +28,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="&#8226; Handling"
+            android:text="&#8226; Handling Time"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/score"
+            android:id="@+id/handling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" : " />
@@ -52,7 +52,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/sellerID"
+            android:id="@+id/oneday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" : " />
@@ -72,7 +72,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/positive"
+            android:id="@+id/shiptype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" : " />
@@ -92,7 +92,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/star"
+            android:id="@+id/shipfrom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" : " />
@@ -112,7 +112,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/star"
+            android:id="@+id/shipto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" : " />
@@ -132,7 +132,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/star"
+            android:id="@+id/expship"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" : " />

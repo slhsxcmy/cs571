@@ -15,7 +15,7 @@ import pkg.hw9.SummaryFragment;
  */
 public class DetailAdapter extends FragmentPagerAdapter {
 
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
+//    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
     private final Context mContext;
 
     public DetailAdapter(Context context, FragmentManager fm) {
@@ -42,10 +42,10 @@ public class DetailAdapter extends FragmentPagerAdapter {
         return fragment;
     }
 
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return mContext.getResources().getString(TAB_TITLES[position]);
-    }
+//    @Override
+//    public CharSequence getPageTitle(int position) {
+//        return mContext.getResources().getString(TAB_TITLES[position]);
+//    }
 
     @Override
     public int getCount() {

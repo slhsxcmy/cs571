@@ -1,5 +1,7 @@
 package pkg.hw9;
 
+import java.util.ArrayList;
+
 public class ExampleItem {
     private String mImageUrl;
     private String mTitle;
@@ -8,8 +10,9 @@ public class ExampleItem {
     private String mCondition;
     private String mPrice;
     private String mID;
+    private ArrayList<String> mShippingInfo;
 
-    public ExampleItem(String imageUrl, String title, String shipping, String top, String condition, String price, String ID) {
+    public ExampleItem(String imageUrl, String title, String shipping, String top, String condition, String price, String ID, ArrayList<String> shippingInfo) {
         mImageUrl = imageUrl;
         mTitle = title;
         mShipping = shipping;
@@ -17,6 +20,7 @@ public class ExampleItem {
         mCondition = condition;
         mPrice = price;
         mID = ID;
+        ArrayList<String> mShippingInfo = shippingInfo;
     }
 
     public String getImageUrl() {
@@ -46,4 +50,10 @@ public class ExampleItem {
     public String getID() {
         return mID;
     }
+
+    public ArrayList<String> getShippingInfo() {
+        return mShippingInfo;
+    }
+
+
 }

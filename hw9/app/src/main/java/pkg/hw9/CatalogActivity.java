@@ -32,6 +32,9 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
 
     public static final String EXTRA_IMAGE_URL = "imageUrl";
     public static final String EXTRA_ID = "itemID";
+    private static final String EXTRA_TITLE = "itemTitle";
+    private static final String EXTRA_PRICE = "itemPrice";
+    private static final String EXTRA_SHIPPING = "shippingCost";
 
     private RecyclerView mRecyclerView;
     private ExampleAdapter mExampleAdapter;
@@ -119,9 +122,23 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
                                 String price = item.getString("price");
                                 String id = item.getString("itemId");
 
-//                                Log.d("TAG", "onResponse: " + imageUrl + " " + title + " " + shipping + "  " + condition + " " + price);
+                                ArrayList<String> shippingInfo = new ArrayList<>();
+                                shippingInfo.add(item.getString("handlingTime") );
+                                shippingInfo.add(item.getString("oneDayShippingAvailable") );
+//                                shippingInfo.add(item.getString(shippingType) );
+//                                shippingInfo.add(item.getString("") );
+//                                shippingInfo.add(item.getString("") );
+//                                shippingInfo.add(item.getString("") );
 
-                                mExampleList.add(new ExampleItem(imageUrl, title, shipping, top, condition, price, id));
+                                // https://stackoverflow.com/questions/7578236/how-to-send-hashmap-value-to-another-activity-using-an-intent
+//        item_dict["shippingType"] = item["shippingInfo"][0]["shippingType"][0]
+//        item_dict["shippingServiceCost"] = item["shippingInfo"][0]["shippingServiceCost"][0]["__value__"]
+//        item_dict["shipToLocations"] = item["shippingInfo"][0]["shipToLocations"][0]
+//        item_dict["expeditedShipping"] = item["shippingInfo"][0]["expeditedShipping"][0]
+//        item_dict["oneDayShippingAvailable"] = item["shippingInfo"][0]["oneDayShippingAvailable"][0]
+//        item_dict["handlingTime"] = item["shippingInfo"][0]["handlingTime"][0]
+
+                                mExampleList.add(new ExampleItem(imageUrl, title, shipping, top, condition, price, id,shippingInfo));
 
                                 // notify adapter
                                 mExampleAdapter.notifyItemInserted(i);
@@ -150,9 +167,19 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
         Intent detailIntent = new Intent(this, DetailActivity.class);
         ExampleItem clickedItem = mExampleList.get(position);
 
-        detailIntent.putExtra(EXTRA_IMAGE_URL, clickedItem.getImageUrl());
+//        detailIntent.putExtra(EXTRA_IMAGE_URL, clickedItem.getImageUrl());
         detailIntent.putExtra(EXTRA_ID, clickedItem.getID());
+        detailIntent.putExtra(EXTRA_TITLE, clickedItem.getTitle());
+        detailIntent.putExtra(EXTRA_PRICE, clickedItem.getPrice());
+        detailIntent.putExtra(EXTRA_SHIPPING, clickedItem.getShipping());
+
+
 
         startActivity(detailIntent);
     }
 }
+
+// TODO: add ShippingInfo in server - shippingServiceCost
+// TODO: Use Serializable to pass ShippingInfo to ExampleItem
+// TODO: Style Tab header
+// TODO: Pass data from activity to fragments

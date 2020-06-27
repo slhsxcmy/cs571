@@ -60,9 +60,9 @@ public class DetailActivity extends AppCompatActivity {
 
 
         // populate views
-        ImageView imageView = findViewById(R.id.image_view_detail);
+//        ImageView imageView = findViewById(R.id.image_view_detail);
 
-        Picasso.with(this).load(imageUrl).fit().centerInside().into(imageView);
+//        Picasso.with(this).load(imageUrl).fit().centerInside().into(imageView);
 
     }
 
@@ -84,7 +84,7 @@ public class DetailActivity extends AppCompatActivity {
                             // pass whole JSON to 3 fragments to parse separately
 //
 //                            String subtitle = response.getString("Subtitle");
-//                            JSONArray itemSpecifics = response.getJSONArray("ItemSpecifics");
+                            JSONArray itemSpecifics = response.getJSONArray("ItemSpecifics");
 
 
                         } catch (JSONException e) {
