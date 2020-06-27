@@ -179,7 +179,7 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
     }
 }
 
-// TODO: add ShippingInfo in server - shippingServiceCost
+
 // TODO: Use Serializable to pass ShippingInfo to ExampleItem
 // TODO: Style Tab header
 // TODO: Pass data from activity to fragments

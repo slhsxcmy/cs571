@@ -43,14 +43,15 @@
             android:layout_height="wrap_content"
             android:text="PRICE"
             android:textColor="@color/price_text"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/text_view_shipping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:text="SHIPPING" />
+            android:text="SHIPPING"
+            android:textSize="12sp" />
 
     </LinearLayout>
 

@@ -40,6 +40,11 @@ const axios = require('axios');
 const app = express();
 app.use(cors());
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.get('/', (req, res) => {
     res.send('CS571 Summer 2020<br>Server for Homeworks 8 and 9!<br>Mingyu Cui');
@@ -73,7 +78,8 @@ function parse(response_json) {
             try {
                 item_dict["galleryURL"] = item["galleryURL"][0] // check removed. Piazza @399 
             } catch (error) {
-                // do nothing
+                // replace with eBay default
+                item_dict["galleryURL"] = "https://thumbs1.ebaystatic.com/pict/04040_0.jpg";
                 console.log('no image found');
             }
             item_dict["price"] = item["sellingStatus"][0]["currentPrice"][0]["__value__"]
@@ -85,6 +91,7 @@ function parse(response_json) {
             item_dict["shipToLocations"] = item["shippingInfo"][0]["shipToLocations"][0]
             item_dict["expeditedShipping"] = item["shippingInfo"][0]["expeditedShipping"][0]
             item_dict["oneDayShippingAvailable"] = item["shippingInfo"][0]["oneDayShippingAvailable"][0]
+            item_dict["handlingTime"] = item["shippingInfo"][0]["handlingTime"][0]
             item_dict["bestOfferEnabled"] = item["listingInfo"][0]["bestOfferEnabled"][0]
             item_dict["buyItNowAvailable"] = item["listingInfo"][0]["buyItNowAvailable"][0]
             item_dict["listingType"] = item["listingInfo"][0]["listingType"][0]
@@ -95,14 +102,20 @@ function parse(response_json) {
 
             item_dict["itemId"] = item["itemId"][0]
 
+            item_dict["topRatedListing"] = item["topRatedListing"][0]
+
+            item_dict["shippingInfo"] = item["shippingInfo"][0]
+
+            delete item_dict["shippingInfo"] ['shippingServiceCost'];
             // console.log(item_dict["aa"][0])
 
             // let valid = true;
+            /*
             for (const key in item_dict) {
                 if (item_dict.hasOwnProperty(key)) {
                     let dumb = item_dict[key][0]; // trigger error by taking first letter
                 }
-            }
+            } */
 
             // if (valid) {
             return_dict['searchResult'].push(item_dict)
@@ -272,6 +285,8 @@ function parse_single(response_json) {
     try {
         item_dict.Seller = response_json.Item.Seller;
         item_dict.ReturnPolicy = response_json.Item.ReturnPolicy;
+        item_dict.PictureURL = response_json.Item.PictureURL;
+
     } catch (error) { console.log(error); }
 
 
