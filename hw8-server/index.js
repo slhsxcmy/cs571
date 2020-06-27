@@ -104,9 +104,14 @@ function parse(response_json) {
 
             item_dict["topRatedListing"] = item["topRatedListing"][0]
 
+            // add shippingInfo obj for hw9
             item_dict["shippingInfo"] = item["shippingInfo"][0]
-
             delete item_dict["shippingInfo"] ['shippingServiceCost'];
+            Object.keys(item_dict["shippingInfo"]).forEach(function(key) {
+                // console.log('Key : ' + key + ', Value : ' + item_dict["shippingInfo"][key][0])
+                item_dict["shippingInfo"][key] = item_dict["shippingInfo"][key][0];
+            })
+
             // console.log(item_dict["aa"][0])
 
             // let valid = true;
