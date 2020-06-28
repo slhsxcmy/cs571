@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f1f1f1"
+    android:orientation="vertical"
     tools:context=".CatalogActivity">
 
     <include
         android:id="@+id/my_toolbar"
-        layout="@layout/toolbar"></include>
+        layout="@layout/toolbar" />
 
     <include
         android:id="@+id/catalog_progress"
         layout="@layout/progress"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/my_toolbar"></include>
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/no_records"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/catalog_progress"
+        android:gravity="center"
         android:text="No Records"
-        android:visibility="gone" android:gravity="center" />
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/result_count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/no_records"
         android:text="Total Results Count Pending Update" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swiperefresh_items"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/result_count">
+        android:layout_height="wrap_content">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -48,4 +46,4 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-</RelativeLayout>
+</LinearLayout>
