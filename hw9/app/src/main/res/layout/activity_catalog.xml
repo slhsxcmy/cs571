@@ -19,10 +19,18 @@
         android:layout_below="@id/my_toolbar"></include>
 
     <TextView
+        android:id="@+id/no_records"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/catalog_progress"
+        android:text="No Records"
+        android:visibility="gone" android:gravity="center" />
+
+    <TextView
         android:id="@+id/result_count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/catalog_progress"
+        android:layout_below="@id/no_records"
         android:text="Total Results Count Pending Update" />
 
     <android.support.v4.widget.SwipeRefreshLayout

@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -127,7 +128,13 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
 //                            JSONArray jsonArray = response.getJSONArray("hits");
 //                            JSONArray jsonArray = response.getJSONArray("searchResult");
                             int returnedResults = response.getInt("returnedResults");
-                            // TODO: if no results, toast.
+
+                            //  if no results, toast.
+                            if(returnedResults == 0){
+                                findViewById(R.id.no_records).setVisibility(View.VISIBLE);
+                                Toast.makeText(getApplicationContext(), "No Records", Toast.LENGTH_SHORT).show();
+                            }
+
                             resultCount.setText(Html.fromHtml("Showing <font color='#187bcd'><b>" + Math.min(returnedResults, MAX_RESULTS) + "</b></font> results for <font color='#187bcd'><b>" + keyword + "</b></font>"));
                             Log.d("TAG", "onResponse:returnedResults: " + returnedResults + " -- Showing " + Math.min(returnedResults, MAX_RESULTS) + " results for iphone");
 
@@ -197,6 +204,5 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
 }
 
 // TODO: pull to refresh display progress bar?
-// TODO: no results toast
 // TODO: catalog screen | - bars
 // TODO: load screen picasso
