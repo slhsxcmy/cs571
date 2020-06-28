@@ -53,26 +53,14 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        mDetailAdapter = new DetailAdapter(getSupportFragmentManager());
-        mViewPager = findViewById(R.id.view_pager);
-        mViewPager.setAdapter(mDetailAdapter);  // set this after volley json is received? to initialize fragments with data
-        tabs = findViewById(R.id.tabs);
-        tabs.setupWithViewPager(mViewPager);
 
         progress = findViewById(R.id.detail_progress);
+        mViewPager = findViewById(R.id.view_pager);
+        tabs = findViewById(R.id.tabs);
 
-//        Drawable seller_icon = getResources().getDrawable(R.drawable.ic_seller);
-//        seller_icon.setColorFilter(new PorterDuffColorFilter(0xff0000, PorterDuff.Mode.MULTIPLY));
-//        DrawableCompat.setTint(seller_icon, 0xff0000);
-
-        tabs.getTabAt(0).setIcon(R.drawable.information_variant_selected);
-        tabs.getTabAt(1).setIcon(R.drawable.ic_seller);
-        tabs.getTabAt(2).setIcon(R.drawable.truck_delivery_selected);
-        tabs.getTabAt(0).setText(getResources().getText(R.string.tab_text_1));
-        tabs.getTabAt(1).setText(getResources().getText(R.string.tab_text_2));
-        tabs.getTabAt(2).setText(getResources().getText(R.string.tab_text_3));
-//        tabs.setTabTextColors(R.color.tab_normal_color, R.color.tab_selected_color);
-
+//        mDetailAdapter = new DetailAdapter(getSupportFragmentManager());
+//        mViewPager.setAdapter(mDetailAdapter);  // set this after volley json is received? to initialize fragments with data
+//
         Toolbar toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -99,9 +87,19 @@ public class DetailActivity extends AppCompatActivity {
         shippingBundle.putString(BUNDLE_SHIPINFO, shippingInfo);
         shippingFragment.setArguments(shippingBundle);
 
-//        mDetailAdapter = new DetailAdapter(getSupportFragmentManager(), shippingBundle);
-//        mViewPager.setAdapter(mDetailAdapter);
-//
+        mDetailAdapter = new DetailAdapter(getSupportFragmentManager(), shippingBundle);
+        mViewPager.setAdapter(mDetailAdapter);
+
+        tabs.setupWithViewPager(mViewPager);
+
+
+
+        tabs.getTabAt(0).setIcon(R.drawable.information_variant_selected);
+        tabs.getTabAt(1).setIcon(R.drawable.ic_seller);
+        tabs.getTabAt(2).setIcon(R.drawable.truck_delivery_selected);
+        tabs.getTabAt(0).setText(getResources().getText(R.string.tab_text_1));
+        tabs.getTabAt(1).setText(getResources().getText(R.string.tab_text_2));
+        tabs.getTabAt(2).setText(getResources().getText(R.string.tab_text_3));
 //        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 //        transaction.replace(R.id.shipping_container, shippingFragment);
 //        transaction.commit();

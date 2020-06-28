@@ -50,7 +50,7 @@ public class DetailAdapter extends FragmentPagerAdapter {
                 break;
             case 2:
                 fragment = new ShippingFragment();
-                mBundle.putString(BUNDLE_SHIPINFO, "data From Activity");
+//                mBundle.putString(BUNDLE_SHIPINFO, "data From Activity");
                 fragment.setArguments(mBundle);
                 break;
         }
