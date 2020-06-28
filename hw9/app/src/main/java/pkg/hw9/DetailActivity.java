@@ -55,6 +55,7 @@ public class DetailActivity extends AppCompatActivity {
     private SummaryFragment mSummaryFragment;
     private SellerFragment mSellerFragment;
     private ShippingFragment mShippingFragment;
+    private ShippingFragment2 mShippingFragment2;
 
     private Button redirect_button;
 
@@ -69,7 +70,6 @@ public class DetailActivity extends AppCompatActivity {
 
 //        mDetailAdapter = new DetailAdapter(getSupportFragmentManager());
 //        mViewPager.setAdapter(mDetailAdapter);  // set this after volley json is received? to initialize fragments with data
-//
 
         // Get constants from intent
         Intent intent = getIntent();
@@ -85,7 +85,6 @@ public class DetailActivity extends AppCompatActivity {
             link = intent.getStringExtra(EXTRA_LINK_URL);
         }
 
-
         redirect_button = findViewById(R.id.redirect_button);
         redirect_button.setOnClickListener(new View.OnClickListener() {
 
@@ -96,13 +95,11 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-
         Toolbar toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle(title);
-
 
         Log.d("TAG", "DetailActivity onCreate ID: " + id);
 
@@ -118,7 +115,10 @@ public class DetailActivity extends AppCompatActivity {
         mBundle.putString(BUNDLE_SHIPINFO, shippingInfo);
 
 
-        mDetailAdapter = new DetailAdapter(this, getSupportFragmentManager(), mBundle);
+        //https://stackoverflow.com/questions/20958733/load-all-fragments-on-app-opening
+        // use a number higher than half your fragments.
+        mViewPager.setOffscreenPageLimit(3);
+        mDetailAdapter = new DetailAdapter(this, getSupportFragmentManager());
         mViewPager.setAdapter(mDetailAdapter);
 
         tabs.setupWithViewPager(mViewPager);  // overwrites icon and text in TabItem XML
@@ -148,7 +148,6 @@ public class DetailActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-
 //                           parse json and add to bundle
 
                             if (response.has("Subtitle")) {
@@ -171,6 +170,7 @@ public class DetailActivity extends AppCompatActivity {
                             mSummaryFragment.updateSummary(mBundle);
                             mSellerFragment.updateSeller(mBundle);
                             mShippingFragment.updateShipping(mBundle);
+
 //                            https://stackoverflow.com/questions/44960380/send-data-from-activity-to-fragment-already-created
 //                            mDetailAdapter.notifyDataSetChanged();
                             Log.d("TAG", "onResponse: Seller: " + mBundle.getString(BUNDLE_SELLER));
@@ -203,6 +203,10 @@ public class DetailActivity extends AppCompatActivity {
 
     public void setShippingFragment(ShippingFragment shippingFragment) {
         mShippingFragment = shippingFragment;
+    }
+
+    public void setShippingFragment2(ShippingFragment2 shippingFragment) {
+        mShippingFragment2 = shippingFragment;
     }
 
 }

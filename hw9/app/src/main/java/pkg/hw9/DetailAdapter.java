@@ -14,12 +14,11 @@ import android.util.Log;
 public class DetailAdapter extends FragmentPagerAdapter {
 
     private DetailActivity mDetailActivity;
-    private Bundle mBundle;
 
-    public DetailAdapter(DetailActivity detailActivity, FragmentManager fm, Bundle bundle) {
+    public DetailAdapter(DetailActivity detailActivity, FragmentManager fm) {
         super(fm);
         mDetailActivity = detailActivity;
-        mBundle = bundle;
+
     }
 
     @Override
@@ -39,16 +38,13 @@ public class DetailAdapter extends FragmentPagerAdapter {
                 fragment = new ShippingFragment();
                 mDetailActivity.setShippingFragment((ShippingFragment) fragment);
                 break;
+            default:
+                fragment = null;
+                break;
         }
         Log.d("TAG", "getItem: fragment: " + fragment);
-        fragment.setArguments(mBundle);
         return fragment;
     }
-
-//    @Override
-//    public CharSequence getPageTitle(int position) {
-//        return mContext.getResources().getString(TAB_TITLES[position]);
-//    }
 
     @Override
     public int getCount() {
