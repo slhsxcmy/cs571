@@ -1,10 +1,9 @@
 // https://stackoverflow.com/questions/9245408/best-practice-for-instantiating-a-new-android-fragment
 package pkg.hw9;
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import android.util.Log;
 
 /**
