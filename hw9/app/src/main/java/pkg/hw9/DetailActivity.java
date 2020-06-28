@@ -160,6 +160,7 @@ public class DetailActivity extends AppCompatActivity {
                             mBundle.putString(BUNDLE_PICS, response.getJSONArray("PictureURL").toString());
 
                             mSellerFragment.updateSeller(mBundle);
+                            mSummaryFragment.updateSummary(mBundle);
 //                            https://stackoverflow.com/questions/44960380/send-data-from-activity-to-fragment-already-created
 //                            mDetailAdapter.notifyDataSetChanged();
                             Log.d("TAG", "onResponse: Seller: " + mBundle.getString(BUNDLE_SELLER));

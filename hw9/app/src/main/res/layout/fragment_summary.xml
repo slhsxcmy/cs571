@@ -8,7 +8,7 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="240dp">
 
         <LinearLayout
             android:id="@+id/gallery_layout"
@@ -189,35 +189,8 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/spec1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&#8226; " />
-
-
-        <TextView
-            android:id="@+id/spec2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&#8226; " />
-
-
-        <TextView
-            android:id="@+id/spec3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&#8226; " />
-
-
-        <TextView
-            android:id="@+id/spec4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&#8226; " />
-
-
-        <TextView
-            android:id="@+id/spec5"
+            android:lineSpacingExtra="8dp"
+            android:id="@+id/specs_string"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="&#8226; " />
