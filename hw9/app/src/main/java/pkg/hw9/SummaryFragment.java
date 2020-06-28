@@ -1,12 +1,19 @@
 package pkg.hw9;
 
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
+
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -96,7 +103,38 @@ public class SummaryFragment extends Fragment {
             e.printStackTrace();
         }
 
-//        try {  // https://stackoverflow.com/questions/22990142/android-lazy-loading-image-in-horizontalscrollview-using-picasso
+
+        LinearLayout gallery_layout = mView.findViewById(R.id.gallery_layout);
+
+        try {
+            JSONArray jsonArray = new JSONArray(mPicturesURL);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                String imageUrl = jsonArray.getString(i);
+                Log.d("TAG", "updateSummary: imageUrl: " + imageUrl);
+                ImageView imageView = new ImageView(getContext());
+
+                final float scale = getResources().getDisplayMetrics().density;
+
+                int dpHeightInPx = (int) (230 * scale);  // 240 - 5 - 5
+
+                ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(new ViewGroup.MarginLayoutParams(ViewGroup.MarginLayoutParams.MATCH_PARENT, ViewGroup.MarginLayoutParams.MATCH_PARENT));
+                marginParams.setMargins((int) (5 * scale), (int) (5 * scale), (int) (5 * scale), (int) (5 * scale));
+
+                imageView.setLayoutParams(marginParams);
+                imageView.getLayoutParams().height = dpHeightInPx;
+                imageView.setAdjustViewBounds(true);
+
+                Log.d("TAG", "updateSummary: new ImageView: " + imageView);
+
+                Picasso.get().load(imageUrl).into(imageView);
+                gallery_layout.addView(imageView);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        //        try {  // https://stackoverflow.com/questions/22990142/android-lazy-loading-image-in-horizontalscrollview-using-picasso
 //            LinearLayout gallery_layout = mView.findViewById(R.id.gallery_layout);
 //            JSONArray jsonArray = new JSONArray(mPicturesURL);
 //
