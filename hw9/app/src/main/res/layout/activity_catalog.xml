@@ -25,12 +25,19 @@
         android:layout_below="@id/catalog_progress"
         android:text="Total Results Count Pending Update" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefresh_items"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/result_count"
-        app:layoutManager="android.support.v7.widget.GridLayoutManager"
-        app:spanCount="2" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/result_count">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="android.support.v7.widget.GridLayoutManager"
+            app:spanCount="2" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

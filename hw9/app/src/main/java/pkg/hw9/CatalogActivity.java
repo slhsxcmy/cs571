@@ -3,6 +3,8 @@ package pkg.hw9;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -48,6 +50,8 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
     private TextView resultCount;
     private RelativeLayout progress;
 
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +74,23 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
 
         resultCount = findViewById(R.id.result_count);
         progress = findViewById(R.id.catalog_progress);
+        mSwipeRefreshLayout = findViewById(R.id.swiperefresh_items);
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                parseJSON();
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (mSwipeRefreshLayout.isRefreshing()) {
+                            mSwipeRefreshLayout.setRefreshing(false);
+                        }
+                    }
+                }, 1000);
+            }
+        });
 
         mRequestQueue = Volley.newRequestQueue(this);
         parseJSON();
@@ -78,8 +99,6 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
     private void parseJSON() {
 //        Log.d("TAG", "parseJSON: START!!!!");
 
-
-        // TODO: Display progress bar waiting
         progress.setVisibility(View.VISIBLE);
 
         String url;
@@ -176,3 +195,4 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
 
 // TODO: Use Serializable to pass ShippingInfo to ExampleItem
 // TODO: Pass data from activity to fragments
+// TODO: pull to refresh display progress bar?
