@@ -18,22 +18,19 @@ import java.util.Iterator;
 import static pkg.hw9.DetailActivity.BUNDLE_SHIPINFO;
 
 public class ShippingFragment extends Fragment {
+    private View mView;
+
     private String mShippingInfo;
-    
+
+
     public ShippingFragment() {
         // Required empty public constructor
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_shipping, container, false);
-        TextView shipinfo = v.findViewById(R.id.shipinfo);
-        if (getArguments() != null) {
-            // check containsKey
-            mShippingInfo = getArguments().getString(BUNDLE_SHIPINFO);
-        }
+    public void updateShipping(Bundle args) {
+        TextView shipinfo = mView.findViewById(R.id.shipinfo);
+
+        mShippingInfo = args.getString(BUNDLE_SHIPINFO);
 
         StringBuilder sb = new StringBuilder();
 
@@ -55,6 +52,13 @@ public class ShippingFragment extends Fragment {
 
         shipinfo.setText(Html.fromHtml(sb.toString()));
 
-        return v;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        mView = inflater.inflate(R.layout.fragment_shipping, container, false);
+        return mView;
     }
 }

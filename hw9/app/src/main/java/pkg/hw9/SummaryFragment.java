@@ -90,14 +90,14 @@ public class SummaryFragment extends Fragment {
         try {
             StringBuilder sb = new StringBuilder();
             JSONArray jsonArray = new JSONArray(mSpecs);
-            Log.d("TAG", "updateSummary: jsonArray: " + jsonArray.toString(2));
+//            Log.d("TAG", "updateSummary: jsonArray: " + jsonArray.toString(2));
             if (jsonArray.length() == 0) {
                 mView.findViewById(R.id.specs_layout).setVisibility(View.GONE);
             }
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 String value = jsonArray.getString(i);
-                Log.d("TAG", "updateSummary: val: " + value);
+//                Log.d("TAG", "updateSummary: val: " + value);
                 sb.append("&#8226; " + value + "<br>");
             }
             specView.setText(Html.fromHtml(sb.toString()));
@@ -105,52 +105,52 @@ public class SummaryFragment extends Fragment {
             e.printStackTrace();
         }
 
-        try {  // https://stackoverflow.com/questions/22990142/android-lazy-loading-image-in-horizontalscrollview-using-picasso
-            LinearLayout gallery_layout = mView.findViewById(R.id.gallery_layout);
-            JSONArray jsonArray = new JSONArray(mPicturesURL);
-
-            for (int i = 0; i < 10; i++) {
-
-            }
+//        try {  // https://stackoverflow.com/questions/22990142/android-lazy-loading-image-in-horizontalscrollview-using-picasso
+//            LinearLayout gallery_layout = mView.findViewById(R.id.gallery_layout);
+//            JSONArray jsonArray = new JSONArray(mPicturesURL);
 //
-//            for(int index = 0; index < ((ViewGroup) viewGroup).getChildCount(); index++) {
-//                View nextChild = ((ViewGroup) viewGroup).getChildAt(index);
-//            }
-
-//            ImageView imageView = mView.findViewById(R.id.pic);
-//            Picasso.with(getContext()).load("https://i.ebayimg.com/images/g/wSIAAOSwOFFduejd/s-l300.jpg").fit().centerInside().into(imageView);
-//            ArrayList<Integer> ids = new ArrayList<>();
 //            for (int i = 0; i < 10; i++) {
-//                ImageView imageView = new ImageView(getContext());
-//                ids.add(View.generateViewId());
-//                imageView.setId(ids.get(ids.size() - 1));
-//                gallery_layout.addView(imageView);
-////                Picasso.with(getActivity()).load("https://i.ebayimg.com/images/g/wSIAAOSwOFFduejd/s-l300.jpg").fit().centerInside().into(imageView);
-////                Log.d("TAG", "updateSummary: PICASSO LOADED");
-////                gallery_layout.addView(imageView);
-//            }
 //
-//            for (int i = 0; i < ids.size(); i++) {
-//                ImageView imageView = mView.findViewById(ids.get(i));
-////                imageView.setImageResource(R.drawable.ebay_default);
-//                Picasso.with(getContext()).load("https://i.ebayimg.com/images/g/wSIAAOSwOFFduejd/s-l300.jpg").fit().centerInside().into(imageView);
 //            }
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-                String imageUrl = jsonArray.getString(i);
-//                Log.d("TAG", "updateSummary: imageUrl: " + imageUrl);
-                ImageView imageView = new ImageView(getContext());
-//                imageView.setImageResource(R.drawable.shopping_icon_launcher);
-
-//                Picasso.get().load(imageUrl).fit().centerInside().into(imageView);
-                gallery_layout.addView(imageView);
-//                TextView textView = new TextView(getContext());
-//                textView.setText("123456");
-//                gallery_layout.addView(textView);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+////
+////            for(int index = 0; index < ((ViewGroup) viewGroup).getChildCount(); index++) {
+////                View nextChild = ((ViewGroup) viewGroup).getChildAt(index);
+////            }
+//
+////            ImageView imageView = mView.findViewById(R.id.pic);
+////            Picasso.with(getContext()).load("https://i.ebayimg.com/images/g/wSIAAOSwOFFduejd/s-l300.jpg").fit().centerInside().into(imageView);
+////            ArrayList<Integer> ids = new ArrayList<>();
+////            for (int i = 0; i < 10; i++) {
+////                ImageView imageView = new ImageView(getContext());
+////                ids.add(View.generateViewId());
+////                imageView.setId(ids.get(ids.size() - 1));
+////                gallery_layout.addView(imageView);
+//////                Picasso.with(getActivity()).load("https://i.ebayimg.com/images/g/wSIAAOSwOFFduejd/s-l300.jpg").fit().centerInside().into(imageView);
+//////                Log.d("TAG", "updateSummary: PICASSO LOADED");
+//////                gallery_layout.addView(imageView);
+////            }
+////
+////            for (int i = 0; i < ids.size(); i++) {
+////                ImageView imageView = mView.findViewById(ids.get(i));
+//////                imageView.setImageResource(R.drawable.ebay_default);
+////                Picasso.with(getContext()).load("https://i.ebayimg.com/images/g/wSIAAOSwOFFduejd/s-l300.jpg").fit().centerInside().into(imageView);
+////            }
+//
+//            for (int i = 0; i < jsonArray.length(); i++) {
+//                String imageUrl = jsonArray.getString(i);
+////                Log.d("TAG", "updateSummary: imageUrl: " + imageUrl);
+//                ImageView imageView = new ImageView(getContext());
+////                imageView.setImageResource(R.drawable.shopping_icon_launcher);
+//
+////                Picasso.get().load(imageUrl).fit().centerInside().into(imageView);
+//                gallery_layout.addView(imageView);
+////                TextView textView = new TextView(getContext());
+////                textView.setText("123456");
+////                gallery_layout.addView(textView);
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
     }
 

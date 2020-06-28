@@ -1,17 +1,11 @@
 // https://stackoverflow.com/questions/9245408/best-practice-for-instantiating-a-new-android-fragment
 package pkg.hw9;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-
-import pkg.hw9.SellerFragment;
-import pkg.hw9.ShippingFragment;
-import pkg.hw9.SummaryFragment;
-
-import static pkg.hw9.DetailActivity.BUNDLE_SHIPINFO;
+import android.util.Log;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -44,17 +38,18 @@ public class DetailAdapter extends FragmentPagerAdapter {
         switch (position) {
             case 0:
                 fragment = new SummaryFragment();
-                mDetailActivity.setmSummaryFragment((SummaryFragment) fragment);
+                mDetailActivity.setSummaryFragment((SummaryFragment) fragment);
                 break;
             case 1:
                 fragment = new SellerFragment();
-                mDetailActivity.setmSellerFragment((SellerFragment) fragment);
+                mDetailActivity.setSellerFragment((SellerFragment) fragment);
                 break;
             case 2:
                 fragment = new ShippingFragment();
-                mDetailActivity.setmShippingFragment((ShippingFragment) fragment);
+                mDetailActivity.setShippingFragment((ShippingFragment) fragment);
                 break;
         }
+        Log.d("TAG", "getItem: fragment: " +fragment);
         fragment.setArguments(mBundle);
         return fragment;
     }

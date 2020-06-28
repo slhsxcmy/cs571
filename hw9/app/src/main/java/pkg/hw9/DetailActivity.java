@@ -132,6 +132,7 @@ public class DetailActivity extends AppCompatActivity {
         mBundle.putString(BUNDLE_SHIPINFO, shippingInfo);
 //        shippingFragment.setArguments(mBundle);
 
+
         mDetailAdapter = new DetailAdapter(this, getSupportFragmentManager(), mBundle);
         mViewPager.setAdapter(mDetailAdapter);
 
@@ -142,12 +143,8 @@ public class DetailActivity extends AppCompatActivity {
         tabs.getTabAt(0).setText(getResources().getText(R.string.tab_text_1));
         tabs.getTabAt(1).setText(getResources().getText(R.string.tab_text_2));
         tabs.getTabAt(2).setText(getResources().getText(R.string.tab_text_3));
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.replace(R.id.shipping_container, shippingFragment);
-//        transaction.commit();
 
 
-//        viewPager.get
     }
 
     private void parseJSON_single(String id) {
@@ -182,8 +179,13 @@ public class DetailActivity extends AppCompatActivity {
                             mBundle.putString(BUNDLE_RETURN, response.getJSONObject("ReturnPolicy").toString());
                             mBundle.putString(BUNDLE_PICS, response.getJSONArray("PictureURL").toString());
 
-                            mSellerFragment.updateSeller(mBundle);
+                            Log.d("TAG", "onResponse: mSummaryFragment: " + mSummaryFragment);
+                            Log.d("TAG", "onResponse: mSellerFragment: " + mSellerFragment);
+                            Log.d("TAG", "onResponse: mShippingFragment: " + mShippingFragment);
+
                             mSummaryFragment.updateSummary(mBundle);
+                            mSellerFragment.updateSeller(mBundle);
+                            mShippingFragment.updateShipping(mBundle);
 //                            https://stackoverflow.com/questions/44960380/send-data-from-activity-to-fragment-already-created
 //                            mDetailAdapter.notifyDataSetChanged();
                             Log.d("TAG", "onResponse: Seller: " + mBundle.getString(BUNDLE_SELLER));
@@ -206,16 +208,16 @@ public class DetailActivity extends AppCompatActivity {
     }
 
 
-    public void setmSummaryFragment(SummaryFragment mSummaryFragment) {
-        this.mSummaryFragment = mSummaryFragment;
+    public void setSummaryFragment(SummaryFragment summaryFragment) {
+        mSummaryFragment = summaryFragment;
     }
 
-    public void setmSellerFragment(SellerFragment mSellerFragment) {
-        this.mSellerFragment = mSellerFragment;
+    public void setSellerFragment(SellerFragment sellerFragment) {
+        mSellerFragment = sellerFragment;
     }
 
-    public void setmShippingFragment(ShippingFragment mShippingFragment) {
-        this.mShippingFragment = mShippingFragment;
+    public void setShippingFragment(ShippingFragment shippingFragment) {
+        mShippingFragment = shippingFragment;
     }
 
 }
