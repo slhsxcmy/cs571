@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -36,6 +38,7 @@ import org.json.JSONObject;
 
 import static pkg.hw9.CatalogActivity.EXTRA_ID;
 import static pkg.hw9.CatalogActivity.EXTRA_IMAGE_URL;
+import static pkg.hw9.CatalogActivity.EXTRA_LINK_URL;
 import static pkg.hw9.CatalogActivity.EXTRA_PRICE;
 import static pkg.hw9.CatalogActivity.EXTRA_SHIPINFO;
 import static pkg.hw9.CatalogActivity.EXTRA_SHIPPING;
@@ -65,6 +68,7 @@ public class DetailActivity extends AppCompatActivity {
     private SummaryFragment mSummaryFragment;
     private SellerFragment mSellerFragment;
     private ShippingFragment mShippingFragment;
+    private Button redirect_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,20 +82,39 @@ public class DetailActivity extends AppCompatActivity {
 //        mDetailAdapter = new DetailAdapter(getSupportFragmentManager());
 //        mViewPager.setAdapter(mDetailAdapter);  // set this after volley json is received? to initialize fragments with data
 //
-        Toolbar toolbar = findViewById(R.id.my_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
 
         // Get constants from intent
         Intent intent = getIntent();
-//        String imageUrl = intent.getStringExtra(EXTRA_IMAGE_URL);
         String id = intent.getStringExtra(EXTRA_ID);
         String title = intent.getStringExtra(EXTRA_TITLE);
         String price = intent.getStringExtra(EXTRA_PRICE);
         String shipping = intent.getStringExtra(EXTRA_SHIPPING);
         String shippingInfo = intent.getStringExtra(EXTRA_SHIPINFO);
+        final String link;
+        if (intent.getStringExtra(EXTRA_LINK_URL) == null || intent.getStringExtra(EXTRA_LINK_URL).isEmpty()) {
+            link = "https://ebay.com/";
+        } else {
+            link = intent.getStringExtra(EXTRA_LINK_URL);
+        }
+
+
+        redirect_button = findViewById(R.id.redirect_button);
+        redirect_button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                startActivity(browserIntent);
+            }
+        });
+
+
+        Toolbar toolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(title);
+
 
         Log.d("TAG", "DetailActivity onCreate ID: " + id);
 

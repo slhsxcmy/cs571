@@ -11,8 +11,9 @@ public class ExampleItem {
     private String mPrice;
     private String mID;
     private String mShippingInfo;
+    private String mLink;
 
-    public ExampleItem(String imageUrl, String title, String shipping, String top, String condition, String price, String ID, String shippingInfo) {
+    public ExampleItem(String imageUrl, String title, String shipping, String top, String condition, String price, String ID, String shippingInfo, String link) {
         mImageUrl = imageUrl;
         mTitle = title;
         mShipping = shipping;
@@ -21,6 +22,7 @@ public class ExampleItem {
         mPrice = price;
         mID = ID;
         mShippingInfo = shippingInfo;
+        mLink = link;
     }
 
     public String getImageUrl() {
@@ -53,6 +55,10 @@ public class ExampleItem {
 
     public String getShippingInfo() {
         return mShippingInfo;
+    }
+
+    public String getLink() {
+        return mLink;
     }
 
 

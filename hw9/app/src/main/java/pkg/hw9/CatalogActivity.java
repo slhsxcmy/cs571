@@ -41,6 +41,8 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
     public static final String EXTRA_PRICE = "itemPrice";
     public static final String EXTRA_SHIPPING = "shippingCost";
     public static final String EXTRA_SHIPINFO = "shippingInfo";
+    public static final String EXTRA_LINK_URL = "linkURL";
+
 
     private RecyclerView mRecyclerView;
     private ExampleAdapter mExampleAdapter;
@@ -147,10 +149,10 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
                                 String condition = item.getString("condition");
                                 String price = item.getString("price");
                                 String id = item.getString("itemId");
-
                                 String shippingInfo = item.getJSONObject("shippingInfo").toString();
+                                String link = item.getString("viewItemURL");
 
-                                mExampleList.add(new ExampleItem(imageUrl, title, shipping, top, condition, price, id, shippingInfo));
+                                mExampleList.add(new ExampleItem(imageUrl, title, shipping, top, condition, price, id, shippingInfo, link));
 
                                 // notify adapter
                                 mExampleAdapter.notifyItemInserted(i);
@@ -187,14 +189,14 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
         detailIntent.putExtra(EXTRA_PRICE, clickedItem.getPrice());
         detailIntent.putExtra(EXTRA_SHIPPING, clickedItem.getShipping());
         detailIntent.putExtra(EXTRA_SHIPINFO, clickedItem.getShippingInfo());
+        detailIntent.putExtra(EXTRA_LINK_URL, clickedItem.getLink());
 
 
         startActivity(detailIntent);
     }
 }
 
-// TODO: Use Serializable to pass ShippingInfo to ExampleItem
-// TODO: Pass data from activity to fragments
 // TODO: pull to refresh display progress bar?
 // TODO: no results toast
 // TODO: catalog screen | - bars
+// TODO: load screen picasso

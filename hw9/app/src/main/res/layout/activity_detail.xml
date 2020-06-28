@@ -9,7 +9,8 @@
 
     <include
         android:id="@+id/my_toolbar"
-        layout="@layout/toolbar"></include>
+        layout="@layout/toolbar_button">
+    </include>
     <!--https://stackoverflow.com/a/45517671-->
     <!--http://www.androidhive.info/2015/09/android-material-design-working-with-tabs/-->
     <android.support.design.widget.TabLayout

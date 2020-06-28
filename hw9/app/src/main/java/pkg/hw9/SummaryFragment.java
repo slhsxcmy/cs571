@@ -56,7 +56,7 @@ public class SummaryFragment extends Fragment {
         mSpecs = args.getString(BUNDLE_ITEMSPEC);
 
         titleView.setText(mTitle);
-        priceView.setText(mPrice);
+        priceView.setText("$" + mPrice);
 
         if (Double.valueOf(mShipping) > 0) {
             shippingView.setText("Ships for " + mShipping);

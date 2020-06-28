@@ -62,7 +62,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         if (Double.valueOf(shipping) > 0) {
             holder.mTextViewShipping.setText(Html.fromHtml("Ships for <b>$" + shipping + "</b>"));
         } else {
-            holder.mTextViewShipping.setText(Html.fromHtml("<b>Free</b> Shipping”"));
+            holder.mTextViewShipping.setText(Html.fromHtml("<b>Free</b> Shipping"));
         }
 
         if (top.equals("true")) {
