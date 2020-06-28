@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
@@ -43,7 +44,6 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
     public static final String EXTRA_SHIPPING = "shippingCost";
     public static final String EXTRA_SHIPINFO = "shippingInfo";
     public static final String EXTRA_LINK_URL = "linkURL";
-
 
     private RecyclerView mRecyclerView;
     private ExampleAdapter mExampleAdapter;
@@ -130,7 +130,7 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
                             int returnedResults = response.getInt("returnedResults");
 
                             //  if no results, toast.
-                            if(returnedResults == 0){
+                            if (returnedResults == 0) {
                                 findViewById(R.id.no_records).setVisibility(View.VISIBLE);
                                 Toast.makeText(getApplicationContext(), "No Records", Toast.LENGTH_SHORT).show();
                             }
@@ -164,6 +164,12 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
                                 // notify adapter
                                 mExampleAdapter.notifyItemInserted(i);
                             }
+
+                            // add divider
+                            mRecyclerView.addItemDecoration(new DividerItemDecoration(mRecyclerView.getContext(),
+                                    DividerItemDecoration.HORIZONTAL));
+                            mRecyclerView.addItemDecoration(new DividerItemDecoration(mRecyclerView.getContext(),
+                                    DividerItemDecoration.VERTICAL));
 
                             // finished parsing JSON, hide progress bar
                             progress.setVisibility(View.GONE);

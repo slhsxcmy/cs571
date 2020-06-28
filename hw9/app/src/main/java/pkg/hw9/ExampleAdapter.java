@@ -52,9 +52,9 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
 
 //        Log.d("TAG", "onBindViewHolder: likes: " + shipping);
         if (imageUrl.equals("https://thumbs1.ebaystatic.com/pict/04040_0.jpg")) {
-            Picasso.with(mContext).load(R.drawable.ebay_default).into(holder.mImageView);
+            Picasso.get().load(R.drawable.ebay_default).into(holder.mImageView);
         } else {
-            Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
+            Picasso.get().load(imageUrl).fit().centerInside().into(holder.mImageView);
         }
 
         holder.mTextViewTitle.setText(title);

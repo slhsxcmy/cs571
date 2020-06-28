@@ -17,6 +17,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import static pkg.hw9.DetailActivity.BUNDLE_BRAND;
 import static pkg.hw9.DetailActivity.BUNDLE_ITEMSPEC;
 import static pkg.hw9.DetailActivity.BUNDLE_PICS;
@@ -102,31 +105,49 @@ public class SummaryFragment extends Fragment {
             e.printStackTrace();
         }
 
-        try {
+        try {  // https://stackoverflow.com/questions/22990142/android-lazy-loading-image-in-horizontalscrollview-using-picasso
             LinearLayout gallery_layout = mView.findViewById(R.id.gallery_layout);
             JSONArray jsonArray = new JSONArray(mPicturesURL);
 
             for (int i = 0; i < 10; i++) {
-                ImageView imageView =  new ImageView(getContext());
-//                imageView.setImageResource(R.drawable.ebay_default);
-
-                Picasso.with(getContext()).load("https://i.ebayimg.com/images/g/wSIAAOSwOFFduejd/s-l300.jpg").fit().centerInside().into(imageView);
-                Log.d("TAG", "updateSummary: PICASSO LOADED");
-                gallery_layout.addView(imageView);
 
             }
-//            for (int i = 0; i < jsonArray.length(); i++) {
-//                String imageUrl = jsonArray.getString(i);
-//                Log.d("TAG", "updateSummary: imageUrl: " + imageUrl);
-//                ImageView imageView = mView.findViewById(R.id.pic1);// new ImageView(getContext());
-////                imageView.setImageResource(R.drawable.shopping_icon_launcher);
-////                gallery_layout.addView(imageView);
-//                Picasso.with(getContext()).load(imageUrl).fit().centerInside().into(imageView);
 //
-////                TextView textView = new TextView(getContext());
-////                textView.setText("123456");
-////                gallery_layout.addView(textView);
+//            for(int index = 0; index < ((ViewGroup) viewGroup).getChildCount(); index++) {
+//                View nextChild = ((ViewGroup) viewGroup).getChildAt(index);
 //            }
+
+//            ImageView imageView = mView.findViewById(R.id.pic);
+//            Picasso.with(getContext()).load("https://i.ebayimg.com/images/g/wSIAAOSwOFFduejd/s-l300.jpg").fit().centerInside().into(imageView);
+//            ArrayList<Integer> ids = new ArrayList<>();
+//            for (int i = 0; i < 10; i++) {
+//                ImageView imageView = new ImageView(getContext());
+//                ids.add(View.generateViewId());
+//                imageView.setId(ids.get(ids.size() - 1));
+//                gallery_layout.addView(imageView);
+////                Picasso.with(getActivity()).load("https://i.ebayimg.com/images/g/wSIAAOSwOFFduejd/s-l300.jpg").fit().centerInside().into(imageView);
+////                Log.d("TAG", "updateSummary: PICASSO LOADED");
+////                gallery_layout.addView(imageView);
+//            }
+//
+//            for (int i = 0; i < ids.size(); i++) {
+//                ImageView imageView = mView.findViewById(ids.get(i));
+////                imageView.setImageResource(R.drawable.ebay_default);
+//                Picasso.with(getContext()).load("https://i.ebayimg.com/images/g/wSIAAOSwOFFduejd/s-l300.jpg").fit().centerInside().into(imageView);
+//            }
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                String imageUrl = jsonArray.getString(i);
+//                Log.d("TAG", "updateSummary: imageUrl: " + imageUrl);
+                ImageView imageView = new ImageView(getContext());
+//                imageView.setImageResource(R.drawable.shopping_icon_launcher);
+
+//                Picasso.get().load(imageUrl).fit().centerInside().into(imageView);
+                gallery_layout.addView(imageView);
+//                TextView textView = new TextView(getContext());
+//                textView.setText("123456");
+//                gallery_layout.addView(textView);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
