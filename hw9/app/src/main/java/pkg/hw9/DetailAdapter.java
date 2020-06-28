@@ -12,17 +12,9 @@ import android.util.Log;
  * one of the sections/tabs/pages.
  */
 public class DetailAdapter extends FragmentPagerAdapter {
-//
 
-    //    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
     private DetailActivity mDetailActivity;
     private Bundle mBundle;
-
-//    public DetailAdapter(FragmentManager fm) {
-//        super(fm);
-//        mContext = context;
-//        mBundle = new Bundle();
-//    }
 
     public DetailAdapter(DetailActivity detailActivity, FragmentManager fm, Bundle bundle) {
         super(fm);
@@ -32,8 +24,7 @@ public class DetailAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
+
         Fragment fragment = null;
         switch (position) {
             case 0:
@@ -49,7 +40,7 @@ public class DetailAdapter extends FragmentPagerAdapter {
                 mDetailActivity.setShippingFragment((ShippingFragment) fragment);
                 break;
         }
-        Log.d("TAG", "getItem: fragment: " +fragment);
+        Log.d("TAG", "getItem: fragment: " + fragment);
         fragment.setArguments(mBundle);
         return fragment;
     }
@@ -61,7 +52,6 @@ public class DetailAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-
         return 3;
     }
 }

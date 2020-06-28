@@ -19,7 +19,6 @@ import static pkg.hw9.DetailActivity.BUNDLE_SHIPINFO;
 
 public class ShippingFragment extends Fragment {
     private View mView;
-
     private String mShippingInfo;
 
 
@@ -35,12 +34,12 @@ public class ShippingFragment extends Fragment {
         StringBuilder sb = new StringBuilder();
 
         try {
-            JSONObject ship_json = new JSONObject(mShippingInfo);
+            JSONObject json = new JSONObject(mShippingInfo);
 
-            Iterator keys = ship_json.keys();
+            Iterator keys = json.keys();
             while (keys.hasNext()) {
                 String key = (String) keys.next();
-                String value = ship_json.getString(key);
+                String value = json.getString(key);
 
                 sb.append("&#8226; <b>" + key.replaceAll("([A-Z])", " $1") + "</b> : " + value + "<br>");
             }
@@ -57,7 +56,6 @@ public class ShippingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         mView = inflater.inflate(R.layout.fragment_shipping, container, false);
         return mView;
     }

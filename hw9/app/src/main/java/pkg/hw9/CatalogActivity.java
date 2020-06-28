@@ -210,5 +210,4 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
 }
 
 // TODO: pull to refresh display progress bar?
-// TODO: catalog screen | - bars
 // TODO: load screen picasso

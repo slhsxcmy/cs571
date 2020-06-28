@@ -2,26 +2,15 @@
 package pkg.hw9;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.android.volley.Request;
@@ -30,9 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -68,6 +55,7 @@ public class DetailActivity extends AppCompatActivity {
     private SummaryFragment mSummaryFragment;
     private SellerFragment mSellerFragment;
     private ShippingFragment mShippingFragment;
+
     private Button redirect_button;
 
     @Override
@@ -123,14 +111,11 @@ public class DetailActivity extends AppCompatActivity {
         parseJSON_single(id);
 
         // populate views
-//        ShippingFragment shippingFragment = new ShippingFragment();
-
         mBundle = new Bundle();
         mBundle.putString(BUNDLE_TITLE, title);
         mBundle.putString(BUNDLE_PRICE, price);
         mBundle.putString(BUNDLE_SHIPPING, shipping);
         mBundle.putString(BUNDLE_SHIPINFO, shippingInfo);
-//        shippingFragment.setArguments(mBundle);
 
 
         mDetailAdapter = new DetailAdapter(this, getSupportFragmentManager(), mBundle);
