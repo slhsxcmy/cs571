@@ -16,6 +16,10 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
+            <ImageView
+                android:id="@+id/pic1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -189,10 +193,10 @@
         </LinearLayout>
 
         <TextView
-            android:lineSpacingExtra="8dp"
             android:id="@+id/specs_string"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:lineSpacingExtra="8dp"
             android:text="&#8226; " />
 
 

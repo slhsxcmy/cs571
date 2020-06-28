@@ -7,10 +7,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.w3c.dom.Text;
 
 import static pkg.hw9.DetailActivity.BUNDLE_BRAND;
 import static pkg.hw9.DetailActivity.BUNDLE_ITEMSPEC;
@@ -96,6 +101,36 @@ public class SummaryFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        try {
+            LinearLayout gallery_layout = mView.findViewById(R.id.gallery_layout);
+            JSONArray jsonArray = new JSONArray(mPicturesURL);
+
+            for (int i = 0; i < 10; i++) {
+                ImageView imageView =  new ImageView(getContext());
+//                imageView.setImageResource(R.drawable.ebay_default);
+
+                Picasso.with(getContext()).load("https://i.ebayimg.com/images/g/wSIAAOSwOFFduejd/s-l300.jpg").fit().centerInside().into(imageView);
+                Log.d("TAG", "updateSummary: PICASSO LOADED");
+                gallery_layout.addView(imageView);
+
+            }
+//            for (int i = 0; i < jsonArray.length(); i++) {
+//                String imageUrl = jsonArray.getString(i);
+//                Log.d("TAG", "updateSummary: imageUrl: " + imageUrl);
+//                ImageView imageView = mView.findViewById(R.id.pic1);// new ImageView(getContext());
+////                imageView.setImageResource(R.drawable.shopping_icon_launcher);
+////                gallery_layout.addView(imageView);
+//                Picasso.with(getContext()).load(imageUrl).fit().centerInside().into(imageView);
+//
+////                TextView textView = new TextView(getContext());
+////                textView.setText("123456");
+////                gallery_layout.addView(textView);
+//            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
