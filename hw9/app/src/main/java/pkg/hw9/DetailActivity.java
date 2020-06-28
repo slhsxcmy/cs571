@@ -55,7 +55,6 @@ public class DetailActivity extends AppCompatActivity {
     private SummaryFragment mSummaryFragment;
     private SellerFragment mSellerFragment;
     private ShippingFragment mShippingFragment;
-    private ShippingFragment2 mShippingFragment2;
 
     private Button redirect_button;
 
@@ -203,10 +202,6 @@ public class DetailActivity extends AppCompatActivity {
 
     public void setShippingFragment(ShippingFragment shippingFragment) {
         mShippingFragment = shippingFragment;
-    }
-
-    public void setShippingFragment2(ShippingFragment2 shippingFragment) {
-        mShippingFragment2 = shippingFragment;
     }
 
 }
