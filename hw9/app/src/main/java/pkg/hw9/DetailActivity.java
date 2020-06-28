@@ -36,11 +36,23 @@ import org.json.JSONObject;
 
 import static pkg.hw9.CatalogActivity.EXTRA_ID;
 import static pkg.hw9.CatalogActivity.EXTRA_IMAGE_URL;
+import static pkg.hw9.CatalogActivity.EXTRA_PRICE;
 import static pkg.hw9.CatalogActivity.EXTRA_SHIPINFO;
+import static pkg.hw9.CatalogActivity.EXTRA_SHIPPING;
+import static pkg.hw9.CatalogActivity.EXTRA_TITLE;
 import static pkg.hw9.MainActivity.DEBUG;
 
 public class DetailActivity extends AppCompatActivity {
+    public static final String BUNDLE_TITLE = "titleDetail";
+    public static final String BUNDLE_PRICE = "priceDetail";
+    public static final String BUNDLE_SHIPPING = "shippingCostDetail";
     public static final String BUNDLE_SHIPINFO = "shippingInfoDetail";
+    public static final String BUNDLE_SUBTITLE = "subtitleDetail";
+    public static final String BUNDLE_BRAND = "brandDetail";
+    public static final String BUNDLE_ITEMSPEC = "specsDetail";
+    public static final String BUNDLE_SELLER = "sellerDetail";
+    public static final String BUNDLE_RETURN = "returnDetail";
+    public static final String BUNDLE_PICS = "picturesDetail";
 
     private RequestQueue mRequestQueue;
     private DetailAdapter mDetailAdapter;
@@ -48,6 +60,7 @@ public class DetailActivity extends AppCompatActivity {
     private TabLayout tabs;
     private RelativeLayout progress;
 
+    private Bundle mBundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +82,11 @@ public class DetailActivity extends AppCompatActivity {
 
         // Get constants from intent
         Intent intent = getIntent();
-        String imageUrl = intent.getStringExtra(EXTRA_IMAGE_URL);
+//        String imageUrl = intent.getStringExtra(EXTRA_IMAGE_URL);
         String id = intent.getStringExtra(EXTRA_ID);
+        String title = intent.getStringExtra(EXTRA_TITLE);
+        String price = intent.getStringExtra(EXTRA_PRICE);
+        String shipping = intent.getStringExtra(EXTRA_SHIPPING);
         String shippingInfo = intent.getStringExtra(EXTRA_SHIPINFO);
 
         Log.d("TAG", "DetailActivity onCreate ID: " + id);
@@ -79,21 +95,20 @@ public class DetailActivity extends AppCompatActivity {
         mRequestQueue = Volley.newRequestQueue(this);
         parseJSON_single(id);
 
-
         // populate views
-        ShippingFragment shippingFragment = new ShippingFragment();
+//        ShippingFragment shippingFragment = new ShippingFragment();
 
-        Bundle shippingBundle = new Bundle();
-        shippingBundle.putString(BUNDLE_SHIPINFO, shippingInfo);
-        shippingFragment.setArguments(shippingBundle);
+        mBundle = new Bundle();
+        mBundle.putString(BUNDLE_TITLE, title);
+        mBundle.putString(BUNDLE_PRICE, price);
+        mBundle.putString(BUNDLE_SHIPPING, shipping);
+        mBundle.putString(BUNDLE_SHIPINFO, shippingInfo);
+//        shippingFragment.setArguments(mBundle);
 
-        mDetailAdapter = new DetailAdapter(getSupportFragmentManager(), shippingBundle);
+        mDetailAdapter = new DetailAdapter(getSupportFragmentManager(), mBundle);
         mViewPager.setAdapter(mDetailAdapter);
 
-        tabs.setupWithViewPager(mViewPager);
-
-
-
+        tabs.setupWithViewPager(mViewPager);  // overwrites icon and text in TabItem XML
         tabs.getTabAt(0).setIcon(R.drawable.information_variant_selected);
         tabs.getTabAt(1).setIcon(R.drawable.ic_seller);
         tabs.getTabAt(2).setIcon(R.drawable.truck_delivery_selected);
@@ -125,11 +140,21 @@ public class DetailActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
 
-                            // pass whole JSON to 3 fragments to parse separately
-//
-//                            String subtitle = response.getString("Subtitle");
-                            JSONArray itemSpecifics = response.getJSONArray("ItemSpecifics");
+//                           parse json and add to bundle
 
+                            if (response.has("Subtitle")) {
+                                mBundle.putString(BUNDLE_SUBTITLE, response.getString("Subtitle"));
+                            }
+
+                            if (response.has("Brand")) {
+                                mBundle.putString(BUNDLE_BRAND, response.getString("Brand"));
+                            }
+
+                            mBundle.putString(BUNDLE_ITEMSPEC, response.getJSONArray("ItemSpecifics").toString());
+                            mBundle.putString(BUNDLE_SELLER, response.getJSONObject("Seller").toString());
+                            mBundle.putString(BUNDLE_RETURN, response.getJSONObject("ReturnPolicy").toString());
+                            mBundle.putString(BUNDLE_PICS, response.getJSONArray("PictureURL").toString());
+ 
                             progress.setVisibility(View.GONE);
                         } catch (JSONException e) {
                             Log.d("TAG", "onResponse: JSONException!");

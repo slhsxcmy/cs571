@@ -196,3 +196,4 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
 // TODO: Use Serializable to pass ShippingInfo to ExampleItem
 // TODO: Pass data from activity to fragments
 // TODO: pull to refresh display progress bar?
+// TODO: no results toast
