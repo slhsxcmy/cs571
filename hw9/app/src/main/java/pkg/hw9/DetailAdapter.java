@@ -21,18 +21,18 @@ public class DetailAdapter extends FragmentPagerAdapter {
 //
 
     //    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
-//    private final Context mContext;
+    private DetailActivity mDetailActivity;
     private Bundle mBundle;
 
-    public DetailAdapter(FragmentManager fm) {
-        super(fm);
+//    public DetailAdapter(FragmentManager fm) {
+//        super(fm);
 //        mContext = context;
-        mBundle = new Bundle();
-    }
+//        mBundle = new Bundle();
+//    }
 
-    public DetailAdapter(FragmentManager fm, Bundle bundle) {
+    public DetailAdapter(DetailActivity detailActivity, FragmentManager fm, Bundle bundle) {
         super(fm);
-//        mContext = context;
+        mDetailActivity = detailActivity;
         mBundle = bundle;
     }
 
@@ -43,14 +43,16 @@ public class DetailAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new SummaryFragment();  // dummies
+                fragment = new SummaryFragment();
+                mDetailActivity.setmSummaryFragment((SummaryFragment) fragment);
                 break;
             case 1:
                 fragment = new SellerFragment();
+                mDetailActivity.setmSellerFragment((SellerFragment) fragment);
                 break;
             case 2:
                 fragment = new ShippingFragment();
-//                mBundle.putString(BUNDLE_SHIPINFO, "data From Activity");
+                mDetailActivity.setmShippingFragment((ShippingFragment) fragment);
                 break;
         }
         fragment.setArguments(mBundle);

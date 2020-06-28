@@ -197,3 +197,4 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
 // TODO: Pass data from activity to fragments
 // TODO: pull to refresh display progress bar?
 // TODO: no results toast
+// TODO: catalog screen | - bars

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="8dp"
     android:orientation="vertical"
     tools:context=".SellerFragment">
 
@@ -11,100 +10,26 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+android:layout_marginLeft="8dp"
         android:text="Seller Information"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold" />
 
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/seller"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&#8226; Feedback Score"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" : " />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&#8226; User I D"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/sellerID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" : " />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&#8226; Positive Feedback Percent"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/positive"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" : " />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&#8226; Feedback Rating Star"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/star"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" : " />
-    </LinearLayout>
+        android:layout_marginLeft="16dp"
+        android:lineSpacingExtra="8dp" />
 
     <!-- Divider -->
     <View
 
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@android:color/darker_gray" />
 
@@ -112,90 +37,18 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:text="Return Policies"
         android:textColor="@android:color/black"
         android:textSize="16sp"
+        android:layout_marginLeft="8dp"
         android:textStyle="bold" />
 
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/returns"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
+        android:layout_marginLeft="16dp"
+        android:lineSpacingExtra="8dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&#8226; Refund"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/refund"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" : " />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&#8226; Returns Within"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/within"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" : " />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&#8226; Shipping Cost Paid By"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/shipby"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" : " />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&#8226; Returns Accepted"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/returnOK"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" : " />
-    </LinearLayout>
 </LinearLayout>

@@ -62,6 +62,10 @@ public class DetailActivity extends AppCompatActivity {
 
     private Bundle mBundle;
 
+    private SummaryFragment mSummaryFragment;
+    private SellerFragment mSellerFragment;
+    private ShippingFragment mShippingFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,7 +109,7 @@ public class DetailActivity extends AppCompatActivity {
         mBundle.putString(BUNDLE_SHIPINFO, shippingInfo);
 //        shippingFragment.setArguments(mBundle);
 
-        mDetailAdapter = new DetailAdapter(getSupportFragmentManager(), mBundle);
+        mDetailAdapter = new DetailAdapter(this, getSupportFragmentManager(), mBundle);
         mViewPager.setAdapter(mDetailAdapter);
 
         tabs.setupWithViewPager(mViewPager);  // overwrites icon and text in TabItem XML
@@ -154,7 +158,12 @@ public class DetailActivity extends AppCompatActivity {
                             mBundle.putString(BUNDLE_SELLER, response.getJSONObject("Seller").toString());
                             mBundle.putString(BUNDLE_RETURN, response.getJSONObject("ReturnPolicy").toString());
                             mBundle.putString(BUNDLE_PICS, response.getJSONArray("PictureURL").toString());
- 
+
+                            mSellerFragment.updateSeller(mBundle);
+//                            https://stackoverflow.com/questions/44960380/send-data-from-activity-to-fragment-already-created
+//                            mDetailAdapter.notifyDataSetChanged();
+                            Log.d("TAG", "onResponse: Seller: " + mBundle.getString(BUNDLE_SELLER));
+
                             progress.setVisibility(View.GONE);
                         } catch (JSONException e) {
                             Log.d("TAG", "onResponse: JSONException!");
@@ -171,4 +180,18 @@ public class DetailActivity extends AppCompatActivity {
 
         mRequestQueue.add(request);
     }
+
+
+    public void setmSummaryFragment(SummaryFragment mSummaryFragment) {
+        this.mSummaryFragment = mSummaryFragment;
+    }
+
+    public void setmSellerFragment(SellerFragment mSellerFragment) {
+        this.mSellerFragment = mSellerFragment;
+    }
+
+    public void setmShippingFragment(ShippingFragment mShippingFragment) {
+        this.mShippingFragment = mShippingFragment;
+    }
+
 }
