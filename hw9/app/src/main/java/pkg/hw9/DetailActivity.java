@@ -9,6 +9,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.ViewPager;
@@ -38,8 +40,12 @@ import static pkg.hw9.CatalogActivity.EXTRA_SHIPINFO;
 import static pkg.hw9.MainActivity.DEBUG;
 
 public class DetailActivity extends AppCompatActivity {
-    private RequestQueue mRequestQueue;
+    public static final String BUNDLE_SHIPINFO = "shippingInfoDetail";
 
+    private RequestQueue mRequestQueue;
+    private DetailAdapter mDetailAdapter;
+    private ViewPager mViewPager;
+    private TabLayout tabs;
     private RelativeLayout progress;
 
 
@@ -47,11 +53,11 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        DetailAdapter detailAdapter = new DetailAdapter(this, getSupportFragmentManager());
-        ViewPager viewPager = findViewById(R.id.view_pager);
-        viewPager.setAdapter(detailAdapter);
-        TabLayout tabs = findViewById(R.id.tabs);
-        tabs.setupWithViewPager(viewPager);
+        mDetailAdapter = new DetailAdapter(getSupportFragmentManager());
+        mViewPager = findViewById(R.id.view_pager);
+        mViewPager.setAdapter(mDetailAdapter);  // set this after volley json is received? to initialize fragments with data
+        tabs = findViewById(R.id.tabs);
+        tabs.setupWithViewPager(mViewPager);
 
         progress = findViewById(R.id.detail_progress);
 
@@ -87,6 +93,19 @@ public class DetailActivity extends AppCompatActivity {
 
 
         // populate views
+        ShippingFragment shippingFragment = new ShippingFragment();
+
+        Bundle shippingBundle = new Bundle();
+        shippingBundle.putString(BUNDLE_SHIPINFO, shippingInfo);
+        shippingFragment.setArguments(shippingBundle);
+
+//        mDetailAdapter = new DetailAdapter(getSupportFragmentManager(), shippingBundle);
+//        mViewPager.setAdapter(mDetailAdapter);
+//
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.replace(R.id.shipping_container, shippingFragment);
+//        transaction.commit();
+
 
 //        viewPager.get
     }

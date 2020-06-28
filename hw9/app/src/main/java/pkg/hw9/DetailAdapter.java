@@ -2,6 +2,7 @@
 package pkg.hw9;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -9,6 +10,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import pkg.hw9.SellerFragment;
 import pkg.hw9.ShippingFragment;
 import pkg.hw9.SummaryFragment;
+
+import static pkg.hw9.DetailActivity.BUNDLE_SHIPINFO;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -18,11 +21,19 @@ public class DetailAdapter extends FragmentPagerAdapter {
 //
 
     //    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
-    private final Context mContext;
+//    private final Context mContext;
+    private Bundle mBundle;
 
-    public DetailAdapter(Context context, FragmentManager fm) {
+    public DetailAdapter(FragmentManager fm) {
         super(fm);
-        mContext = context;
+//        mContext = context;
+        mBundle = new Bundle();
+    }
+
+    public DetailAdapter(FragmentManager fm, Bundle bundle) {
+        super(fm);
+//        mContext = context;
+        mBundle = bundle;
     }
 
     @Override
@@ -39,6 +50,8 @@ public class DetailAdapter extends FragmentPagerAdapter {
                 break;
             case 2:
                 fragment = new ShippingFragment();
+                mBundle.putString(BUNDLE_SHIPINFO, "data From Activity");
+                fragment.setArguments(mBundle);
                 break;
         }
         return fragment;

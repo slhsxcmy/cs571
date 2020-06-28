@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class ShippingFragment extends Fragment {
+import static pkg.hw9.DetailActivity.BUNDLE_SHIPINFO;
 
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_SHIPINFO = "shippingInfoFrag";
+public class ShippingFragment extends Fragment {
+//
+//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+//    private static final String ARG_SHIPINFO = "shippingInfoFrag";
 
     private String mShippingInfo;
 
@@ -38,11 +40,12 @@ public class ShippingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_shipping, container, false);
-//        TextView handling = v.findViewById(R.id.handling);
-//        if (getArguments() != null) {
-//            mShippingInfo = getArguments().getString(ARG_SHIPINFO);
-//        }
-//        handling.setText(mShippingInfo);
+        TextView handling = v.findViewById(R.id.handling);
+        if (getArguments() != null) {
+            mShippingInfo = getArguments().getString(BUNDLE_SHIPINFO);
+        }
+        handling.setText(mShippingInfo);
+
         return v;
     }
 }
