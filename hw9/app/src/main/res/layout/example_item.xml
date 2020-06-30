@@ -31,17 +31,18 @@
             android:textStyle="bold" />
 
         <TextView
-            android:layout_marginTop="10dp"
             android:id="@+id/text_view_shipping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="SHIPPING" />
 
         <TextView
             android:id="@+id/text_view_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TOP" />
+            android:text="TOP"
+            android:textStyle="bold" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -49,24 +50,24 @@
 
 
             <TextView
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
                 android:id="@+id/text_view_condition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
                 android:text="CONDITION"
                 android:textStyle="italic" />
 
             <TextView
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
                 android:id="@+id/text_view_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
                 android:text="PRICE"
                 android:textColor="@color/price_text"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </RelativeLayout>
 
 

@@ -99,20 +99,22 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
     }
 
     private void parseJSON() {
+        
+
 //        Log.d("TAG", "parseJSON: START!!!!");
 
         progress.setVisibility(View.VISIBLE);
 
         String url;
         final String keyword;
-        if (!DEBUG) {
+//        if (!DEBUG) {
             Intent intent = getIntent();
             url = intent.getStringExtra(EXTRA_REQUEST_URL);
             keyword = intent.getStringExtra(EXTRA_KEYWORD);
-        } else {
-            url = "http://192.168.1.220:3000/query?keywords=aa&sortOrder=BestMatch";
-            keyword = "DEBUG_KEYWORD";
-        }
+//        } else {
+//            url = "http://192.168.1.220:3000/query?keywords=iphone&sortOrder=BestMatch";
+//            keyword = "DEBUG_KEYWORD";
+//        }
         Log.d("TAG", "parseJSON get url: " + url);
 
 //        url = "https://pixabay.com/api/?key=5303976-fd6581ad4ac165d1b75cc15b3&q=kitten&image_type=photo&pretty=true";
@@ -189,7 +191,6 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
         mRequestQueue.add(request);
     }
 
-
     @Override
     public void onItemClick(int position) {
         Intent detailIntent = new Intent(this, DetailActivity.class);
@@ -208,5 +209,8 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
     }
 }
 
-// TODO: pull to refresh display progress bar?
-// TODO: load screen picasso
+// TODO: pull to refresh no display progress bar
+// TODO: pull to refresh on no records screen
+// TODO: splash screen top color
+// TODO: check converted current price
+// TODO: pull to refresh delete prior results  (daaaa - New)

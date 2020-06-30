@@ -2,8 +2,10 @@ package pkg.hw9;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_REQUEST_URL = "requestUrl";
     public static final String EXTRA_KEYWORD = "searchKeyword";
 
-    public static final boolean DEBUG = false;
+    public static final boolean DEBUG = true;
 
     private EditText keywordField;
     private EditText minField;

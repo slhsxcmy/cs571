@@ -62,7 +62,7 @@ public class SummaryFragment extends Fragment {
         if (Double.valueOf(mShipping) > 0) {
             shippingView.setText("Ships for " + mShipping);
         } else {
-            shippingView.setText("Free Shipping");
+            shippingView.setText("FREE Shipping");
         }
 
         if (mSubtitle.isEmpty() && mBrand.isEmpty()) {

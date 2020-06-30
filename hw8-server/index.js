@@ -82,7 +82,7 @@ function parse(response_json) {
                 item_dict["galleryURL"] = "https://thumbs1.ebaystatic.com/pict/04040_0.jpg";
                 console.log('no image found');
             }
-            item_dict["price"] = item["sellingStatus"][0]["currentPrice"][0]["__value__"]
+            item_dict["price"] = item["sellingStatus"][0]["convertedCurrentPrice"][0]["__value__"]
             item_dict["location"] = item["location"][0]
             item_dict["category"] = item["primaryCategory"][0]["categoryName"][0]
             item_dict["condition"] = item["condition"][0]["conditionDisplayName"][0]
