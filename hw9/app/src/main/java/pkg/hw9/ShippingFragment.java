@@ -3,7 +3,9 @@
 package pkg.hw9;
 
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
+
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +43,7 @@ public class ShippingFragment extends Fragment {
                 String key = (String) keys.next();
                 String value = json.getString(key);
 
-                sb.append("&#8226; <b>" + key.replaceAll("([A-Z])", " $1") + "</b> : " + value + "<br>");
+                sb.append("&#8226; <b>" + key.substring(0, 1).toUpperCase() + key.substring(1).replaceAll("([A-Z])", " $1") + "</b> : " + value + "<br>");
             }
 
 

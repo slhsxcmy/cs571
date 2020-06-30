@@ -104,9 +104,9 @@ public class MainActivity extends AppCompatActivity {
 
     private String genURL() {
 
-        String baseurl = "https://hw8-server-cs571su2020.wl.r.appspot.com/query?";
+        String baseurl = "https://hw8-server-cs571su2020.wl.r.appspot.com/query_android?";
         if (DEBUG) {
-            baseurl = "http://192.168.1.220:3000/query?";
+            baseurl = "http://192.168.1.220:3000/query_android?";
         }
 
 

@@ -108,7 +108,7 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
 
 //        Log.d("TAG", "parseJSON: START!!!!");
 
-        progress.setVisibility(View.VISIBLE);
+//        progress.setVisibility(View.VISIBLE);  // removed to hide progress spinner on pull
 
         String url;
         final String keyword;
@@ -141,7 +141,7 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
                                 Toast.makeText(getApplicationContext(), "No Records", Toast.LENGTH_SHORT).show();
                             }
 
-                            resultCount.setText(Html.fromHtml("Showing <font color='#187bcd'><b>" + Math.min(returnedResults, MAX_RESULTS) + "</b></font> results for <font color='#187bcd'><b>" + keyword + "</b></font>"));
+                            resultCount.setText(Html.fromHtml("<b>Showing <font color='#187bcd'>" + Math.min(returnedResults, MAX_RESULTS) + "</font> results for <font color='#187bcd'>" + keyword + "</font></b>"));
                             Log.d("TAG", "onResponse:returnedResults: " + returnedResults + " -- Showing " + Math.min(returnedResults, MAX_RESULTS) + " results for iphone");
 
                             JSONArray jsonArray = response.getJSONArray("searchResult");

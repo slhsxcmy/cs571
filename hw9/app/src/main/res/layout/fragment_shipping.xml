@@ -22,6 +22,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:lineSpacingExtra="8dp" />
+        android:lineSpacingExtra="16dp" />
 
 </LinearLayout>
