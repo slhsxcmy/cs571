@@ -26,10 +26,11 @@
         android:text="No Records"
         android:visibility="gone" />
 
-    <TextView android:layout_marginLeft="2dp"
+    <TextView
         android:id="@+id/result_count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
         android:text="Total Results Count Pending Update" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

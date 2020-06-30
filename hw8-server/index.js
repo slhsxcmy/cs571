@@ -172,7 +172,8 @@ function parse_android(response_json) {
             let item_dict = {}
             let item = items[i]
             // console.log(item)
-            item_dict["title"] = item["title"][0]
+
+            item_dict["itemId"] = item["itemId"][0]
             try {
                 item_dict["galleryURL"] = item["galleryURL"][0] // check removed. Piazza @399 
             } catch (error) {
@@ -180,28 +181,30 @@ function parse_android(response_json) {
                 item_dict["galleryURL"] = "https://thumbs1.ebaystatic.com/pict/04040_0.jpg";
                 console.log('no image found');
             }
-            item_dict["price"] = item["sellingStatus"][0]["convertedCurrentPrice"][0]["__value__"]
-            item_dict["location"] = item["location"][0]
-            item_dict["category"] = item["primaryCategory"][0]["categoryName"][0]
-            item_dict["condition"] = item["condition"][0]["conditionDisplayName"][0]
-            item_dict["shippingType"] = item["shippingInfo"][0]["shippingType"][0]
-            item_dict["shippingServiceCost"] = item["shippingInfo"][0]["shippingServiceCost"][0]["__value__"]
-            item_dict["shipToLocations"] = item["shippingInfo"][0]["shipToLocations"][0]
-            item_dict["expeditedShipping"] = item["shippingInfo"][0]["expeditedShipping"][0]
-            item_dict["oneDayShippingAvailable"] = item["shippingInfo"][0]["oneDayShippingAvailable"][0]
-            item_dict["handlingTime"] = item["shippingInfo"][0]["handlingTime"][0]
-            item_dict["bestOfferEnabled"] = item["listingInfo"][0]["bestOfferEnabled"][0]
-            item_dict["buyItNowAvailable"] = item["listingInfo"][0]["buyItNowAvailable"][0]
-            item_dict["listingType"] = item["listingInfo"][0]["listingType"][0]
-            item_dict["gift"] = item["listingInfo"][0]["gift"][0]
-            item_dict["watchCount"] = item["listingInfo"][0]["watchCount"][0]
 
+            item_dict["title"] = item["title"][0]
+            item_dict["shippingServiceCost"] = item["shippingInfo"][0]["shippingServiceCost"][0]["__value__"]
+            item_dict["topRatedListing"] = item["topRatedListing"][0]
+            item_dict["condition"] = item["condition"][0]["conditionDisplayName"][0]
+            item_dict["price"] = item["sellingStatus"][0]["convertedCurrentPrice"][0]["__value__"]
             item_dict["viewItemURL"] = item["viewItemURL"][0]
 
-            item_dict["itemId"] = item["itemId"][0]
+            // item_dict["location"] = item["location"][0]
+            // item_dict["category"] = item["primaryCategory"][0]["categoryName"][0]
+            /* item_dict["shippingType"] = item["shippingInfo"][0]["shippingType"][0]
+               item_dict["shipToLocations"] = item["shippingInfo"][0]["shipToLocations"][0]
+               item_dict["expeditedShipping"] = item["shippingInfo"][0]["expeditedShipping"][0]
+               item_dict["oneDayShippingAvailable"] = item["shippingInfo"][0]["oneDayShippingAvailable"][0]
+               item_dict["handlingTime"] = item["shippingInfo"][0]["handlingTime"][0]
+               // removed as we pass shippingInfo Object in HW9
+            */
+            // item_dict["bestOfferEnabled"] = item["listingInfo"][0]["bestOfferEnabled"][0]
+            // item_dict["buyItNowAvailable"] = item["listingInfo"][0]["buyItNowAvailable"][0]
+            // item_dict["listingType"] = item["listingInfo"][0]["listingType"][0]
+            // item_dict["gift"] = item["listingInfo"][0]["gift"][0]
+            // item_dict["watchCount"] = item["listingInfo"][0]["watchCount"][0]
 
-            item_dict["topRatedListing"] = item["topRatedListing"][0]
-
+            
             // add shippingInfo obj for hw9
             item_dict["shippingInfo"] = item["shippingInfo"][0]
             delete item_dict["shippingInfo"] ['shippingServiceCost'];

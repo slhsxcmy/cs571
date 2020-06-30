@@ -5,11 +5,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <!--        <item name="android:statusBarColor">@color/colorPrimary</item>-->
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimaryDark">@color/app_blue_eBay</item>
+        <item name="colorPrimaryDark"> <!-- for top status bar on splash screen -->
+            @color/app_blue_eBay
+        </item>
         <item name="android:windowBackground">
             @drawable/splash_screen_background
         </item>

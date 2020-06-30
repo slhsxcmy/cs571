@@ -4,11 +4,13 @@ package pkg.hw9;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
@@ -81,6 +83,8 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+//                Note: pull to refresh on no records screen not possible(easy)
+//                SwipeRefreshLayout can only have 1 single Recycler View as child
                 parseJSON();
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -113,9 +117,9 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
         String url;
         final String keyword;
 //        if (!DEBUG) {
-            Intent intent = getIntent();
-            url = intent.getStringExtra(EXTRA_REQUEST_URL);
-            keyword = intent.getStringExtra(EXTRA_KEYWORD);
+        Intent intent = getIntent();
+        url = intent.getStringExtra(EXTRA_REQUEST_URL);
+        keyword = intent.getStringExtra(EXTRA_KEYWORD);
 //        } else {
 //            url = "http://192.168.1.220:3000/query?keywords=iphone&sortOrder=BestMatch";
 //            keyword = "DEBUG_KEYWORD";
@@ -213,7 +217,3 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
         startActivity(detailIntent);
     }
 }
-
-// TODO: pull to refresh no display progress bar
-// TODO: pull to refresh on no records screen
-// TODO: check converted current price
