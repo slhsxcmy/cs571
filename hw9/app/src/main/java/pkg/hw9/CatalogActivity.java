@@ -68,11 +68,11 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
         mRecyclerView.setHasFixedSize(true);
 //        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));  // set in xml
 
-        mExampleList = new ArrayList<>();
-
-        mExampleAdapter = new ExampleAdapter(CatalogActivity.this, mExampleList);
-        mRecyclerView.setAdapter(mExampleAdapter);
-        mExampleAdapter.setOnItemClickListener(CatalogActivity.this);
+// moved to parseJSON() to refresh on pull
+//        mExampleList = new ArrayList<>();
+//        mExampleAdapter = new ExampleAdapter(CatalogActivity.this, mExampleList);
+//        mRecyclerView.setAdapter(mExampleAdapter);
+//        mExampleAdapter.setOnItemClickListener(CatalogActivity.this);
 
         resultCount = findViewById(R.id.result_count);
         progress = findViewById(R.id.catalog_progress);
@@ -99,7 +99,12 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
     }
 
     private void parseJSON() {
-        
+        // added to delete previous results on refresh
+
+        mExampleList = new ArrayList<>();
+        mExampleAdapter = new ExampleAdapter(CatalogActivity.this, mExampleList);
+        mRecyclerView.setAdapter(mExampleAdapter);
+        mExampleAdapter.setOnItemClickListener(CatalogActivity.this);
 
 //        Log.d("TAG", "parseJSON: START!!!!");
 
@@ -213,4 +218,3 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
 // TODO: pull to refresh on no records screen
 // TODO: splash screen top color
 // TODO: check converted current price
-// TODO: pull to refresh delete prior results  (daaaa - New)
