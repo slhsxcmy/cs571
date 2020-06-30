@@ -216,5 +216,4 @@ public class CatalogActivity extends AppCompatActivity implements ExampleAdapter
 
 // TODO: pull to refresh no display progress bar
 // TODO: pull to refresh on no records screen
-// TODO: splash screen top color
 // TODO: check converted current price
