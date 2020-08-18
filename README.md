@@ -9,7 +9,7 @@ This repository contains my code for the assignments for CSCI 571 – Web Techno
     <th>Name</th>
     <th>Overview</th>
     <th>Languages</th>
-    <th>Libraries/Frameworks</th>
+    <th>Libraries/<br>Frameworks</th>
     <th>Details</th>
     <th>Deliverable</th>
   </tr>
@@ -18,7 +18,7 @@ This repository contains my code for the assignments for CSCI 571 – Web Techno
   <tr>
     <td>3</td>
     <td>HTML and CSS</td>
-    <td>Becoming familiar with HTML and CSS technologies and imitating a web page from a screenshot</td>
+    <td>A purely front-end website to practice HTML and CSS by imitating a web page from a screenshot.</td>
     <td>CSS, HTML</td>
     <td>N/A</td>
     <td><a href="https://github.com/slhsxcmy/cs571/tree/master/hw3">Link<a></td>
@@ -27,7 +27,7 @@ This repository contains my code for the assignments for CSCI 571 – Web Techno
   <tr>
     <td>6</td>
     <td>Server-side Scripting using Python Flask, JSON and eBay API</td>
-    <td>???</td>
+    <td>A website that allows visitors to search for products using eBay's API and displaying the results asynchronously.</td>
     <td>HTML, CSS, JavaScript, Python</td>
     <td>Flask</td>
     <td><a href="https://github.com/slhsxcmy/cs571/tree/master/hw6">Link<a></td>
@@ -36,7 +36,7 @@ This repository contains my code for the assignments for CSCI 571 – Web Techno
   <tr>
     <td>8</td>
     <td>Ajax, JSON, Responsive Design and Node.js</td>
-    <td>???</td>
+    <td>Enhanced Homework 6. A single-page responsive website that allows visitors to search for products using eBay's API and displaying the results asynchronously.</td>
     <td>HTML, CSS, JavaScript, TypeScript</td>
     <td>Angular, Bootstrap, Node.js</td>
     <td><a href="https://github.com/slhsxcmy/cs571/tree/master/hw8-client">Client<a><br>
@@ -46,7 +46,7 @@ This repository contains my code for the assignments for CSCI 571 – Web Techno
   <tr>
     <td>9</td>
     <td>Android App for eBay Catalog Search</td>
-    <td>???</td>
+    <td>Adaptation of Homework 8 to Android. An Android app that allows visitors to search for products using eBay's API and displaying the results asynchronously with additional product details.</td>
     <td>Java, XML, JavaScript</td>
     <td>Android Studio, Node.js</td>
     <td><a href="https://github.com/slhsxcmy/cs571/tree/master/hw9">Client<a><br>
