@@ -1,7 +1,7 @@
 # Homework	9:	Android	App	for	eBay	Catalog	Search		
 
-## Link to APK
-- [Homework 9](https://drive.google.com/file/d/1YHNC95Gun0s5Ux9P1uScrNOfROR83tbP/view)
+## Link to Google Play Store
+- [Homework 9: Online Shopping Helper](https://play.google.com/store/apps/details?id=ebay.catalog.search)
 
 ## Description	
 
