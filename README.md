@@ -51,7 +51,7 @@ This repository contains my code for the assignments for CSCI 571 – Web Techno
     <td>Android Studio, Node.js</td>
     <td><a href="https://github.com/slhsxcmy/cs571/tree/master/hw9">Client<a><br>
         <a href="https://github.com/slhsxcmy/cs571/tree/master/hw8-server">Server<a></td>
-    <td><a href="https://drive.google.com/file/d/1YHNC95Gun0s5Ux9P1uScrNOfROR83tbP/view?usp=sharing">APK</a></td>
+    <td><a href="https://play.google.com/store/apps/details?id=ebay.catalog.search">Google Play Store</a></td>
   </tr>
 </tbody>
 </table>
